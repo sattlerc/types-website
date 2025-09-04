@@ -7,10 +7,10 @@ import Hakyll
 
 main :: IO ()
 main = hakyll $ do
-  match "pages/*" $ do
+   match "pages/*" $ do
     route $ customRoute $ toFilePath >>> stripPrefix "pages/" >>> fromJust >>> ("hidden/" ++)
     compile copyFileCompiler
 
-  match "index.html" $ do
+   match "index.html" $ do
     route idRoute
     compile copyFileCompiler
