@@ -4,6 +4,6 @@ import           Hakyll
 
 main :: IO ()
 main = hakyll $ do
-    match "index.html2" $ do
-        route   idRoute
+    match "index.html" $ do
+        route   idRoutee
         compile copyFileCompiler
