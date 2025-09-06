@@ -45,7 +45,7 @@ main :: IO ()
 main = hakyll $ do
   -- Placeholder "under construction".
   match "placeholder/**" $ do
-    route idRoute
+    route $ customRoute $ toFilePath >>> makeRelative "placeholder"
     compile copyFileCompiler
 
   -- README for website editors.
