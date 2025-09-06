@@ -1,0 +1,14 @@
+[Unit]
+Description=Deploy service for the TYPES 2026 website.
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=600s
+KillSignal=SIGINT
+ExecStart=%h/types-2026/deploy/server.py
+
+[Install]
+WantedBy=default.target
