@@ -3,16 +3,15 @@ title: TYPES 2025
 ---
 
 ::: text-center
-# TYPES 2025 {#types-2025 .text-uppercase}
+# TYPES 2026 {#types-2025 .text-uppercase}
 
-## University of Strathclyde, Glasgow, Scotland • 9--13 June 2025
+## Chalmers University of Technology, Gothenburg, Sweden • 4--8 May 2026
 :::
 
-::::::::::: container
 ![](images/glasgow.jpg "Glasgow from Livingstone Tower"){.img-fluid .d-block .my-5}
 
 ::: col
-The 31st International Conference on *Types for Proofs and Programs* will take place at the University of Strathclyde from Monday 9 June to Friday 13 June 2025, and is organised by the [Mathematically Structured Programming group](https://msp.cis.strath.ac.uk).
+The 32nd International Conference on *Types for Proofs and Programs* will take place at Chalmers University of Technology in Gothenburg from Monday 4 May to Friday 8 May 2026, and is organised by the [Mathematically Structured Programming group](https://msp.cis.strath.ac.uk).
 On Tuesday 10 June, there will be a co-located [Women in EuroProofNet](https://europroofnet.github.io/women-epn-2025/) event dedicated to gender balance in our community.
 The week after, [CALCO/MFPS](https://www.coalg.org/calco-mfps-2025/) will also take place at the University of Strathclyde.
 
@@ -47,7 +46,7 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 - **~~Late registration deadline:~~**
   ~~30 May 2025~~
 - **Conference:**
-  9--13 June 2025
+  4--8 May 2026
 
 ### Poster
 
@@ -58,4 +57,3 @@ Feel free to use the following poster to advertise the conference in your resear
 ### Contact
 
 Email: <CIS_types2025@groups.strath.ac.uk>.
-:::::::::::

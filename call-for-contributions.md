@@ -2,14 +2,12 @@
 title: Call for Contributions
 ---
 
-:::::::::::::::::: container
 # Call for Contributions
 
 32nd International Conference on Types for Proofs and Programs\
-Gothenburg, Sweden, 9--13 May 2026\
+Gothenburg, Sweden, 4--8 May 2026\
 <https://types2026.cse.chalmers.se/>
 
-::: {#overview .section}
 ## Overview
 
 The TYPES meetings are a forum to present new and ongoing work in all aspects of type theory and its applications, especially in formalised and computer assisted reasoning and computer programming.
@@ -32,9 +30,7 @@ Participation in the meeting is primarily in person, as face-to-face interaction
 If you need to discuss remote participation, please contact the [PC chair](mailto:CIS_types2025@groups.strath.ac.uk).
 
 Researchers from [COST Inclusiveness Target Countries](https://www.cost.eu/about/strategy/excellence-and-inclusiveness/) are reminded that the [European Research Network on Formal Proofs](https://europroofnet.github.io/) COST action has some [funding available for conference attendance](https://europroofnet.github.io/grants/).
-:::
 
-::: {#contributedtalks .section}
 ## Contributed Talks
 
 TYPES solicits contributed talks to stimulate discussions.
@@ -42,9 +38,7 @@ Selection of those will be based on extended abstracts/short papers of 2 pp (not
 
 The submission site is:
 <https://openreview.net/group?id=TYPES/2025/Conference>.
-:::
 
-::: {#dates .section}
 ## Important dates
 
 - **Submission of 2-page abstract:**
@@ -56,34 +50,24 @@ The submission site is:
 - **Conference:** 9--13 June 2025
 
 Camera-ready versions of the accepted contributions will be published in an informal book of abstracts for distribution during the conference.
-:::
 
-::: {#speakers .section}
 ## Invited speakers
 
 The invites speakers can be found [here](invitedspeakers.html).
-:::
 
-::: {#postprocs .section}
 ## Post-proceedings
 
 A post-proceedings volume will be published in the Leibniz International Proceedings in Informatics (LIPIcs) series.
 Submission to that volume will be open to everyone.
 
 Tentative submission deadline for the post-proceedings: October 2025.
-:::
 
-::: {#committees .section}
 ## Committees
 
 The list of committee members can be found [here](pc.html).
-:::
 
-::: {#about .section}
 ## About TYPES
 
 The TYPES meetings from 1990 to 2008 were annual workshops of a sequence of five EU funded networking projects.
 From 2009 onwards, TYPES has been run as an independent conference series.
 Previous TYPES meetings were held in Antibes (1990), Edinburgh (1991), Båstad (1992), Nijmegen (1993), Båstad (1994), Torino (1995), Aussois (1996), Kloster Irsee (1998), Lökeberg (1999), Durham (2000), Berg en Dal near Nijmegen (2002), Torino (2003), Jouy-en-Josas near Paris (2004), Nottingham (2006), Cividale del Friuli (2007), Torino (2008), Aussois (2009), Warsaw (2010), Bergen (2011), Toulouse (2013), Paris (2014), Tallinn (2015), Novi Sad (2016), Budapest (2017), Braga (2018), Oslo (2019), Virtual (2021), Nantes (2022), València (2023), Copenhagen (2024).
-:::
-::::::::::::::::::

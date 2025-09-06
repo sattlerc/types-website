@@ -1,0 +1,28 @@
+---
+navigation_ids:
+- call-for-contributions.md
+- committees.md
+- invited-speakers.md
+- accepted.md
+- registration.md
+- programme.md
+- practical.md
+- book-of-abstracts.md
+- photo.md
+---
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+ <div class="container-fluid">
+  <a class="navbar-brand" href="index.html"><img src="images/logo-simple.png" width="25" height="25" alt="TYPES 2026">TYPES 2026</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+   <ul class="nav navbar-nav">
+$for(navigation_items)$
+    <li class="nav-item"><a class="nav-link" href="$url$">$title$</a></li>
+$endfor$
+   </ul>
+  </div>
+ </div>
+</nav>

@@ -2,12 +2,10 @@
 title: Accepted contributions
 ---
 
-::::::::::: container
 # Accepted contributions
 
 The following talk proposals have been accepted to TYPES 2025.
 
-::: {#speakers .section}
 - Franziskus Wiesnet.
   *[Efficient Program Extraction in Elementary Number Theory using the Proof Assistant Minlog](abstracts/TYPES2025_paper1.pdf)
   *\[[slides](slides/TYPES2025-slides1.pdf), [video](https://youtu.be/yV-12DXm9cE)\]
@@ -254,5 +252,3 @@ The following talk proposals have been accepted to TYPES 2025.
 - Maximilian Doré.
   *[Linear Types inside Dependent Type Theory](abstracts/TYPES2025_paper91.pdf)
   *\[[slides](slides/TYPES2025-slides91.pdf), [video](https://youtu.be/HlcJBBr8PYI)\]
-:::
-:::::::::::
