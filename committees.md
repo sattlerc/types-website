@@ -5,7 +5,7 @@ title: Committees
 ::::::::::::: container
 # Committees
 
-TYPES 2025 is organised by the following people.
+TYPES 2026 is organised by the following people.
 
 ::: {#pc .section}
 ## Program Committee
@@ -54,8 +54,10 @@ TYPES 2025 is organised by the following people.
 ::: {#organisers .section}
 ## Local organisers
 
-- Guillaume Allais (University of Strathclyde, Scotland)
-- Stuart Gale (University of Strathclyde, Scotland)
-- Fredrik Nordvall Forsberg (University of Strathclyde, Scotland)
+- Ana Bove (Chalmers University of Technology, Sweden)
+- Andreas Abel (University of Gothenburg, Sweden)
+- Christian Sattler (Chalmers University of Technology, Sweden)
+- Peter Dybjer(Chalmers University of Technology, Sweden)
+- Robin Adams (Chalmers University of Technology, Sweden)
 :::
 :::::::::::::
