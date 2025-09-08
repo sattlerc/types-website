@@ -5,17 +5,20 @@ title: TYPES 2026
 ::: text-center
 # TYPES 2026 {#types-2026 .text-uppercase}
 
-# 4--8 May 2026
+## 4--8 May 2026
 
-## Chalmers University of Technology, Gothenburg, Sweden
+### Chalmers University of Technology and University of Gothenburg, Gothenburg, Sweden 
 :::
 
 ![](images/goteborg-Bengt-Nyman.jpg "Gothenburg by Bengt Nyman"){.img-fluid .d-block .my-5}
 
 ::: col
-The 32nd International Conference on *Types for Proofs and Programs* will take place at Chalmers University of Technology in Gothenburg from Monday 4 May to Friday 8 May 2026, and is organised by the [Mathematically Structured Programming group](https://msp.cis.strath.ac.uk).
-On Tuesday 10 June, there will be a co-located [Women in EuroProofNet](https://europroofnet.github.io/women-epn-2025/) event dedicated to gender balance in our community.
-The week after, [CALCO/MFPS](https://www.coalg.org/calco-mfps-2025/) will also take place at the University of Strathclyde.
+The 32nd International Conference on *Types for Proofs and Programs*
+will take place at Lindholmen Conference Center in Gothenburg from
+Monday 4 May to Friday 8 May 2026, and is organised by the [Logic and
+Types
+unit](https://www.chalmers.se/en/departments/cse/our-research/computing-science/logic-and-types/)
+of the [Department of Computer Science and Engineering](https://www.chalmers.se/en/departments/cse/), [Chalmers University of Technology](https://www.chalmers.se/en/) and [University of Gothenburg](https://www.gu.se/en).
 
 <!-- ![TYPES 2025 logo](images/logo-TYPES2025.png){.d-sm-none .d-md-block .float-end} -->
 :::
@@ -37,25 +40,20 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 
 ### Important dates
 
-- **~~Submission deadline~~ (see [call for contributions](cfp.html)):**
-  ~~10 March 2025 [AoE](https://www.timeanddate.com/time/zones/aoe) (extended from 3 March)~~
+- **Submission deadline (see [call for contributions](cfp.html)):**
+  12 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
 - **Author notification:**
-  11 April 2025 [AoE](https://www.timeanddate.com/time/zones/aoe)
-- **~~Camera-ready version of abstracts due:~~**
-  ~~9 May 2025 [AoE](https://www.timeanddate.com/time/zones/aoe)~~
-- **~~Early registration deadline:~~**
-  ~~12 May 2025~~
-- **~~Late registration deadline:~~**
-  ~~30 May 2025~~
+  20 February 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
+- **Camera-ready version of abstracts due:**
+  April 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
+- **Early registration deadline:**
+  1 March 2026
+- **Late registration deadline:**
+  15 April 2026
 - **Conference:**
   4--8 May 2026
 
-### Poster
-
-Feel free to use the following poster to advertise the conference in your research group and in your department:
-
-[![TYPES 2025 poster](images/poster-TYPES2025-preview.png){height="200" style="border: 1px solid black;"}](files/poster-TYPES2025.pdf)
 
 ### Contact
 
-Email: <CIS_types2025@groups.strath.ac.uk>.
+Email: <types2026.cse@chalmers.se>.
