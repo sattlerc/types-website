@@ -10,7 +10,7 @@ title: TYPES 2026
 ## Chalmers University of Technology, Gothenburg, Sweden
 :::
 
-![](images/goteborg-Bengt-Nyman "Gothenburg by Bengt Nyman"){.img-fluid .d-block .my-5}
+![](images/goteborg-Bengt-Nyman.jpg "Gothenburg by Bengt Nyman"){.img-fluid .d-block .my-5}
 
 ::: col
 The 32nd International Conference on *Types for Proofs and Programs* will take place at Chalmers University of Technology in Gothenburg from Monday 4 May to Friday 8 May 2026, and is organised by the [Mathematically Structured Programming group](https://msp.cis.strath.ac.uk).
