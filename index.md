@@ -13,12 +13,7 @@ title: TYPES 2026
 ![](images/goteborg-Bengt-Nyman.jpg "Gothenburg by Bengt Nyman"){.img-fluid .d-block .my-5}
 
 ::: col
-The 32nd International Conference on *Types for Proofs and Programs*
-will take place at Lindholmen Conference Center in Gothenburg from
-Monday 4 May to Friday 8 May 2026, and is organised by the [Logic and
-Types
-unit](https://www.chalmers.se/en/departments/cse/our-research/computing-science/logic-and-types/)
-of the [Department of Computer Science and Engineering](https://www.chalmers.se/en/departments/cse/), [Chalmers University of Technology](https://www.chalmers.se/en/) and [University of Gothenburg](https://www.gu.se/en).
+The 32nd International Conference on *Types for Proofs and Programs* will take place at Lindholmen Conference Center in Gothenburg from Monday 4 May to Friday 8 May 2026, and is organised by the [Logic and Types unit](https://www.chalmers.se/en/departments/cse/our-research/computing-science/logic-and-types/) of the [Department of Computer Science and Engineering](https://www.chalmers.se/en/departments/cse/), [Chalmers University of Technology](https://www.chalmers.se/en/) and [University of Gothenburg](https://www.gu.se/en).
 
 <!-- ![TYPES 2025 logo](images/logo-TYPES2025.png){.d-sm-none .d-md-block .float-end} -->
 :::
