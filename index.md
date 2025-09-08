@@ -1,11 +1,13 @@
 ---
-title: TYPES 2025
+title: TYPES 2026
 ---
 
 ::: text-center
-# TYPES 2026 {#types-2025 .text-uppercase}
+# TYPES 2026 {#types-2026 .text-uppercase}
 
-## Chalmers University of Technology, Gothenburg, Sweden • 4--8 May 2026
+# 4--8 May 2026
+
+## Chalmers University of Technology, Gothenburg, Sweden
 :::
 
 ![](images/glasgow.jpg "Glasgow from Livingstone Tower"){.img-fluid .d-block .my-5}
@@ -15,7 +17,7 @@ The 32nd International Conference on *Types for Proofs and Programs* will take p
 On Tuesday 10 June, there will be a co-located [Women in EuroProofNet](https://europroofnet.github.io/women-epn-2025/) event dedicated to gender balance in our community.
 The week after, [CALCO/MFPS](https://www.coalg.org/calco-mfps-2025/) will also take place at the University of Strathclyde.
 
-![TYPES 2025 logo](images/logo-TYPES2025.png){.d-sm-none .d-md-block .float-end}
+<!-- ![TYPES 2025 logo](images/logo-TYPES2025.png){.d-sm-none .d-md-block .float-end} -->
 :::
 
 The [TYPES](https://sites.google.com/view/thetypesconferences) conference is a forum to present new and ongoing work in all aspects of type theory and its applications, especially in formalised and computer assisted reasoning and computer programming.
