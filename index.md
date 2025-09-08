@@ -3,10 +3,12 @@ title: TYPES 2026
 ---
 
 ::: text-center
-# TYPES 2026 {#types-2026 .text-uppercase} •  4--8 May 2026
+# TYPES 2026 {#types-2026 .text-uppercase} 
+
+## 4--8 May 2026 • Gothenburg, Sweden 
 
 ### Chalmers University of Technology \
-### University of Gothenburg /
+### University of Gothenburg \
 #### Gothenburg, Sweden 
 :::
 
