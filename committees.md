@@ -7,6 +7,16 @@ title: Committees
 
 TYPES 2026 is organised by the following people.
 
+::: {#organisers .section}
+## Local organisers
+
+- [Ana Bove](https://www.chalmers.se/en/persons/bove) (Chalmers University of Technology, Sweden)
+- [Andreas Abel](https://www.chalmers.se/en/persons/abela) (University of Gothenburg, Sweden)
+- [Christian Sattler](https://www.chalmers.se/en/persons/sattler) (Chalmers University of Technology, Sweden)
+- [Peter Dybjer](https://www.chalmers.se/en/persons/peterd) (Chalmers University of Technology, Sweden)
+- [Robin Adams](https://www.chalmers.se/en/persons/robinad) (Chalmers University of Technology, Sweden)
+:::
+
 ::: {#pc .section}
 ## Program Committee
 
@@ -51,13 +61,4 @@ TYPES 2026 is organised by the following people.
   (secretary)
 :::
 
-::: {#organisers .section}
-## Local organisers
-
-- Ana Bove (Chalmers University of Technology, Sweden)
-- Andreas Abel (University of Gothenburg, Sweden)
-- Christian Sattler (Chalmers University of Technology, Sweden)
-- Peter Dybjer(Chalmers University of Technology, Sweden)
-- Robin Adams (Chalmers University of Technology, Sweden)
-:::
 :::::::::::::
