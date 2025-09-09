@@ -55,7 +55,8 @@ main = hakyll $ do
     compile pandocCompiler
 
   -- Files that should just be copied over.
-  match ("files/**" .||. "images/**" .||. "abstracts/**" .||. "slides/**") $ do
+  -- Files in `monitor` are for monitoring website availability.
+  match ("files/**" .||. "images/**" .||. "monitor/**") $ do
     route $ customRoute $ toFilePath >>> base_to
     compile copyFileCompiler
 
