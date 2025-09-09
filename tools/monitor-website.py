@@ -3,6 +3,7 @@ import argparse
 import enum
 import hashlib
 import random
+import sys
 import time
 
 from pathlib import Path
@@ -37,7 +38,7 @@ def monitor(salt, count, url_base, interval):
         session.get(url)
         stop = time.monotonic()
         duration = stop - start
-        print(f"accessing {url} took {duration}s")
+        print(f"accessing {url} took {duration}s", file=sys.stderr)
         time.sleep(interval)
 
 
