@@ -35,11 +35,11 @@ def monitor(salt, count, url_base, interval):
             k = random.randrange(count)
             url = url_base + "/" + test_filename(salt, k)
         start = time.monotonic()
-        session.get(url)
+        session.get(url, timeout = interval / 2)
         stop = time.monotonic()
         duration = stop - start
         print(f"accessing {url} took {duration}s", file=sys.stderr)
-        time.sleep(interval)
+        time.sleep(interval - duration)
 
 
 def main():
