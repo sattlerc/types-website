@@ -49,7 +49,7 @@ More information will be made available later on.
 There are many hotels both around Lindholmen conference center and in
 the city centre.
 
-Some hotels very close to the conference centerl are:
+Some hotels close to the conference centerl are:
 
 - TBD
 
