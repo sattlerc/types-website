@@ -49,15 +49,13 @@ More information will be made available later on.
 There are many hotels both around Lindholmen conference center and in
 the city centre.
 
-Some good hotels very close to the university are:
+Some hotels very close to the conference centerl are:
 
-- [Premier Inn George Square](https://www.premierinn.com/gb/en/hotels/scotland/strathclyde/glasgow/glasgow-city-centre-george-square.html) (across the street)
-- [Moxy Merchant City](https://www.marriott.com/en-gb/hotels/glaox-moxy-glasgow-merchant-city/)
-- [AC Hotel by Mariott Glasgow](https://www.marriott.com/en-us/hotels/glaar-ac-hotel-glasgow/)
-- [Z Hotel Glasgow](https://www.thezhotels.com/hotels/glasgow)
-- [The Social Hub](https://www.thesocialhub.co/glasgow/)
+- TBD
 
+Some hotels in town are:
 
+- TBD
 :::
 
 ::: {#travel .section}
