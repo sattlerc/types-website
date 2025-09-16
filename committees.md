@@ -27,13 +27,12 @@ title: Committees
 ::: {#sc .section}
 ## Steering Committee
 
-- Eduardo Hermo Reyes (Formal Vindications, Spain)
-- Tom de Jong (University of Nottingham, England)
-- Rasmus Ejlers Møgelberg (IT University of Copenhagen, Denmark)
+- Malin Altenmüller (University of Edinburgh, Scotland)
 - Fredrik Nordvall Forsberg (University of Strathclyde, Scotland)
-- Paige Randall North (Utrecht University, The Netherlands) (chair)
-- Benno van den Berg (University of Amsterdam, The Netherlands)
-  (secretary)
+- Tom de Jong (University of Nottingham, England) (secretary)
+- Meven Lennon-Bertrand (INRIA, France)
+- Rasmus Ejlers Møgelberg (IT University of Copenhagen, Denmark) (chair)
+- Christian Sattler (Chalmers University of Technology, Sweden)
 :::
 
 :::::::::::::
