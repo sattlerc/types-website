@@ -124,17 +124,20 @@ plugs](https://www.worldstandards.eu/electricity/plugs-and-sockets/f/)
 (sometimes called Schuko), which have two round pins and two earth
 clips on the side. Adapters are widely available in shops.
 
-**Visas:**
-Check if you require a UK visa or an electronic travel authorisation (ETA) on the [UK Government website](https://www.gov.uk/check-uk-visa).
-Note that EU citizens will need to apply for an ETA, and that you need to do this at the latest a few days before travelling.
+**Visas:** 
+If you are not a citizen of a EU country you may need to apply for a
+Schengen visa.¨to visit Sweden for up to 90 days. Please check the
+pages at [Swedish migrtion office](https://www.migrationsverket.se/en/you-want-to-apply/visiting-sweden/visiting-sweden-for-up-to-90-days-entry-visa.html).
+
 If you need to apply for a visa, we are happy to supply a support letter for you after you have registered for the conference.
-Please contact <CIS_types2025@groups.strath.ac.uk> with your name (as it appears in your passport) and your physical address if you require such a letter.
+Please contact <https://types2026.cse.chalmers.se/> with your name (as it appears in your passport) and your physical address if you require such a letter.
 
 **Things to see and do:**
 [Gothenburg's offical visitor's guide](https://www.goteborg.com/en)
 has much information about places worth visiting in Gothenburg
 including places to
 [run](https://www.goteborg.com/en/guides/running-in-gothenburg). \
-[Visit Sweden page on Gothenburg](https://visitsweden.com/where-to-go/southern-sweden/goteborg/) has quite a lot of information.
+[Visit Sweden](https://visitsweden.com/where-to-go/southern-sweden/goteborg/)
+page in Gothenburg has also quite a lot of information.
 :::
 :::::::::::::::::
