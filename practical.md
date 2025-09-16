@@ -82,7 +82,7 @@ are located next to each other and close to the city center.
 The city centre is quite small and walking is the best option. \
 If you want to use a local bus the best is to download the [ToGo
 App](https://www.vasttrafik.se/en/Tickets/more-about-tickets/vasttrafik-to-go/). Each
-ticket cost 37sek and is valid during 90 min. You can use the app even
+ticket cost 37 SEK and is valid during 90 min. You can use the app even
 to plan your trip. \
 Otherwise your options are [bikes for
 hire](https://styrochstall.se/en/) or electric scooters such as
@@ -98,7 +98,7 @@ taxi services.
 ### Internet access
 
 Eduroam Internet access is available at the conference venue; if not already configured, you can [download a configuration tool for your device here](https://cat.eduroam.org/).
-If you do not have access to Eduroam. This is also a \'*Wifi Guest*\'
+If you do not have access to Eduroam. This is also a guest WiFi
 network at the conference center that you can use while there.
 :::
 
@@ -106,16 +106,23 @@ network at the conference center that you can use while there.
 ### Other practical information
 
 **Money:**
-The currency in use is Great British Pound (GBP, symbol £).
-Credit cards are widely accepted.
-Tipping is not required, but in restaurants, a tip of around 10% is customary (this is sometimes added automatically to the bill for larger groups).
+The currency in use is Swedish crown (SEK or sometimes kr).
+Credit cards are widely accepted and many shops do not accept cash.
+Tipping is not required, but in restaurants, a tip of around 5-10% is
+common. Most paying machines at the restaurants have the option to
+include fix % on the total amount.
 
 **Time zone:**
-During TYPES 2025, Glasgow will be in the [British Summer Time (BST)](https://www.timeanddate.com/time/zones/bst) time zone (UTC+1).
+During TYPES 2026, Gothenburg will be in the [Central Europe Summer
+Time](https://www.timeanddate.com/time/zones/cest) time zone (UTC+2).
 
 **Electricity:**
-The standard voltage in Scotland is 240V AC, 50Hz.
-Plugs have [3 square pins](https://en.wikipedia.org/wiki/AC_power_plugs_and_sockets:_British_and_related_types), and adapters are widely available in shops.
+The standard electricity voltage in Sweden is 230 volts (V) at a
+frequency of 50 Hz. \
+The standard electrical system uses [Type F
+plugs](https://www.worldstandards.eu/electricity/plugs-and-sockets/f/)
+(sometimes called Schuko), which have two round pins and two earth
+clips on the side. Adapters are widely available in shops.
 
 **Visas:**
 Check if you require a UK visa or an electronic travel authorisation (ETA) on the [UK Government website](https://www.gov.uk/check-uk-visa).
@@ -124,11 +131,10 @@ If you need to apply for a visa, we are happy to supply a support letter for you
 Please contact <CIS_types2025@groups.strath.ac.uk> with your name (as it appears in your passport) and your physical address if you require such a letter.
 
 **Things to see and do:**
-[Visit Glasgow](https://www.visitglasgow.com/) has much information about places worth visiting in Glasgow.
-Personal favourites include the Necropolis, Kelvingrove Art Gallery and Museum, and the highland cattle in Pollok Country Park.
-Top tip: a lot of Glasgow\'s amazing architecture is above street level, so don\'t forget to look up!
-
-**Running:**
-If you would like to go for a run before or after the conference starts, there are nice running routes along the river Clyde following the [Clyde Walkway](https://www.walkhighlands.co.uk/glasgow/glasgow-cambuslang.shtml), and along the [Port Dundas branch](https://static.visitscotland.com/pdf/scottish-canal-walking-guide.pdf) of the Forth and Clyde Canal (and potentially beyond, e.g. following the [Kelvin Walkway](https://www.glasgowwithkids.co.uk/the-kelvin-walkway/)).
+[Gothenburg's offical visitor's guide](https://www.goteborg.com/en)
+has much information about places worth visiting in Gothenburg
+including places to
+[run](https://www.goteborg.com/en/guides/running-in-gothenburg). \
+[Visit Sweden page on Gothenburg](https://visitsweden.com/where-to-go/southern-sweden/goteborg/) has quite a lot of information.
 :::
 :::::::::::::::::
