@@ -21,7 +21,7 @@ title: Committees
 ::: {#pc .section}
 ## Program Committee
 
-- TBA
+TBA
 :::
 
 ::: {#sc .section}
