@@ -139,5 +139,6 @@ including places to
 [run](https://www.goteborg.com/en/guides/running-in-gothenburg). \
 [Visit Sweden](https://visitsweden.com/where-to-go/southern-sweden/goteborg/)
 page in Gothenburg has also quite a lot of information.
+
 :::
 :::::::::::::::::
