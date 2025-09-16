@@ -17,15 +17,15 @@ in Gothenburg.
 
 Talks will take place in room
 [**Pascal**](https://chalmerskonferens.se/wp-content/uploads/2018/01/Ritning-konferens-LCC.pdf)
-with coffee in tha hall outside the room. Lunches will take place in
-Akva restaurant, located right by Lindholmspiren and with a view of the
-river.
+with coffee in tha hall outside the room. \
+Lunches will take place in Akva restaurant, located right by
+Lindholmspiren and with a view of the river.
 
 To get to the venue you can eiher:
 
 - take a bus to the stop
-  [Lindholmen](https://www.google.com/maps/place/G%C3%B6teborg+Lindholmen/@57.707436,11.9367542,19z/data=!4m15!1m8!3m7!1s0x464ff3501190f3f1:0x260190792e5efe61!2sLindholmen,+Gothenburg!3b1!8m2!3d57.7077599!4d11.9382865!16s%2Fm%2F0tkf3fq!3m5!1s0x464ff35046e6c701:0xc6ed91e92d532cdb!8m2!3d57.7077887!4d11.9367034!16s%2Fg%2F11w3m6y5sy?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D). \  
-  There is an [airport coach](https://www.flygbussarna.se/en) bus from
+  [Lindholmen](https://www.google.com/maps/place/G%C3%B6teborg+Lindholmen/@57.707436,11.9367542,19z/data=!4m15!1m8!3m7!1s0x464ff3501190f3f1:0x260190792e5efe61!2sLindholmen,+Gothenburg!3b1!8m2!3d57.7077599!4d11.9382865!16s%2Fm%2F0tkf3fq!3m5!1s0x464ff35046e6c701:0xc6ed91e92d532cdb!8m2!3d57.7077887!4d11.9367034!16s%2Fg%2F11w3m6y5sy?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D). \
+  There is an [airport coach](https://www.flygbussarna.se/en) bus that
   goes from the airport to Lindholmen.
   
 - take a ferry to
@@ -46,7 +46,9 @@ More information will be made available later on.
 ::: {#accommodation .section}
 ### Accommodation
 
-There are many hotels in and around the city centre, as well as some hostels.
+There are many hotels both around Lindholmen conference center and in
+the city centre.
+
 Some good hotels very close to the university are:
 
 - [Premier Inn George Square](https://www.premierinn.com/gb/en/hotels/scotland/strathclyde/glasgow/glasgow-city-centre-george-square.html) (across the street)
@@ -61,43 +63,36 @@ Some good hotels very close to the university are:
 ::: {#travel .section}
 ### Travel
 
-**By train:**
-The University of Strathclyde is located short walks away from both Glasgow Queen Street train station (five minutes) and Glasgow Central train station (10 minutes).
-See [National Rail](http://www.nationalrail.co.uk/) for train times and connections.
-Trains from London take 4.5 hours.
-Another option is to travel overnight on the [Caledonian Sleeper](https://www.sleeper.scot/) from London, which arrives in Glasgow 7.30am (so plenty of time to get a shower in the train station and a nice breakfast before the conference starts!).
-If you are arriving from the continent, you can take the [Eurostar](http://www.eurostar.com/) to London, and then take another train to Glasgow (see [The Man in Seat 61](https://www.seat61.com/) for more information).
-
 **By plane:** 
-
 The closest airport is
-[Landvetter](https://www.swedavia.com/landvetter/). There are [airport
-coaches](https://www.flygbussarna.se/en) both to city center (35
-minutes bus connection running every 20 min during the day) and to
-Lindholmen (50 min bus connection running every 40 min during the
-day).
+[Landvetter](https://www.swedavia.com/landvetter/). \
+There are [airport coaches](https://www.flygbussarna.se/en) both to
+the city center (35 minutes bus connection running every 20 min during
+the day) and to Lindholmen (50 min bus connection running every 40 min
+during the day). Buying the tickets before boarding the bus is a bit cheaper.
 
-**Getting around Glasgow:**
-The city centre is quite compact, so walking is not a bad idea.
-Otherwise your options are suburban trains, the subway, bikes for hire, buses or taxis.
-You will need a separate ticket for each mode of transport.
+**By train or buss:**
+Gothenburg's [Central
+Station](https://www.google.com/maps/place/Gothenburg+Central+Station/@57.70916,11.9703197,16z/data=!3m1!4b1!4m6!3m5!1s0x464ff363679bc283:0x82c34b8837d6165b!8m2!3d57.70916!4d11.9729!16s%2Fm%2F03m6nfw?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D)
+and [Nils Ericson Bus
+Station](https://www.google.com/maps/place/Gothenburg+Central+Bus+Station+Nils+Ericson/@57.70916,11.9703197,16z/data=!4m14!1m7!3m6!1s0x464ff363679bc283:0x82c34b8837d6165b!2sGothenburg+Central+Station!8m2!3d57.70916!4d11.9729!16s%2Fm%2F03m6nfw!3m5!1s0x464ff363097fc109:0xf33ab7a1d9de4652!8m2!3d57.7102267!4d11.9722947!16s%2Fg%2F11q40k9bt2?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D)
+are located next to each other and close to the city center.
 
-- Suburban trains are reliable and can be used to get to different neighbourhoods of Glasgow.
-  You can buy [train tickets](https://www.scotrail.co.uk/) using ticket machines at most stations, or in the ScotRail app (if you can\'t, you can buy them on the train from the conductor, or before leaving the destination station).
-  The difference in price between a return and a single ticket is minimal, so you might as well always buy the return.
-  After 9am, you can use a cheaper \"off-peak\" ticket.
-- The [Subway](http://www.spt.co.uk/subway/) is easy to use, but does not reach all parts of the city.
-  The cost of two single tickets is almost the same as the cost of a return ticket, so you might as well get two singles unless you are sure you are going to return on the
-  subway again.
-- [NextBike](https://www.nextbike.co.uk/en/glasgow/) operates a bike sharing scheme with stations all across the city.
-  You sign up and then rent the bikes using an app on your phone.
-  Without a subscription, the price is £2/20 minutes; this is borderline enough time to get you to most places in Glasgow.
-- Most buses in Glasgow are operated by [First](https://www.firstgroup.com/greater-glasgow).
-  You can buy tickets using a contactless credit/debit card, an app, or using exact change.
-  It is probably easiest to use [Google maps](https://maps.app.goo.gl/82rHUKxP8VudFTbN6) to figure out which bus to get, and when.
-- Taxis are reasonably priced in Glasgow.
-  Decent companies include [GlasGO Cabs](https://glasgocabs.co.uk/) (phone number [0141 332 5050](tel:01413325050)) and [Glasgow Taxis](https://www.glasgowtaxis.co.uk/) (phone number [0141 557 1110](tel:01414297070)).
-  They both have apps for booking a ride, but there is also Uber in the city.
+**Getting around in Gothenburg:**
+The city centre is quite small and walking is the best option.
+
+If you want to use a local bus the best is to download the [ToGo
+App](https://www.vasttrafik.se/en/Tickets/more-about-tickets/vasttrafik-to-go/). Each
+ticket cost 37sek and is valid during 90 min. You can use the app even
+to plan your trip.
+
+Otherwise your options are [bikes for
+hire](https://styrochstall.se/en/) or electric scooters such as [Voi](https://www.voi.com/city/gothenburg)
+
+Taxis are expensive in Sweden but [Bolt](https://bolt.eu/en/cities/gothenburg/) seems to have more reasonable prices.
+
+There are of course many other companies offering bikes, scooter and
+taxi services. 
 :::
 
 ::: {#internet .section}
