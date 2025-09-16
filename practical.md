@@ -5,9 +5,8 @@ title: Practical information
 ::::::::::::::::: container
 # Practical information
 
-::: {#handout .section}
-We have prepared a [small handout](files/handout-TYPES2025.pdf) with information about the social events and some food and drink recommendations.
-:::
+32nd International Conference on Types for Proofs and Programs\
+4--8 May 2026, Gothenburg, Sweden, <https://types2026.cse.chalmers.se/>
 
 ::: {#venue .section}
 ### Venue
