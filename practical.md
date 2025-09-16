@@ -21,8 +21,14 @@ with coffee in tha hall outside the room. Lunches will take place in
 Akva restaurant, located right by Lindholmspiren and with a view of the
 river.
 
-To get to the venue you can eiher 
-- take a bus to [Lindholmen](https://www.google.com/maps/place/G%C3%B6teborg+Lindholmen/@57.707436,11.9367542,19z/data=!4m15!1m8!3m7!1s0x464ff3501190f3f1:0x260190792e5efe61!2sLindholmen,+Gothenburg!3b1!8m2!3d57.7077599!4d11.9382865!16s%2Fm%2F0tkf3fq!3m5!1s0x464ff35046e6c701:0xc6ed91e92d532cdb!8m2!3d57.7077887!4d11.9367034!16s%2Fg%2F11w3m6y5sy?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D)
+To get to the venue you can eiher:
+
+- take a bus to the stop
+  [Lindholmen](https://www.google.com/maps/place/G%C3%B6teborg+Lindholmen/@57.707436,11.9367542,19z/data=!4m15!1m8!3m7!1s0x464ff3501190f3f1:0x260190792e5efe61!2sLindholmen,+Gothenburg!3b1!8m2!3d57.7077599!4d11.9382865!16s%2Fm%2F0tkf3fq!3m5!1s0x464ff35046e6c701:0xc6ed91e92d532cdb!8m2!3d57.7077887!4d11.9367034!16s%2Fg%2F11w3m6y5sy?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D)
+  
+  There is an [airport coach](https://www.flygbussarna.se/en) bus from
+  goes from the airport to Lindholmen.
+  
 - take a ferry to
   [Lindholmspiren](https://www.google.com/maps/place/Lindholmspiren/@57.7070228,11.9381109,17z/data=!4m14!1m7!3m6!1s0x464ff35aa1bf62a7:0xcb26569fedefe772!2sLindholmen+Conference+Centre+at+Lindholmen+Science+Park!8m2!3d57.7071432!4d11.9400314!16s%2Fg%2F1pzq5rfgk!3m5!1s0x464ff3454d93686d:0x73b41de1688e3841!8m2!3d57.70551!4d11.9399391!16s%2Fg%2F12vry40q0?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D)
 There is a fee ferry from [Stenpiren](https://www.google.com/maps/place/Stenpiren,+411+21+G%C3%B6teborg/@57.7063656,11.9551479,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff36785a9c251:0x47cd571f1850dc82!8m2!3d57.7063656!4d11.9577228!16s%2Fg%2F11c3xk498n?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D) to Lindholmspiren that goes every
@@ -34,9 +40,7 @@ There is a fee ferry from [Stenpiren](https://www.google.com/maps/place/Stenpire
 
 The conferene will run from ca 9:00 to ca 18:00 every day.
 We are planning an excursion for Wednesday afternoon and a conference
-dinner Thursday evening. 
-
-More information will be made available later on.
+dinner Thursday evening. More information will be made available later on.
 :::
 
 ::: {#accommodation .section}
