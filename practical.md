@@ -125,7 +125,7 @@ clips on the side. Adapters are widely available in shops.
 **Visas:** 
 If you are not a citizen of a EU country you may need to apply for a
 Schengen visa.¨to visit Sweden for up to 90 days. Please check the
-pages at [Swedish migrtion
+pages at [Swedish migration
 office](https://www.migrationsverket.se/en/you-want-to-apply/visiting-sweden/visiting-sweden-for-up-to-90-days-entry-visa.html). \
 If you need to apply for a visa, we are happy to supply a support letter for you after you have registered for the conference.
 Please send an e-mail to <types2026.cse@chalmers.se> with your name (as it appears in your passport) and your physical address if you require such a letter.
