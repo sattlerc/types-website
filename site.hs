@@ -43,10 +43,10 @@ navigation_context = defaultContext <> field "navigation" (\_ -> loadBody naviga
 
 main :: IO ()
 main = hakyll $ do
-  -- Placeholder "under construction".
-  -- match "placeholder/**" $ do
-  --   route $ customRoute $ toFilePath >>> makeRelative "placeholder"
-  --   compile copyFileCompiler
+  -- Prevent page from being crawled.
+  match "robots.txt" $ do
+    route $ customRoute $ toFilePath >>> base_to
+    compile copyFileCompiler
 
   -- README for website editors.
   -- Delete from generation once everyone has access to the sources.
