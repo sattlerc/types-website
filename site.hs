@@ -13,10 +13,10 @@ base :: FilePath
 base = "hidden"
 
 base_to :: FilePath -> FilePath
-base_to = (base </>)
+base_to = id -- (base </>)
 
 base_from :: FilePath -> FilePath
-base_from = makeRelative base
+base_from = id -- makeRelative base
 
 -- Used to build the navigation bar.
 nav_item_context :: Context Identifier
@@ -44,9 +44,9 @@ navigation_context = defaultContext <> field "navigation" (\_ -> loadBody naviga
 main :: IO ()
 main = hakyll $ do
   -- Placeholder "under construction".
-  match "placeholder/**" $ do
-    route $ customRoute $ toFilePath >>> makeRelative "placeholder"
-    compile copyFileCompiler
+  -- match "placeholder/**" $ do
+  --   route $ customRoute $ toFilePath >>> makeRelative "placeholder"
+  --   compile copyFileCompiler
 
   -- README for website editors.
   -- Delete from generation once everyone has access to the sources.
