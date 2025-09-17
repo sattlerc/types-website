@@ -32,12 +32,16 @@ Areas of interest include, but are not limited to:
 - meta-theoretic studies of type systems;
 - proof assistants and proof technology;
 - automation in computer-assisted reasoning;
-- links between type theory and functional programming;
-- formalizing mathematics using type theory
+- formalizing mathematics using type theory;
+- links between type theory and
+  * functional programming;
+  * homotopy theory;
+  * linguistics;
+  * machine learning.
 
 In the spirit of workshops, talks may be based on newly published papers, work submitted for publication, but also work in progress.
 
-### Important dates
+### Important dates (preliminary)
 
 - **Submission deadline (see [call for contributions](cfp.html)):**
   12 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
@@ -52,7 +56,8 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 - **Conference:**
   4--8 May 2026
 
-
+<!--
 ### Contact
 
 Email: <types2026.cse@chalmers.se>.
+-->
