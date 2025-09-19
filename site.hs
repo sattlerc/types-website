@@ -44,9 +44,9 @@ navigation_context = defaultContext <> field "navigation" (\_ -> loadBody naviga
 main :: IO ()
 main = hakyll $ do
   -- Prevent page from being crawled.
-  match "robots.txt" $ do
-    route $ customRoute $ toFilePath >>> base_to
-    compile copyFileCompiler
+  -- match "robots.txt" $ do
+  --   route $ customRoute $ toFilePath >>> base_to
+  --   compile copyFileCompiler
 
   -- README for website editors.
   -- Delete from generation once everyone has access to the sources.
