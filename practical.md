@@ -127,7 +127,7 @@ If you are not a citizen of a EU country you may need to apply for a
 Schengen visa.¨to visit Sweden for up to 90 days. Please check the
 pages at [Swedish migration office](https://www.migrationsverket.se/en/you-want-to-apply/visiting-sweden/visiting-sweden-for-up-to-90-days-entry-visa.html).
 If you need to apply for a visa, we are happy to supply a support letter for you after you have registered for the conference.
-<!--Please send an e-mail to <types2026.cse@chalmers.se> with your name (as it appears in your passport) and your physical address if you require such a letter.-->
+If you require such that a letter, please send an e-mail to <types2026.cse@chalmers.se> with your name (as it appears in your passport) and your physical address.
 
 **Things to see and do:**
 * [Gothenburg's offical visitor's guide](https://www.goteborg.com/en) has much information about places worth visiting in Gothenburg including places to [run](https://www.goteborg.com/en/guides/running-in-gothenburg).

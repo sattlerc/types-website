@@ -30,7 +30,7 @@ The TYPES areas of interest include, but are not limited to:
 We encourage talks proposing new ways of applying type theory.
 In the spirit of workshops, talks may be based on newly published papers, work submitted for publication, but also work in progress.
 Participation in the meeting is primarily in person, as face-to-face interactions are highly valuable.
-<!--If you need to discuss remote participation, please contact the [PC chair](mailto:CIS_types2025@groups.strath.ac.uk).-->
+If you need to discuss remote participation, please contact the [organizers](mailto:types2026@chalmers.se).
 
 <!--
 Researchers from [COST Inclusiveness Target Countries](https://www.cost.eu/about/strategy/excellence-and-inclusiveness/) are reminded that the [European Research Network on Formal Proofs](https://europroofnet.github.io/) COST action has some [funding available for conference attendance](https://europroofnet.github.io/grants/).

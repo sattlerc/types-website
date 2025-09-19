@@ -56,8 +56,6 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 - **Conference:**
   4--8 May 2026
 
-<!--
 ### Contact
 
 Email: <types2026.cse@chalmers.se>.
--->
