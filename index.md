@@ -58,4 +58,4 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 
 ### Contact
 
-Email: <types2026.cse@chalmers.se>.
+Email: <types2026@chalmers.se>.
