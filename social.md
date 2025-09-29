@@ -22,7 +22,7 @@ Lunches will take place in Akva restaurant, located right by
 Lindholmspiren and with a view of the river.
 :::
 
-::: {#Conference dinner .section}
+::: {#dinner .section}
 ### Conference dinner
 
 ![](images/wijkanders-2048x532.png "Wijkanders"){.img-fluid .d-block .my-5}
