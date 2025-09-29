@@ -89,9 +89,9 @@ electric scooters such as
 [Voi](https://www.voi.com/city/gothenburg). \
 Taxis are expensive in Sweden but
 [Bolt](https://bolt.eu/en/cities/gothenburg/) seems to have more
-reasonable prices. \ 
-There are of course many other companies offering
-bikes, scooter and taxi services.  
+reasonable prices. \
+There are of course many other companies offering bikes, scooter and
+taxi services.
 :::
 
 ::: {#internet .section}
