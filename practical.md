@@ -37,8 +37,8 @@ There is a free ferry from [Stenpiren](https://www.google.com/maps/place/Stenpir
 
 The conferene will run from ca 9:00 to ca 18:00 every day. \
 We are planning an excursion for Tuesday afternoon and a conference
-dinner Thursday evening. \
-For more information see the page on [social events]().
+dinner Thursday evening. For more information see the page on 
+[social events]().
 :::
 
 ::: {#accommodation .section}
