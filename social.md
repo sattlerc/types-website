@@ -24,7 +24,8 @@ Lindholmspiren and with a view of the river.
 
 ::: {#dinner .section}
 ### Conference dinner
-![text](images/wijkanders-2048x532.png "Wijkanders"){.img-fluid .d-block .my-5}
+
+# ![](images/wijkanders-2048x532.png "Wijkanders"){.img-fluid .d-block .my-5}
 
 <img src="images/wijkanders-2048x532.png" alt="Wijkanders"
 width="50%" height="50%">
