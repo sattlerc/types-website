@@ -85,10 +85,12 @@ during 90 min. There are also 24 hours tickets (120 SEK) and 72 hours
 tickets (240 SEK). When bought via the app, the tickets are activated at the
 time of time of purchase. \
 Other options are [bikes for hire](https://styrochstall.se/en/) or
-electric scooters such as [Voi](https://www.voi.com/city/gothenburg). \ 
+electric scooters such as
+[Voi](https://www.voi.com/city/gothenburg). \
 Taxis are expensive in Sweden but
 [Bolt](https://bolt.eu/en/cities/gothenburg/) seems to have more
-reasonable prices. \ There are of course many other companies offering
+reasonable prices. \ 
+There are of course many other companies offering
 bikes, scooter and taxi services.  
 :::
 
