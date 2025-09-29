@@ -11,7 +11,7 @@ title: Social Events
 ::: {#excursion .section}
 ### Excursion
 
-<img src="images/ms-st-erik.webp" alt="M/S S:t Erik"
+<img src="images/ms-st-erik.webp" alt="M/S S:t Erik" title="M/S S:t Erik" 
 width="40%" height="40%">
 
 TYPES 2026 will take place at [Lindholmen Conference
@@ -32,7 +32,7 @@ Lindholmspiren and with a view of the river.
 -->
 
 <img src="images/wijkanders-2048x532.png" alt="Wijkanders"
-width="50%" height="50%">
+title="Wijkanders" width="50%" height="50%">
 
 The conferene dinner will take place at
 [Wijkanders](https://wijkanders.se/en/) located on [Vera Sandersbergs
