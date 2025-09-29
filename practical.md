@@ -78,20 +78,19 @@ are located next to each other and close to the city center.
 The city centre is quite small and walking is the best option. \
 If you want to use a local bus the best is to download the [ToGo
 App](https://www.vasttrafik.se/en/Tickets/more-about-tickets/vasttrafik-to-go/)
-where you can both plan the trip and buy tickets. \
-If you prefer to use website, here is the [travel planner](https://www.vasttrafik.se/en/travel-planning/travel-planner/) for local transport. \
-
+where you can both plan your trip and buy tickets. \
+If you prefer to use website, here is the [travel planner](https://www.vasttrafik.se/en/travel-planning/travel-planner/) for slocal transport. \
 A single ticket within Gothenburg area costs 37 SEK and is valid
 during 90 min. There are also 24 hours tickets (120 SEK) and 72 hours
 tickets (240 SEK). When bought via the app, the tickets are activated at the
 time of time of purchase. \
-
 Other options are [bikes for hire](https://styrochstall.se/en/) or
 electric scooters such as [Voi](https://www.voi.com/city/gothenburg). \ 
 Taxis are expensive in Sweden but
 [Bolt](https://bolt.eu/en/cities/gothenburg/) seems to have more
 reasonable prices. \ There are of course many other companies offering
-bikes, scooter and taxi services.  :::
+bikes, scooter and taxi services.  
+:::
 
 ::: {#internet .section}
 ### Internet access
