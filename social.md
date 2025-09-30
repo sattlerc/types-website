@@ -38,7 +38,7 @@ something to eat. \
 -->
 
 <img src="images/wijkanders-2048x532.png" alt="Wijkanders"
-title="Wijkanders" width="50%" height="50%">
+title="Wijkanders" width="50%" height="50%" style="padding-top: 10px">
 
 The conferene dinner will take place at
 [Wijkanders](https://wijkanders.se/en/) located on [Vera Sandersbergs
