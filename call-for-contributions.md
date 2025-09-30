@@ -73,7 +73,7 @@ Tentative submission deadline for the post-proceedings: October 2026.
 
 ## Committees
 
-The list of committee members can be found [here](pc.html).
+The list of committee members can be found [here](committees.html).
 
 ## About TYPES
 
