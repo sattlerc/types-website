@@ -23,7 +23,8 @@ Lindholmenspiren at **18:10** or to [Lilla Bommen
 harbor](https://www.google.com/maps/place/Lilla+Bommens+Hamn/@57.7118251,11.9476005,15z/data=!3m1!4b1!4m6!3m5!1s0x464ff3610ab61401:0x8755b72283d5ac25!8m2!3d57.711815!4d11.9660329!16s%2Fg%2F12yygk_g7?entry=ttu&g_ep=EgoyMDI1MDkyMS4wIKXMDSoASAFQAw%3D%3D)
 at **18:30**. \
 There is a café and bar on the boat where you can buy drinks or
-something to eat. \
+something to eat. 
+<p></p>
 :::
 
 ::: {#dinner .section}
