@@ -11,7 +11,7 @@ title: Social Events
 ::: {#excursion .section}
 ### Excursion
 
-<img align="left" src="images/ms-st-erik.webp" alt="M/S S:t Erik" title="M/S S:t Erik" 
+<img src="images/ms-st-erik.webp" alt="M/S S:t Erik" title="M/S S:t Erik" 
 width="40%" height="40%">
 
 On **Tuesday 5th of May**, after a coffee break
