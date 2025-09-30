@@ -27,6 +27,8 @@ There is a café and bar on the boat where you can buy drinks or
 something to eat. 
 :::
 
+<p></p>
+
 ::: {#dinner .section}
 ### Conference dinner
 
