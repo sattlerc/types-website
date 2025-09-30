@@ -25,7 +25,7 @@ harbor](https://www.google.com/maps/place/Lilla+Bommens+Hamn/@57.7118251,11.9476
 at **18:30**. \
 There is a café and bar on the boat where you can buy drinks or
 something to eat. \
-<p><br><\br></p>
+<p><br><br></p>
 :::
 
 ::: {#dinner .section}
