@@ -12,8 +12,8 @@ title: Social Events
 ### Excursion
 
 <img src="images/ms-st-erik.webp" alt="M/S S:t Erik" title="M/S S:t Erik" 
-width="30%" height="30%" class="d-sm-none d-md-block float-end" 
-style="padding-left: 80px">
+width="35%" height="35%" class="d-sm-none d-md-block float-end" 
+style="padding-left: 40px">
 
 On **Tuesday 5th of May**, after a coffee break
 together, we will have a 2 hours guided tour in the
