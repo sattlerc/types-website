@@ -17,7 +17,7 @@ style="padding-left: 20px">
 
 On **Tuesday 5th of May**, after a coffee break
 together, we will have a 2 hours guided tour in the
-beautiful archipelago of Gothenburg on board of the classic
+beautiful archipelago of Gothenburg on board the classic
 archipelago boat M/S S:t Erik. \
 We will leave Lindholmenspiren at **16:00** (sharp, so make sure to be
 at Lindholmenspiren at 15:50) and return to
