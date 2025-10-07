@@ -59,3 +59,9 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 ### Contact
 
 Email: <types2026@chalmers.se>.
+
+## About TYPES
+
+The TYPES meetings from 1990 to 2008 were annual workshops of a sequence of five EU funded networking projects.
+From 2009 onwards, TYPES has been run as an independent conference series.
+Previous TYPES meetings were held in Antibes (1990), Edinburgh (1991), Båstad (1992), Nijmegen (1993), Båstad (1994), Torino (1995), Aussois (1996), Kloster Irsee (1998), Lökeberg (1999), Durham (2000), Berg en Dal near Nijmegen (2002), Torino (2003), Jouy-en-Josas near Paris (2004), Nottingham (2006), Cividale del Friuli (2007), Torino (2008), Aussois (2009), Warsaw (2010), Bergen (2011), Toulouse (2013), Paris (2014), Tallinn (2015), Novi Sad (2016), Budapest (2017), Braga (2018), Oslo (2019), Virtual (2021), Nantes (2022), Valencia (2023), Copenhagen (2024), Glasgow (2025).
