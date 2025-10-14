@@ -48,7 +48,7 @@ The submission site is:
 
 ## Important dates (preliminary)
 
-- **Submission deadline (see [call for contributions](cfp.html)):**
+- **Submission deadline:**
   12 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
 - **Author notification:**
   20 February 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)

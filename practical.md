@@ -132,6 +132,7 @@ If you need to apply for a visa, we are happy to supply a support letter for you
 If you require such that a letter, please send an e-mail to <types2026@chalmers.se> with your name (as it appears in your passport) and your physical address.
 
 **Things to see and do:**
+
 * [Gothenburg's offical visitor's guide](https://www.goteborg.com/en) has much information about places worth visiting in Gothenburg including places to [run](https://www.goteborg.com/en/guides/running-in-gothenburg).
 * [Visit Sweden](https://visitsweden.com/where-to-go/southern-sweden/goteborg/) page in Gothenburg has also quite a lot of information.
 
