@@ -2,13 +2,11 @@
 title: TYPES 2026
 ---
 
-::: text-center
-<!-- # TYPES 2026 {#types-2026 .text-uppercase} -->
-#### \
-# TYPES 2026 • 4--8 MAY 2026 {#types-2026} 
+::: {.main-header .text-center}
+# TYPES 2026 • 4--8 May 2026
 
-### Chalmers University of Technology \
-### and University of Gothenburg \
+### Chalmers University of Technology
+### and University of Gothenburg
 #### Gothenburg, Sweden 
 :::
 
@@ -43,7 +41,7 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 
 ### Important dates (preliminary)
 
-- **Submission deadline (see [call for contributions](cfp.html)):**
+- **Submission deadline (see [call for contributions](call-for-contributions.html)):**
   12 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
 - **Author notification:**
   20 February 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
