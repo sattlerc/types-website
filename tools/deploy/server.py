@@ -59,7 +59,7 @@ class ServerSide(contextlib.AbstractContextManager):
             print(f"Source directory: {path}")
 
             self.log_line("Requesting Kerberos ticket...")
-            self.run(["kinit", "-k", "-t", KEYTAB, "sattler@CHALMERS.SE"])
+            self.run(["kinit", "-f", "-k", "-t", KEYTAB, "sattler@CHALMERS.SE"])
             self.log_line("Deploying files to web server...")
             self.run(
                 [
