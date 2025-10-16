@@ -7,7 +7,7 @@ title: Committees
 
 32nd International Conference on Types for Proofs and Programs\
 4--8 May 2026, Gothenburg, Sweden, <https://types2026.cse.chalmers.se/>
- 
+
 ::: {#organisers .section}
 ## Local organisers
 
@@ -38,7 +38,7 @@ Contact email: <types2026@chalmers.se>
 * Vincent Rahli (University of Birmingham, UK)
 * Christian Sattler (Chalmers University of Technology) (co-chair)
 * Gabriel Scherer (INRIA, Université Paris Cité)
-* Mike Shulman (University of San Diego, US)
+* Michael Shulman (University of San Diego, US)
 * Gerd Smolka (Saarland University, Germany)
 * Matthieu Sozeau (INRIA, MTI Atlantique, Nantes University, France)
 * Kathrin Stark (Heriot-Watt University, UK)
