@@ -2,12 +2,14 @@
 title: Call for Contributions
 ---
 
-# Call for Contributions
+Call for Contributions
+======================
 
 32nd International Conference on Types for Proofs and Programs\
 4--8 May 2026, Gothenburg, Sweden, <https://types2026.cse.chalmers.se/>
 
-## Overview
+Overview
+--------
 
 The TYPES meetings are a forum to present new and ongoing work in all aspects of type theory and its applications, especially in formalised and computer assisted reasoning and computer programming.
 
@@ -36,7 +38,8 @@ If you need to discuss remote participation, please contact the [organizers](mai
 Researchers from [COST Inclusiveness Target Countries](https://www.cost.eu/about/strategy/excellence-and-inclusiveness/) are reminded that the [European Research Network on Formal Proofs](https://europroofnet.github.io/) COST action has some [funding available for conference attendance](https://europroofnet.github.io/grants/).
 -->
 
-## Contributed Talks
+Contributed Talks
+-----------------
 
 TYPES solicits contributed talks to stimulate discussions.
 Selection of those will be based on extended abstracts/short papers of 2 pp (not counting the bibliography). <!-- formatted with [easychair.cls](https://easychair.org/publications/for_authors) -->
@@ -46,7 +49,8 @@ The submission site is:
 <https://openreview.net/group?id=TYPES/2025/Conference>.
 -->
 
-## Important dates (preliminary)
+Important dates (preliminary)
+-----------------------------
 
 - **Submission deadline:**
   12 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
@@ -58,19 +62,24 @@ The submission site is:
 
 Camera-ready versions of the accepted contributions will be published in an informal book of abstracts for distribution during the conference.
 
-## Invited speakers
+Invited speakers
+----------------
 
 TBA
 <!--The invites speakers can be found [here](invitedspeakers.html).
 -->
 
-## Post-proceedings
+Post-proceedings
+----------------
 
 A post-proceedings volume will be published in the Leibniz International Proceedings in Informatics (LIPIcs) series.
 Submission to that volume will be open to everyone.
 
 Tentative submission deadline for the post-proceedings: October 2026.
 
-## Committees
+Committees
+----------
 
-The list of committee members can be found [here](committees.html).
+* [Program committee](committees.html#pc)
+* [Organizing comittee](committees.html#organizers)
+* [Steering committee](committees.html#sc)
