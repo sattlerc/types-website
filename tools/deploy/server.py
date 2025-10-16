@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import contextlib
+import shlex
 import socket
 import subprocess
 import sys
@@ -14,6 +15,13 @@ DEPLOY_USER = "sattler"
 DEPLOY_HOST = "remote11.chalmers.se"
 DEPLOY_DIR = "/chalmers/groups/w3types/www/types2026.cse.chalmers.se/"
 DEPLOY_TARGET = f"{DEPLOY_USER}@{DEPLOY_HOST}:{DEPLOY_DIR}"
+DEPLOY_REMOTE_SHELL = [
+    "ssh",
+    "-o",
+    "GSSAPIAuthentication yes",
+    "-o",
+    "GSSAPIDelegateCredentials yes",
+]
 
 
 class ServerError(Exception):
@@ -64,6 +72,8 @@ class ServerSide(contextlib.AbstractContextManager):
             self.run(
                 [
                     "rsync",
+                    "-e",
+                    shlex.join(DEPLOY_REMOTE_SHELL),
                     "--verbose",
                     "--recursive",
                     "--delete",
