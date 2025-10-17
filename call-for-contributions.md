@@ -34,9 +34,6 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 Participation in the meeting is primarily in person, as face-to-face interactions are highly valuable.
 If you need to discuss remote participation, please contact the [organizers](mailto:types2026@chalmers.se).
 
-<!--
-Researchers from [COST Inclusiveness Target Countries](https://www.cost.eu/about/strategy/excellence-and-inclusiveness/) are reminded that the [European Research Network on Formal Proofs](https://europroofnet.github.io/) COST action has some [funding available for conference attendance](https://europroofnet.github.io/grants/).
--->
 
 Contributed Talks
 -----------------
@@ -44,10 +41,7 @@ Contributed Talks
 TYPES solicits contributed talks to stimulate discussions.
 Selection of those will be based on extended abstracts/short papers of 2 pp (not counting the bibliography). <!-- formatted with [easychair.cls](https://easychair.org/publications/for_authors) -->
 
-<!--
-The submission site is:
-<https://openreview.net/group?id=TYPES/2025/Conference>.
--->
+The submission site is: <https://types-hotcrp.paris.inria.fr/types26-conf/>.
 
 Important dates (preliminary)
 -----------------------------
@@ -57,7 +51,7 @@ Important dates (preliminary)
 - **Author notification:**
   20 February 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
 - **Camera-ready version of abstracts due:**
-  April 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
+  3 April 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
 - **Conference:** 4--8 May 2026
 
 Camera-ready versions of the accepted contributions will be published in an informal book of abstracts for distribution during the conference.
