@@ -24,20 +24,20 @@ Contact email: <types2026@chalmers.se>
 ## Program Committee
 
 * Andreas Abel (University of Gothenburg, Sweden) (co-chair)
-* Thorsten Altenkirch (University of Nottingham)
+* Thorsten Altenkirch (University of Nottingham, UK)
 * Andrej Bauer (University of Ljubljana, Slovenia)
 * Jasmin Blanchette (Ludwig Maximilian University of Munich, Germany)
 * Edwin Brady (University of St Andrews, UK)
 * Ivan Di Liberti (University of Gothenburg, Sweden)
 * Silvia Ghilezan (University of Novi Sad, Serbia)
 * Dan Licata (Wesleyan University, US)
-* Zhaohui Luo (Royal Holloway, University of London)
+* Zhaohui Luo (Royal Holloway, University of London, UK)
 * Marino Miculan (University of Udine, Italy)
 * Rasmus Ejlers Møgelberg (IT University of Copenhagen, Denmark)
 * Paige North (Utrecht University, Netherlands)
 * Vincent Rahli (University of Birmingham, UK)
-* Christian Sattler (Chalmers University of Technology) (co-chair)
-* Gabriel Scherer (INRIA, Université Paris Cité)
+* Christian Sattler (Chalmers University of Technology, Sweden) (co-chair)
+* Gabriel Scherer (INRIA, Université Paris Cité, France)
 * Michael Shulman (University of San Diego, US)
 * Gerd Smolka (Saarland University, Germany)
 * Matthieu Sozeau (INRIA, MTI Atlantique, Nantes University, France)
@@ -46,7 +46,7 @@ Contact email: <types2026@chalmers.se>
 * Josef Urban (Czech Technical University in Prague, Czech Republic)
 * Nicolas Tabareau (INRIA, MTI Atlantique, Nantes University, France)
 * Niccolò Veltri (Tallinn University of Technology, Estonia)
-* Stephanie Weirich (University of Pennsylvania)
+* Stephanie Weirich (University of Pennsylvania, US)
 :::
 
 ::: {#sc .section}
