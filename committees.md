@@ -23,7 +23,7 @@ Contact email: <types2026@chalmers.se>
 * Andreas Abel (University of Gothenburg, Sweden) (co-chair)
 * Thorsten Altenkirch (University of Nottingham, UK)
 * Andrej Bauer (University of Ljubljana, Slovenia)
-* Jasmin Blanchette (Ludwig Maximilian University of Munich, Germany)
+* Jasmin Blanchette (Ludwig-Maximilians-Universität München, Germany)
 * Edwin Brady (University of St Andrews, UK)
 * Ivan Di Liberti (University of Gothenburg, Sweden)
 * Silvia Ghilezan (University of Novi Sad, Serbia)
