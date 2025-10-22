@@ -44,6 +44,8 @@ Contact email: <types2026@chalmers.se>
 * Nicolas Tabareau (INRIA, MTI Atlantique, Nantes University, France)
 * Niccolò Veltri (Tallinn University of Technology, Estonia)
 * Stephanie Weirich (University of Pennsylvania, US)
+
+Contact email: <types2026-pc@chalmers.se>
 :::
 
 ::: {#sc .section}
