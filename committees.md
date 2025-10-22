@@ -39,9 +39,9 @@ Contact email: <types2026@chalmers.se>
 * Gerd Smolka (Saarland University, Germany)
 * Matthieu Sozeau (INRIA, MTI Atlantique, Nantes University, France)
 * Kathrin Stark (Heriot-Watt University, UK)
+* Nicolas Tabareau (INRIA, MTI Atlantique, Nantes University, France)
 * Sebastian Ullrich (Lean Focused Research Organization)
 * Josef Urban (Czech Technical University in Prague, Czech Republic)
-* Nicolas Tabareau (INRIA, MTI Atlantique, Nantes University, France)
 * Niccolò Veltri (Tallinn University of Technology, Estonia)
 * Stephanie Weirich (University of Pennsylvania, US)
 
