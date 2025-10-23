@@ -14,15 +14,17 @@ in Gothenburg.
 
 Talks will take place in room
 [**Pascal**](https://chalmerskonferens.se/wp-content/uploads/2018/01/Ritning-konferens-LCC.pdf)
-with coffee in tha hall outside the room. \
+with coffee in the hall outside the room. \
 Lunches will take place in Akva restaurant, located right by
 Lindholmspiren and with a view of the river.
 
 To get to the venue you can eiher:
 
-- take a bus to the stop
+- take a bus
+  (or [brand new tram](https://www.vasttrafik.se/globalassets/media/kartor/linjenatskartor/sparvagn/2025_032-sparvagnslinjekartor-lindholmen_12_10_2.png))
+  to the stop
   [Lindholmen](https://www.google.com/maps/place/G%C3%B6teborg+Lindholmen/@57.707436,11.9367542,19z/data=!4m15!1m8!3m7!1s0x464ff3501190f3f1:0x260190792e5efe61!2sLindholmen,+Gothenburg!3b1!8m2!3d57.7077599!4d11.9382865!16s%2Fm%2F0tkf3fq!3m5!1s0x464ff35046e6c701:0xc6ed91e92d532cdb!8m2!3d57.7077887!4d11.9367034!16s%2Fg%2F11w3m6y5sy?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D). \
-  
+
 - take a ferry to
   [Lindholmspiren](https://www.google.com/maps/place/Lindholmspiren/@57.7070228,11.9381109,17z/data=!4m14!1m7!3m6!1s0x464ff35aa1bf62a7:0xcb26569fedefe772!2sLindholmen+Conference+Centre+at+Lindholmen+Science+Park!8m2!3d57.7071432!4d11.9400314!16s%2Fg%2F1pzq5rfgk!3m5!1s0x464ff3454d93686d:0x73b41de1688e3841!8m2!3d57.70551!4d11.9399391!16s%2Fg%2F12vry40q0?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D). \
 There is a free ferry from [Stenpiren](https://www.google.com/maps/place/Stenpiren,+411+21+G%C3%B6teborg/@57.7063656,11.9551479,17z/data=!3m1!4b1!4m6!3m5!1s0x464ff36785a9c251:0x47cd571f1850dc82!8m2!3d57.7063656!4d11.9577228!16s%2Fg%2F11c3xk498n?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D) to Lindholmspiren that goes every
@@ -34,7 +36,7 @@ There is a free ferry from [Stenpiren](https://www.google.com/maps/place/Stenpir
 
 The conferene will run from ca 9:00 to ca 18:00 every day. \
 We are planning an excursion for Tuesday afternoon and a conference
-dinner Thursday evening. For more information see the page on 
+dinner Thursday evening. For more information see the page on
 [social events](social.html).
 :::
 
@@ -44,7 +46,7 @@ dinner Thursday evening. For more information see the page on
 There are many hotels both around Lindholmen conference center and in
 the city centre.
 
-Some hotels close to the conference centerl are:
+Some hotels close to the conference center are:
 
 - TBD
 
@@ -73,11 +75,11 @@ are located next to each other and close to the city center.
 
 **Getting around in Gothenburg:** \
 The city centre is quite small and walking is the best option. \
-If you want to use a local bus the best is to download the [ToGo
+If you want to use local transport the best is to download the [ToGo
 App](https://www.vasttrafik.se/en/Tickets/more-about-tickets/vasttrafik-to-go/)
 where you can both plan your trip and buy tickets. \
-If you prefer to use website, here is the [travel planner](https://www.vasttrafik.se/en/travel-planning/travel-planner/) for slocal transport. \
-A single ticket within Gothenburg area costs 37 SEK and is valid
+If you prefer to use website, here is the [travel planner](https://www.vasttrafik.se/en/travel-planning/travel-planner/) for local transport. \
+A single ticket within Gothenburg area costs (as of October 2025) 37 SEK and is valid
 during 90 min. There are also 24 hours tickets (120 SEK) and 72 hours
 tickets (240 SEK). When bought via the app, the tickets are activated at the
 time of time of purchase. \
@@ -119,11 +121,11 @@ frequency of 50 Hz. \
 The standard electrical system uses [Type F
 plugs](https://www.worldstandards.eu/electricity/plugs-and-sockets/f/)
 (sometimes called Schuko), which have two round pins and two earth
-clips on the side. Adapters are widely available in shops.
+clips on the side.
 
-**Visas:** 
+**Visas:**
 If you are not a citizen of a EU country you may need to apply for a
-Schengen visa.¨to visit Sweden for up to 90 days. Please check the
+Schengen visa to visit Sweden for up to 90 days. Please check the
 pages at [Swedish migration office](https://www.migrationsverket.se/en/you-want-to-apply/visiting-sweden/visiting-sweden-for-up-to-90-days-entry-visa.html).
 If you need to apply for a visa, we are happy to supply a support letter for you after you have registered for the conference.
 If you require such that a letter, please send an e-mail to <types2026@chalmers.se> with your name (as it appears in your passport) and your physical address.
