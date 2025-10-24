@@ -38,7 +38,7 @@ Contact email: <types2026-pc@chalmers.se>
 * Christian Sattler (Chalmers University of Technology, Sweden) (co-chair)
 * Gabriel Scherer (INRIA, Université Paris Cité, France)
 * Michael Shulman (University of San Diego, US)
-* Gerd Smolka (Saarland University, Germany)
+* Gert Smolka (Saarland University, Germany)
 * Matthieu Sozeau (INRIA, MTI Atlantique, Nantes University, France)
 * Kathrin Stark (Heriot-Watt University, UK)
 * Nicolas Tabareau (INRIA, MTI Atlantique, Nantes University, France)
