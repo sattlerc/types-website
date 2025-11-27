@@ -54,6 +54,13 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 - **Conference:**
   4--8 May 2026
 
+### Important Information
+
+- [Call for contributions](call-for-contributions.html)
+- [Committees](committees.html)
+- [Practical information](practical.html)
+- [Social events](social.html)
+
 ### Contact
 
 Email: <types2026@chalmers.se>.

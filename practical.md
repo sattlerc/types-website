@@ -46,13 +46,16 @@ dinner on Thursday evening. For more information see the page on
 ### Accommodation
 
 There are many hotels both around Lindholmen conference center and in
-the city centre.
+the city centre.  \
+Be aware that there is a big fair in Gothenburg around the days of
+TYPES 2026 so make sure to book you accommodation in good time!
 
 Chalmers has agreement with some hotels and here you can see their
-prices and how to book them. Prices below are per room and night and
-**include taxes and breakfast**. Prices are subject to room
-availability. Some of the hotels have reserved a number of rooms for
-us until April 3rd.
+prices and how to book them. \
+Prices below are per room and night and **include taxes and
+breakfast**. \
+Prices are subject to room availability. Some of the hotels have
+reserved a number of rooms for us until **April 3rd**.
 
 <h5>Hotels close to the conference center:</h5>
 
