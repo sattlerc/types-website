@@ -10,7 +10,7 @@ title: TYPES 2026
 #### Gothenburg, Sweden 
 :::
 
-![](images/goteborg-Bengt-Nyman.jpg "Gothenburg by Bengt Nyman"){.img-fluid .d-block .my-5}
+![](images/goteborg-Bengt-Nyman-resized.jpg "Gothenburg by Bengt Nyman"){.img-fluid .d-block .my-5}
 
 ::: col
 The 32nd International Conference on *Types for Proofs and Programs*
