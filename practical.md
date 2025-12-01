@@ -125,7 +125,7 @@ reserved a number of rooms for us until **April 3rd**.
   not find rooms at the agreed priced below).\
   Double room, 1 person: 1152 sek \
   Double room, 2 people: 1352 sek
-
+  
 <h5>Hotels in town:</h5>
 
 - [Hotell City Avenyn](https://www.hotellcityavenyn.se/)
