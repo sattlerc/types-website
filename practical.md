@@ -55,7 +55,7 @@ prices and how to book them. \
 Prices below are per room and night and **include taxes and
 breakfast**. \
 Prices are subject to room availability. Some of the hotels have
-reserved a number of rooms for us until **April 3rd**.
+reserved a number of rooms for us until **April 1st**.
 
 <h5>Hotels close to the conference center:</h5>
 
@@ -141,6 +141,18 @@ reserved a number of rooms for us until **April 3rd**.
   either book a double room and send a mail to
   <info@hotellcityavenyn.se> to get the reduced price, or directly
   send a mail so the hotel books the room for you. 
+  
+- [Hotel Loresnberg](https://www.hotel-lorensberg.se/?lang=en) 
+ ([map](https://www.google.com/maps/place/Hotel+Lorensberg,+G%C3%B6teborg/@57.6988273,11.9808888,16z/data=!4m11!3m10!1s0x464ff377034ef085:0x28ba16a30a9f5b7c!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.6988245!4d11.9834691!16s%2Fg%2F1vg_bgls?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D))\
+  About 15 min ride on tram 12 from stop **Scandinavium**, located 200m from
+  the hotel. \
+  Use the promotional code **TYPES2026**  or
+  simply use [this link to book](https://reservations.bookvisit.com/campaign/campaign-details?channelId=59bd1351-1053-4770-83ec-b812f1a37807&culture=en-GB&campaignId=47bf474f-a119-4074-a0c9-79bdab375270&year=2026&month=5&day=2&stayLength=6&roomConfig=a1&promoCode=TYPES2026)
+  with Chalmers prices during the period **2-10 May 2026**. \
+  Single room: 935 sek \
+  Double room, 1 person: 995 sek \
+  Double room, 2 people: 1145 sek
+
 
 - [Hotel Poseidon](https://www.hotelposeidon.com/)
   ([map](https://www.google.com/maps/place/Hotel+Poseidon/@57.7001441,11.9515212,15z/data=!4m11!3m10!1s0x464ff36fcae42825:0xe21a204e4e508119!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.700134!4d11.969975!16s%2Fg%2F1vljdysx?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D))  \
