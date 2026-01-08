@@ -49,7 +49,7 @@ Important dates (preliminary)
 -----------------------------
 
 - **Submission deadline:**
-  12 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
+  20 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe) (extended)
 - **Author notification:**
   20 February 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
 - **Camera-ready version of abstracts due:**
