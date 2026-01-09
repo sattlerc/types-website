@@ -41,9 +41,10 @@ Contributed Talks
 -----------------
 
 TYPES solicits contributed talks to stimulate discussions.
-Selection of those will be based on extended abstracts/short papers of 2 pp (not counting the bibliography). <!-- formatted with [easychair.cls](https://easychair.org/publications/for_authors) -->
-
-The submission site is: <https://types-hotcrp.paris.inria.fr/types26-conf/>.
+Selection of those is based on extended abstracts/short papers:
+- limited to 2 pages (not counting the bibliography),
+- formatted using [easychair.cls](https://easychair.org/publications/for_authors).
+- submitted at <https://types-hotcrp.paris.inria.fr/types26-conf/>.
 
 Important dates (preliminary)
 -----------------------------
