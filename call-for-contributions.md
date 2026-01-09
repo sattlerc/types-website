@@ -44,7 +44,7 @@ TYPES solicits contributed talks to stimulate discussions.
 Selection of those is based on extended abstracts/short papers:
 
 - limited to 2 pages (not counting the bibliography),
-- formatted using [easychair.cls](https://easychair.org/publications/for_authors).
+- formatted using [easychair.cls](https://easychair.org/publications/for_authors),
 - submitted at <https://types-hotcrp.paris.inria.fr/types26-conf/>.
 
 Important dates (preliminary)
