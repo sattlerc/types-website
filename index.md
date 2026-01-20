@@ -5,8 +5,10 @@ title: TYPES 2026
 ::: {.main-header .text-center}
 # TYPES 2026 • 4--8 May 2026
 
-### Chalmers University of Technology
-### and University of Gothenburg
+## A Marcus Wallenberg Symposium
+
+#### Chalmers University of Technology
+#### and University of Gothenburg
 #### Gothenburg, Sweden 
 :::
 
@@ -70,3 +72,16 @@ Email: <types2026@chalmers.se>.
 The TYPES meetings from 1990 to 2008 were annual workshops of a sequence of five EU funded networking projects.
 From 2009 onwards, TYPES has been run as an independent conference series.
 Previous TYPES meetings were held in Antibes (1990), Edinburgh (1991), Båstad (1992), Nijmegen (1993), Båstad (1994), Torino (1995), Aussois (1996), Kloster Irsee (1998), Lökeberg (1999), Durham (2000), Berg en Dal near Nijmegen (2002), Torino (2003), Jouy-en-Josas near Paris (2004), Nottingham (2006), Cividale del Friuli (2007), Torino (2008), Aussois (2009), Warsaw (2010), Bergen (2011), Toulouse (2013), Paris (2014), Tallinn (2015), Novi Sad (2016), Budapest (2017), Braga (2018), Oslo (2019), Virtual (2021), Nantes (2022), Valencia (2023), Copenhagen (2024), Glasgow (2025).
+
+## Sponsors
+
+### Gold Sponsor
+
+<a target="blank"
+href="https://www.chalmers.se/en/collaborate-with-us/collaborate-in-research/research-related-contacts/information-and-communication-technology-area-of-advance/"><img
+class="img-fluid" style="height: 60px;"
+src="images/ICT-AoA-logotype-black.png" alt="ICT AoA, Chalmers"></a>
+
+### Bronze Sponsor
+
+<a target="blank" href="https://formalv.com/"><img class="img-fluid" style="height: 100px;" src="images/fv.png" alt="Formal Vindications"></a>
