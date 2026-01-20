@@ -7,8 +7,7 @@ title: TYPES 2026
 
 ## A Marcus Wallenberg Symposium
 
-#### Chalmers University of Technology
-#### and University of Gothenburg
+#### Chalmers University of Technology and University of Gothenburg
 #### Gothenburg, Sweden 
 :::
 
