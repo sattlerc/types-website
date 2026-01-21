@@ -16,7 +16,7 @@ base_to :: FilePath -> FilePath
 base_to = id -- (base </>)
 
 base_from :: FilePath -> FilePath
-base_from = id -- makeRelative base
+base_from = id -- makeRelative base --
 
 -- Used to build the navigation bar.
 nav_item_context :: Context Identifier
