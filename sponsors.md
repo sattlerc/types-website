@@ -11,8 +11,7 @@ title: Sponsors
 #### Gothenburg, Sweden 
 :::
 
-![](images/goteborg-panorama-Amjad-Sheikh.jpg "Gothenburg panorama
-picture by Amjad Sheikh"){.img-fluid .d-block .my-5}
+![](images/goteborg-panorama-Amjad-Sheikh-resized.jpg "Gothenburg panorama picture by Amjad Sheikh"){.img-fluid .d-block .my-5}
 
 ### Gold Sponsor
 
