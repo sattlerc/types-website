@@ -3,7 +3,11 @@ title: Committees
 ---
 
 :::::: container
-# Committees
+Committees
+======================
+
+32nd International Conference on Types for Proofs and Programs\
+4--8 May 2026, Gothenburg, Sweden, <https://types2026.cse.chalmers.se/>
 
 ::: {#organisers .section}
 ## Local organisers
