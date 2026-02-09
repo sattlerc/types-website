@@ -13,8 +13,7 @@ Registration
 ::: {#registration .section}
 #### Registration is now open
 
-Please register here <https://shop.portal.chalmers.se/shops/496>.
-
+Please [register here](<https://shop.portal.chalmers.se/shops/496>).
 The registration fees are as follows:
 
 - **Early regular registration (until 2 March):** 3800 SEK
@@ -22,7 +21,7 @@ The registration fees are as follows:
 - **Late regular registration (until 16 April):** 4600 SEK
 - **Late student registration (until 16 April):** 3900 SEK
 
-The registration fees include coffee breaks and lunches every day 4--8 May, a ticket to the excursion on 5 May and a ticket to the banquet on 7 May.
+The registration fee includes coffee breaks and lunches every day 4--8 May, a ticket to the excursion on 5 May and a ticket to the banquet on 7 May.
 
 If needed, participants can buy an **extra** ticket to the excursion and/or to the banquet.
 Prices are as follow:
