@@ -8,7 +8,7 @@ title: TYPES 2026
 ## A Marcus Wallenberg Symposium
 
 #### Chalmers University of Technology and University of Gothenburg
-#### Gothenburg, Sweden 
+#### Gothenburg, Sweden
 :::
 
 ![](images/goteborg-Bengt-Nyman-resized.jpg "Gothenburg by Bengt Nyman"){.img-fluid .d-block .my-5}

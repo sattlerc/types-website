@@ -72,8 +72,8 @@ reserved a number of rooms for us until **April 1st**.
   Create an account and add the code **60267544** in the "Corporate
   agreement" in your profile. \
   Standard double room, 1 pers: 1331 sek \
-  Standard double room, 2 pers: 1531 sek 
-  
+  Standard double room, 2 pers: 1531 sek
+
 - [Clarion Hotel The
   Pier](https://www.strawberryhotels.com/hotels/sweden/gothenburg/clarion-hotel-the-pier/)
   ([map](https://www.google.com/maps/place/Clarion+Hotel%C2%AE+The+Pier/@57.7106759,11.9460203,17z/data=!4m11!3m10!1s0x464ff3e14431f3bb:0xeb133600983c44e1!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.7106731!4d11.9485952!16s%2Fg%2F11ryq4_1yk?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D)) \
@@ -81,7 +81,7 @@ reserved a number of rooms for us until **April 1st**.
   Create an account and add the code **60267544** in the "Corporate
   agreement" in your profile. \
   Standard double room, 1 pers: 1331 sek \
-  Standard double room, 2 pers: 1531 sek 
+  Standard double room, 2 pers: 1531 sek
 
 - [Comfort Hotel
   Göteborg](https://www.strawberryhotels.com/hotels/sweden/gothenburg/comfort-hotel-goteborg/)
@@ -130,7 +130,7 @@ reserved a number of rooms for us until **April 1st**.
   not find rooms at the agreed priced below).\
   Double room, 1 person: 1152 sek \
   Double room, 2 people: 1352 sek
-  
+
 <h5>Hotels in town:</h5>
 
 - [Hotell City Avenyn](https://www.hotellcityavenyn.se/)
@@ -145,9 +145,9 @@ reserved a number of rooms for us until **April 1st**.
   does not show up in the online booking. To get this price, you
   either book a double room and send a mail to
   <info@hotellcityavenyn.se> to get the reduced price, or directly
-  send a mail so the hotel books the room for you. 
-  
-- [Hotel Loresnberg](https://www.hotel-lorensberg.se/?lang=en) 
+  send a mail so the hotel books the room for you.
+
+- [Hotel Loresnberg](https://www.hotel-lorensberg.se/?lang=en)
  ([map](https://www.google.com/maps/place/Hotel+Lorensberg,+G%C3%B6teborg/@57.6988273,11.9808888,16z/data=!4m11!3m10!1s0x464ff377034ef085:0x28ba16a30a9f5b7c!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.6988245!4d11.9834691!16s%2Fg%2F1vg_bgls?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D))\
   About 15 min ride on tram 12 from stop **Scandinavium**, located 200m from
   the hotel. \
@@ -183,7 +183,7 @@ the city center (35 minutes bus connection running every 20 min during
 the day) and to Lindholmen (50 min bus connection running every 40 min
 during the day). Buying the tickets before boarding the bus is a bit cheaper.
 
-<h5>By train or buss:</h5> 
+<h5>By train or buss:</h5>
 Gothenburg's [Central
 Station](https://www.google.com/maps/place/Gothenburg+Central+Station/@57.70916,11.9703197,16z/data=!3m1!4b1!4m6!3m5!1s0x464ff363679bc283:0x82c34b8837d6165b!8m2!3d57.70916!4d11.9729!16s%2Fm%2F03m6nfw?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D)
 and [Nils Ericson Bus

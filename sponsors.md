@@ -8,7 +8,7 @@ title: Sponsors
 ## A Marcus Wallenberg Symposium
 
 #### Chalmers University of Technology and University of Gothenburg
-#### Gothenburg, Sweden 
+#### Gothenburg, Sweden
 :::
 
 ![](images/goteborg-panorama-Amjad-Sheikh-resized.jpg "Gothenburg panorama picture by Amjad Sheikh"){.img-fluid .d-block .my-5}
