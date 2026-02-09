@@ -42,8 +42,8 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 
 ### Important dates (preliminary)
 
-- **Submission deadline (see [call for contributions](call-for-contributions.html)):**
-  20 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe) (extended)
+- ~~**Submission deadline (see [call for contributions](call-for-contributions.html)):**
+  20 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe) (extended)~~
 - **Author notification:**
   20 February 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
 - **Camera-ready version of abstracts due:**

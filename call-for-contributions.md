@@ -50,7 +50,7 @@ Selection of those is based on extended abstracts/short papers:
 Important dates (preliminary)
 -----------------------------
 
-- **Submission deadline:**
+- ~~**Submission deadline:**~~
   20 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe) (extended)
 - **Author notification:**
   20 February 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
