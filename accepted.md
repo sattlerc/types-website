@@ -6,65 +6,65 @@ title: Accepted talks
 
 The following talk proposals have been accepted to TYPES 2026.
 
-- Aarne Ranta, May Ohlsson. *Informalization of Advanced Mathematics: A Case Study with Homotopy Type Theory*.
-- Alessandro Sosso, Bas Spitters. *Agentic proving for type theory*.
-- Andrew Swan. *Counterexamples in Cubical Sets*.
-- Benno Van den berg. *Constructive ordinals*.
+- Wassim Ait-Moussa, Pierre Boutillier, Hugo Herbelin, Meven Lennon-Bertrand, Thierry Martinez, Gabriel Scherer. *Compilation of dependent pattern-matching using small inversion*.
 - Cass Alexandru, Henning Urbat, Thorsten Wißmann. *Intrinsically Recursive Coalgebras*.
-- Cyril Cohen, Assia Mahboubi, Vojtěch Štěpančík. *Generating morphism types using parametricity and Trocq*.
-- David g. Berry. *Categories with Families without Transport Hell*.
-- Dominik Wehr, Dominik Kirst. *Constructive Reverse Mathematics of Cyclic Proof Theory*.
-- Eske hoy Nielsen, Simon Dima, Lucas Escot, Orestis Melkonian, Hugo Segoufin-cholet, James Chapman, Yannick Forster, Matthieu Sozeau, Bas Spitters. *Peregrine: a middle-end for code generation from proof assistants*.
-- Fernando Chu, Paige randall North. *Dependent-two sided factorization systems for directed type theory*.
-- Félix Castro, Liron Cohen, Étienne Miquey. *Is typed realizability only predicative?*.
-- Harry Bryant, Andrew Lawrence, Monika Seisenberger, Anton Setzer. *Techniques for Verified Propositional SMT Proof Checking*.
-- Hugo Herbelin, Étienne Miquey. *A Computational Interpretation of the Axiom of Choice*.
-- Jem Lord. *Categorical Parametricity*.
-- Jeremy Pope. *An Intermediate Representation for Quantum Computation*.
 - Jessica Allegro, Martin Baillon, Nuria Brede, Hugo Herbelin, Yannick Forster, Jad Koleilat, Étienne Miquey, Dimitar Mitov. *On the logical structure of choice, bar induction, maximality and well-foundedness principles equivalent to the axiom of choice*.
-- John Bourke, Vít Jelínek. *Bicolimit Presentations of Type Theories*.
-- Jonathan Osser. *Sketching type theories in two dimensions*.
-- Joseph Hua, Yiming Xu. *Polynomial functors in π-clans and structured semantics of MLTT*.
-- Julien Marquet-wagner. *Induction-Induction for Intrinsically Well-Scoped Syntaxes*.
-- Junyuan Chen, Maximilian Doré. *Towards a Brown-Palsberg Self-Interpreter for Dependent Types*.
-- Krzysztof Kapulkin, Yufeng Li. *Yet another cubical type theory, but via a semantic approach*.
-- Lide Grotenhuis, Daniel Otten. *Unravelling Cyclic Proofs into Proofs by Induction*.
-- Lorenzo Molena, Marcin jan Turek-grzybowski, Riccardo Borsetto. *A Cubical Path from Algebra to Analysis*.
-- Lorenzo Perticone. *A Graded Modal Type Theory for Pulse Schedules with Measurements*.
-- Marc Bezem, Thierry Coquand, Peter Dybjer, Martin Escardo. *A Generalized Algebraic Theory for Type Theory with Explicit Universe Polymorphism*.
-- Maribel Fernández, Luka Janjić, Nora Szasz, Álvaro Tasistro. *Nominal Type Theory*.
-- Martin ernst Bidlingmaier. *Dependent Datalog*.
-- Maximilian Petrowitsch. *Elementary infinity-Toposes from Type Theory*.
-- Nathaniel Burke. *Smart with*.
-- Nils anders Danielsson. *Towards HoTT with Erased Univalence and Box-Cong*.
-- Niyousha Najmaei, Niels Van der weide. *A General Construction of Strict Models in HoTT*.
-- Oskar Eriksson. *Two-Sided Graded Type Theory, Formalized in Agda*.
-- Owen Lynch. *An Algebraic Approach to the Static/Dynamic Phase Distinction for Module Calculi*.
-- Owen Milner. *Classifying certain group extension in HoTT*.
-- Rahul Chhabra, Daniel Gratzer, Carlo Angiuli. *Homomorphisms of structures in simplicial type theory*.
-- Ralph Matthes, Stefan Neuwirth. *Dynamical Method via Natural Deduction*.
-- Rasmus ejlers Møgelberg. *Multi-clocked Guarded Recursion beyond ω*.
-- Reid Barton, Axel Ljungström, Owen Milner, Anders Mörtberg. *The Serre finiteness theorem in Cubical Agda*.
-- Rob Schellingerhout. *Higher Algebra in Simplicial Homotopy Type Theory*.
-- Sam Speight, Niels Van der weide. *Impredicative Encodings of Linear Types*.
+- Thorsten Altenkirch, Håkon Robbestad Gylterud, Zhili Tian. *Containers in Higher Kinds*.
+- Thorsten Altenkirch, Christina O'Donnell. *Constructing QITs from Quotients*.
 - Samy Avrillon, Ambrus Kaposi, Ambroise Lafont, Niyousha Najmaei, Johann Rosain. *For Generalised Algebraic Theories, Two Sorts are Enough*.
-- Sergei Stepanenko, Patrick Bahr, Rasmus ejlers Møgelberg. *A DSL for Guarded Type Theory in Lean*.
-- Stefania Damato, Thorsten Altenkirch. *Containers form a Groupoid CwF*.
 - Steve Awodey, Joseph Hua. *Path Types in Algebraic Type Theory*.
-- Szumi Xie. *Eliminating Finitary Inductive-Inductive Types Without K*.
-- Tex Schönlank, Andreas Nuyts, Dominique Devriese. *Towards FaceTT: a generalization of intensional type systems with Glue*.
-- Thiago Felicissimo, Yann Leray, Loïc Pujet, Nicolas Tabareau, Éric Tanter, Théo Winterhalter. *Definitional Proof Irrelevance Made Accessible*.
+- Reid Barton, Axel Ljungström, Owen Milner, Anders Mörtberg. *The Serre finiteness theorem in Cubical Agda*.
 - Thibaut Benjamin, Camil Champin, Ioannis Markakis. *A type theory for invertibility in weak ω-categories*.
-- Thierry Coquand, Raphaël Sterbac. *Cumulative hierarchies of universes and their equivalence in dependent type theory*.
-- Thorsten Altenkirch, Christina O'donnell. *Constructing QITs from Quotients*.
-- Thorsten Altenkirch, Håkon robbestad Gylterud, Zhili Tian. *Containers in Higher Kinds*.
-- Timothée Huneau, Yannick Forster, Dominik Kirst, Sam Van gool. *Exploring blurred choice axioms for constructive reverse mathematics*.
-- Titouan Leclercq, Étienne Miquey. *A robust approach to the computational interpretation of the Fan Theorem*.
-- Tom De jong, Nicolai Kraus, Aref Mohammadzadeh, Fredrik nordvall Forsberg. *Generalized Decidability via Brouwer Trees*.
-- Tom De jong, Nicolai Kraus, Axel Ljungström. *The Leibniz adjunction in homotopy type theory, with an application to simplicial type theory*.
+- David G. Berry. *Categories with Families without Transport Hell*.
+- Marc Bezem, Thierry Coquand, Peter Dybjer, Martin Escardo. *A Generalized Algebraic Theory for Type Theory with Explicit Universe Polymorphism*.
+- Martin Ernst Bidlingmaier. *Dependent Datalog*.
 - Valentin Blot. *Sequential algorithms as a Dialectica interpretation*.
-- Wassim Ait-moussa, Pierre Boutillier, Hugo Herbelin, Meven Lennon-bertrand, Thierry Martinez, Gabriel Scherer. *Compilation of dependent pattern-matching using small inversion*.
+- John Bourke, Vít Jelínek. *Bicolimit Presentations of Type Theories*.
+- Harry Bryant, Andrew Lawrence, Monika Seisenberger, Anton Setzer. *Techniques for Verified Propositional SMT Proof Checking*.
+- Nathaniel Burke. *Smart with*.
+- Félix Castro, Liron Cohen, Étienne Miquey. *Is typed realizability only predicative?*.
+- Junyuan Chen, Maximilian Doré. *Towards a Brown-Palsberg Self-Interpreter for Dependent Types*.
+- Rahul Chhabra, Daniel Gratzer, Carlo Angiuli. *Homomorphisms of structures in simplicial type theory*.
+- Fernando Chu, Paige Randall North. *Dependent-two sided factorization systems for directed type theory*.
+- Cyril Cohen, Assia Mahboubi, Vojtěch Štěpančík. *Generating morphism types using parametricity and Trocq*.
+- Thierry Coquand, Raphaël Sterbac. *Cumulative hierarchies of universes and their equivalence in dependent type theory*.
+- Stefania Damato, Thorsten Altenkirch. *Containers form a Groupoid CwF*.
+- Nils Anders Danielsson. *Towards HoTT with Erased Univalence and Box-Cong*.
+- Tom de Jong, Nicolai Kraus, Axel Ljungström. *The Leibniz adjunction in homotopy type theory, with an application to simplicial type theory*.
+- Tom de Jong, Nicolai Kraus, Aref Mohammadzadeh, Fredrik Nordvall Forsberg. *Generalized Decidability via Brouwer Trees*.
+- Oskar Eriksson. *Two-Sided Graded Type Theory, Formalized in Agda*.
+- Thiago Felicissimo, Yann Leray, Loïc Pujet, Nicolas Tabareau, Éric Tanter, Théo Winterhalter. *Definitional Proof Irrelevance Made Accessible*.
+- Maribel Fernández, Luka Janjić, Nora Szasz, Álvaro Tasistro. *Nominal Type Theory*.
 - Yannick Forster, Dominik Kirst. *Constructive Mathematics without any choice*.
-- Yee-jian Tan, Andreas Nuyts, Dominique Devriese. *Towards Computational UIP in Cubical Agda*.
+- Lide Grotenhuis, Daniel Otten. *Unravelling Cyclic Proofs into Proofs by Induction*.
+- Hugo Herbelin, Étienne Miquey. *A Computational Interpretation of the Axiom of Choice*.
+- Joseph Hua, Yiming Xu. *Polynomial functors in π-clans and structured semantics of MLTT*.
+- Timothée Huneau, Yannick Forster, Dominik Kirst, Sam van Gool. *Exploring blurred choice axioms for constructive reverse mathematics*.
+- Krzysztof Kapulkin, Yufeng Li. *Yet another cubical type theory, but via a semantic approach*.
+- Titouan Leclercq, Étienne Miquey. *A robust approach to the computational interpretation of the Fan Theorem*.
+- Jem Lord. *Categorical Parametricity*.
+- Owen Lynch. *An Algebraic Approach to the Static/Dynamic Phase Distinction for Module Calculi*.
+- Julien Marquet-Wagner. *Induction-Induction for Intrinsically Well-Scoped Syntaxes*.
+- Ralph Matthes, Stefan Neuwirth. *Dynamical Method via Natural Deduction*.
+- Owen Milner. *Classifying certain group extension in HoTT*.
+- Lorenzo Molena, Marcin Jan Turek-Grzybowski, Riccardo Borsetto. *A Cubical Path from Algebra to Analysis*.
+- Rasmus Ejlers Møgelberg. *Multi-clocked Guarded Recursion beyond ω*.
+- Niyousha Najmaei, Niels van der Weide. *A General Construction of Strict Models in HoTT*.
+- Eske Hoy Nielsen, Simon Dima, Lucas Escot, Orestis Melkonian, Hugo Segoufin-Cholet, James Chapman, Yannick Forster, Matthieu Sozeau, Bas Spitters. *Peregrine: a middle-end for code generation from proof assistants*.
+- Jonathan Osser. *Sketching type theories in two dimensions*.
+- Lorenzo Perticone. *A Graded Modal Type Theory for Pulse Schedules with Measurements*.
+- Maximilian Petrowitsch. *Elementary infinity-Toposes from Type Theory*.
+- Jeremy Pope. *An Intermediate Representation for Quantum Computation*.
+- Zhuoyuan QU. *A Naive Encoding of Russell's Paradox in Type Theory*.
+- Aarne Ranta, May Ohlsson. *Informalization of Advanced Mathematics: A Case Study with Homotopy Type Theory*.
+- rob schellingerhout. *Higher Algebra in Simplicial Homotopy Type Theory*.
+- Tex Schönlank, Andreas Nuyts, Dominique Devriese. *Towards FaceTT: a generalization of intensional type systems with Glue*.
+- Alessandro Sosso, Bas Spitters. *Agentic proving for type theory*.
+- Sam Speight, Niels van der Weide. *Impredicative Encodings of Linear Types*.
+- Sergei Stepanenko, Patrick Bahr, Rasmus Ejlers Møgelberg. *A DSL for Guarded Type Theory in Lean*.
+- Andrew Swan. *Counterexamples in Cubical Sets*.
 - Yuta Takahashi. *Towards Functorial Ordinal Notations in Type Theory*.
-- Zhuoyuan Qu. *A Naive Encoding of Russell's Paradox in Type Theory*.
+- Yee-Jian Tan, Andreas Nuyts, Dominique Devriese. *Towards Computational UIP in Cubical Agda*.
+- Benno van den Berg. *Constructive ordinals*.
+- Dominik Wehr, Dominik Kirst. *Constructive Reverse Mathematics of Cyclic Proof Theory*.
+- Szumi Xie. *Eliminating Finitary Inductive-Inductive Types Without K*.
