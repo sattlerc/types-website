@@ -3,10 +3,11 @@ module Papers where
 
 import Prelude hiding (last)
 import Control.Monad (forM_, unless, void)
-import Control.Arrow ((>>>))
+import Control.Arrow ((>>>), (&&&))
 import Data.Aeson (FromJSON, eitherDecode, eitherDecodeFileStrict, fromJSON, parseJSON, withObject, (.:))
 import Data.ByteString.Lazy (ByteString)
 import qualified Data.ByteString.Lazy as ByteString
+import Data.Char (toLower)
 import Data.Function (on)
 import Data.List (intercalate, sort)
 import Data.Maybe (fromJust)
@@ -35,7 +36,8 @@ data Author = Author
   } deriving (Eq, FromJSON, Generic, Show)
 
 instance Ord Author where
-  compare = compare `on` (\author -> (last author, first author))
+  compare = compare `on` (lowercase . last) &&& (lowercase . first)
+    where lowercase = map toLower
 
 data Paper = Paper
   { identifier :: Integer
@@ -80,6 +82,6 @@ format_paper_html_li paper = BlazeString.renderHtml $ do
     Blaze.string $ format_authors paper
     Blaze.string ": "
     Blaze.i $ Blaze.string $ title paper
-  
+
 format_papers_html_ul :: [Paper] -> String
 format_papers_html_ul = traverse (Blaze.preEscapedString . format_paper_html_li) >>> void >>> Blaze.ul >>> BlazePretty.renderHtml
