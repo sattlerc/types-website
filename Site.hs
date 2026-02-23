@@ -1,5 +1,4 @@
 {-# LANGUAGE OverloadedStrings #-}
-import Prelude
 import Control.Arrow ((>>>))
 import Control.Monad (forM)
 import Data.Function ((&))
@@ -16,7 +15,7 @@ navigation_id :: Identifier
 navigation_id = "templates/navigation.html"
 
 navigation_context :: Context String
-navigation_context = defaultContext <> field "navigation" (\_ -> loadBody navigation_id)
+navigation_context = defaultContext <> field "navigation" (const $ loadBody navigation_id)
 
 navigation_compiler :: Compiler (Item String)
 navigation_compiler = do
@@ -51,7 +50,7 @@ accepted_papers = do
   unsafeCompiler $ parse_papers path
 
 accepted_papers_list_context :: Context String
-accepted_papers_list_context = field "accepted_papers_list" $ \_ -> do
+accepted_papers_list_context = field "accepted_papers_list" $ const $ do
   papers <- accepted_papers
   return $ format_papers_html_ul papers
 

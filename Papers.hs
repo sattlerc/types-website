@@ -2,8 +2,8 @@
 module Papers where
 
 import Prelude hiding (last)
-import Control.Monad (forM_, unless, void)
-import Control.Arrow ((>>>), (&&&))
+import Control.Monad ((>=>), forM_, unless, void)
+import Control.Arrow ((>>>))
 import Data.Aeson (FromJSON, eitherDecode, eitherDecodeFileStrict, fromJSON, parseJSON, withObject, (.:))
 import Data.ByteString.Lazy (ByteString)
 import qualified Data.ByteString.Lazy as ByteString
@@ -24,10 +24,9 @@ import qualified Text.Blaze.Html.Renderer.String as BlazeString
 -- Includes basic string formatting.
 
 decode_json :: (FromJSON a, MonadFail m) => ByteString -> m a
-decode_json bs = do
-  case eitherDecode bs of
-    Left msg -> fail msg
-    Right x -> return x
+decode_json bs = case eitherDecode bs of
+  Left msg -> fail msg
+  Right x -> return x
 
 data Author = Author
   { first :: String
@@ -35,9 +34,11 @@ data Author = Author
   , affiliation :: String
   } deriving (Eq, FromJSON, Generic, Show)
 
+lowercase :: String -> String
+lowercase = map toLower
+
 instance Ord Author where
-  compare = compare `on` (lowercase . last) &&& (lowercase . first)
-    where lowercase = map toLower
+  compare = compare `on` sequence [last, first] >>> map lowercase
 
 data Paper = Paper
   { identifier :: Integer
@@ -62,16 +63,13 @@ instance FromJSON Paper where
       }
 
 format_author :: Author -> String
-format_author author = intercalate " " [first author, last author]
+format_author = sequence [first, last] >>> intercalate " "
 
 format_authors :: Paper -> String
 format_authors = authors >>> map format_author >>>  intercalate ", "
 
 parse_papers :: FilePath -> IO [Paper]
-parse_papers path = do
-  bs <- ByteString.readFile path
-  papers <- decode_json bs
-  return $ sort papers
+parse_papers = ByteString.readFile >=> decode_json >>> fmap sort
 
 
 -- HTML rendering.
