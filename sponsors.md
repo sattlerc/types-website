@@ -25,8 +25,12 @@ src="images/ICT-AoA-logotype-black.png" alt="ICT AoA, Chalmers"></a>
 ### Silver Sponsor
 
 <center>
+<a target="blank" href="https://www.amazon.co.uk/"><img class="img-fluid"
+style="height: 80px;" src="images/Amazon_Logo_screen.png" alt="Amazon"></a>
+&emsp; &emsp;
 <a target="blank" href="https://janestreet.com/"><img class="img-fluid"
-style="height: 100px;" src="images/jane-street.png" alt="Jane Street"></a>
+style="height: 100px;" src="images/jane-street.png" alt="Jane
+Street"></a>
 </center>
 
 ### Bronze Sponsor
