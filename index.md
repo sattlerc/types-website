@@ -47,7 +47,7 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 - ~~**Author notification:**
   20 February 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)~~
 - **Camera-ready version of abstracts due:**
-  April 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
+  3 April 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
 - **Early registration deadline:**
   ~~2 March 2026~~ 16 March 2026 (**extended**)
 - **Late registration deadline:**
