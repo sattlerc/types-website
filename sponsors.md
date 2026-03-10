@@ -27,7 +27,7 @@ src="images/ICT-AoA-logotype-black.png" alt="ICT AoA, Chalmers"></a>
 <center>
 <a target="blank" href="https://www.amazon.co.uk/"><img class="img-fluid"
 style="height: 80px;" src="images/Amazon_Logo_screen.png" alt="Amazon"></a>
-&emsp; &emsp;
+&emsp; &emsp; &emsp;
 <a target="blank" href="https://janestreet.com/"><img class="img-fluid"
 style="height: 100px;" src="images/jane-street.png" alt="Jane
 Street"></a>
@@ -37,4 +37,10 @@ Street"></a>
 
 <center>
 <a target="blank" href="https://formalv.com/"><img class="img-fluid" style="height: 100px;" src="images/fv.png" alt="Formal Vindications"></a>
+&emsp; &emsp;
+<a target="blank" href="https://www.quantinuum.com/"><img class="img-fluid" style="height: 100px;" src="images/Quantinuum-Logos-stacked-primary_black-sml.png" alt="Formal Vindications"></a>
 </center>
+
+<p>
+<br>
+<p>
