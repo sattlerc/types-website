@@ -2,13 +2,8 @@
 title: Registration
 ---
 
-:::::::::::: container
 Registration
-======================
-
-32nd International Conference on Types for Proofs and Programs\
-4--8 May 2026, Gothenburg, Sweden, <https://types2026.cse.chalmers.se/>
-
+============
 
 ::: {#registration .section}
 #### Registration is now open
@@ -42,4 +37,3 @@ Please contact <types2026@chalmers.se> with the following information:
 - the dates you will be travelling to and from Sweden, and from/to where.
 
 :::
-::::::::::::

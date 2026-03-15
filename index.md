@@ -40,7 +40,7 @@ Areas of interest include, but are not limited to:
 
 In the spirit of workshops, talks may be based on newly published papers, work submitted for publication, but also work in progress.
 
-### Important dates (preliminary)
+### Important dates
 
 - ~~**Submission deadline (see [call for contributions](call-for-contributions.html)):**
   20 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe) (extended)~~
@@ -54,13 +54,6 @@ In the spirit of workshops, talks may be based on newly published papers, work s
   16 April 2026
 - **Conference:**
   4--8 May 2026
-
-### Important Information
-
-- [Call for contributions](call-for-contributions.html)
-- [Committees](committees.html)
-- [Practical information](practical.html)
-- [Social events](social.html)
 
 ### Contact
 

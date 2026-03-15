@@ -1,14 +1,9 @@
 ---
-title: Practical Information
+title: Practical information
 ---
 
-::::::::::::::::: container
-Practical Information
-======================
-
-32nd International Conference on Types for Proofs and Programs\
-4--8 May 2026, Gothenburg, Sweden, <https://types2026.cse.chalmers.se/>
-
+Practical information
+=====================
 
 ::: {#venue .section}
 ### Venue
@@ -253,4 +248,3 @@ If you require such that a letter, please send an e-mail to <types2026@chalmers.
 * [Visit Sweden](https://visitsweden.com/where-to-go/southern-sweden/goteborg/) page on Gothenburg has also quite a lot of information.
 
 :::
-:::::::::::::::::

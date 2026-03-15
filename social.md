@@ -1,13 +1,9 @@
 ---
-title: Social Events
+title: Social events
 ---
 
-::::::::::::::::: container
-Social Events
-======================
-
-32nd International Conference on Types for Proofs and Programs\
-4--8 May 2026, Gothenburg, Sweden, <https://types2026.cse.chalmers.se/>
+Social events
+=============
 
 ::: {#excursion .section}
 ### Excursion
@@ -49,4 +45,3 @@ on **Thursday 7th of May at 18:30**. \
 To get to Wijkanders get tram 10 from Lindholmen to Kapellplatsen (ca
 20 min), from Kapellplatsen it is just  3 min walk.
 :::
-:::::::::::::::::

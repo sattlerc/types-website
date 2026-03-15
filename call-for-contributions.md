@@ -1,5 +1,5 @@
 ---
-title: Call for Contributions
+title: Call for contributions
 ---
 
 Call for Contributions
