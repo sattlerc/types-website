@@ -41,25 +41,43 @@ navigation_compiler = do
         return path
     ]
 
-accepted_papers_id :: Identifier
-accepted_papers_id = "types26-confdata.json"
+data_compiler :: Identifier -> (FilePath -> IO a) -> Compiler a
+data_compiler id parse = do
+  CopyFile path <- loadBody id
+  unsafeCompiler $ parse path
 
-accepted_papers :: Compiler [Paper]
-accepted_papers = do
-  CopyFile path <- loadBody accepted_papers_id
-  unsafeCompiler $ parse_papers path
+papers_id :: Identifier
+papers_id = "papers.json"
 
-accepted_papers_list_context :: Context String
-accepted_papers_list_context = field "accepted_papers_list" $ const $ do
-  papers <- accepted_papers
-  return $ format_papers_html_ul papers
+papers_compiler :: Compiler Papers
+papers_compiler = data_compiler papers_id parse_file_papers
+
+sessions_id :: Identifier
+sessions_id = "sessions.json"
+
+sessions_compiler :: Compiler Sessions
+sessions_compiler = data_compiler sessions_id parse_file_sessions
+
+schedule_id :: Identifier
+schedule_id = "schedule.json"
+
+schedule_compiler :: Compiler Schedule
+schedule_compiler = data_compiler schedule_id parse_file_schedule
+
+data_context :: Context String
+data_context = mconcat
+  [ field "papers_list" $ const $ do
+      papers <- papers_compiler
+      return $ format_papers papers
+  , field "programme_list" $ const $ do
+      papers <- papers_compiler
+      sessions <- sessions_compiler
+      schedule <- schedule_compiler
+      return $ format_schedule papers sessions schedule
+  ]
 
 process_page :: Identifier -> Item String -> Compiler (Item String)
-process_page identifier page
-  | identifier == "accepted.md" = do
-      papers <- accepted_papers
-      applyAsTemplate accepted_papers_list_context page
-  | otherwise = return page
+process_page identifier page = applyAsTemplate data_context page
 
 page_compiler :: Compiler (Item String)
 page_compiler = do
@@ -96,8 +114,8 @@ main = hakyll $ do
   match (fromList [navigation_id]) $
     compile navigation_compiler
 
-  -- Accepted papers.
-  match (fromList [accepted_papers_id]) $
+  -- Data.
+  match (fromList [papers_id, sessions_id, schedule_id]) $
     compile copyFileCompiler
 
   -- This approach doesn't work because [Paper] is not writable.

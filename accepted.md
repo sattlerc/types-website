@@ -6,4 +6,4 @@ title: Accepted talks
 
 The following talk proposals have been accepted to TYPES 2026.
 
-\$accepted_papers_list\$
+\$papers_list\$
