@@ -13,7 +13,6 @@ executable site
     , containers   >= 0.6      && < 1
     , base         >= 4.16.0.0 && < 4.22
     , blaze-html   >= 0.9.0    && < 1
-    , blaze-markup >= 0.8.0    && < 1
     , filepath     >= 1.4.2.2  && < 1.6
     , hakyll       >= 4.16.7.0 && < 5
     , mtl          >= 2.3.1    && < 3
