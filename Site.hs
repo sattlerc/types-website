@@ -64,8 +64,11 @@ schedule_id = "schedule.json"
 schedule_compiler :: Compiler Schedule
 schedule_compiler = data_compiler schedule_id parse_file_schedule
 
-data_context :: Context String
-data_context = mconcat
+sponsors_include_id :: Identifier
+sponsors_include_id = "sponsors-include.md"
+
+page_context :: Context String
+page_context = mconcat
   [ field "papers_list" $ const $ do
       papers <- papers_compiler
       return $ format_papers papers
@@ -74,17 +77,11 @@ data_context = mconcat
       sessions <- sessions_compiler
       schedule <- schedule_compiler
       return $ format_schedule papers sessions schedule
+  , field "include_sponsors" $ const $ loadBody "include/sponsors.md"
   ]
 
-process_page :: Identifier -> Item String -> Compiler (Item String)
-process_page identifier page = applyAsTemplate data_context page
-
 page_compiler :: Compiler (Item String)
-page_compiler = do
-  page <- pandocCompiler
-  identifier <- getUnderlying
-  page <- process_page identifier page
-  loadAndApplyTemplate "templates/default.html" navigation_context page
+page_compiler = pandocCompiler >>= applyAsTemplate page_context
 
 main :: IO ()
 main = hakyll $ do
@@ -118,6 +115,10 @@ main = hakyll $ do
   match (fromList [papers_id, sessions_id, schedule_id]) $
     compile copyFileCompiler
 
+  -- Includes.
+  match "include/**" $
+    compile page_compiler  
+
   -- This approach doesn't work because [Paper] is not writable.
   -- match (fromList [accepted_papers_id]) $ compile $ do
   --   bs <- getResourceLBS
@@ -126,4 +127,4 @@ main = hakyll $ do
   -- Pages of the conference website.
   match (("*.md" .||. "*.html") .&&. complement "README.md") $ do
     route $ customRoute $ toFilePath >>> (`replaceExtension` "html")
-    compile page_compiler
+    compile $ page_compiler >>= loadAndApplyTemplate "templates/default.html" navigation_context
