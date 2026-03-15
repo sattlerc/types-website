@@ -47,19 +47,19 @@ data_compiler id parse = do
   unsafeCompiler $ parse path
 
 papers_id :: Identifier
-papers_id = "papers.json"
+papers_id = "data/papers.json"
 
 papers_compiler :: Compiler Papers
 papers_compiler = data_compiler papers_id parse_file_papers
 
 sessions_id :: Identifier
-sessions_id = "sessions.json"
+sessions_id = "data/sessions.json"
 
 sessions_compiler :: Compiler Sessions
 sessions_compiler = data_compiler sessions_id parse_file_sessions
 
 schedule_id :: Identifier
-schedule_id = "schedule.json"
+schedule_id = "data/schedule.json"
 
 schedule_compiler :: Compiler Schedule
 schedule_compiler = data_compiler schedule_id parse_file_schedule
