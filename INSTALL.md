@@ -172,13 +172,3 @@
    **Note:**
    The reference-transaction hook continues to run even if a user aborts their remote push.
    To abort a long-running build, it has to be killed on the server.
-
-
-
-
-
-
-
-
-
-
