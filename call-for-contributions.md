@@ -47,18 +47,9 @@ Selection of those is based on extended abstracts/short papers:
 - formatted using [easychair.cls](https://easychair.org/publications/for_authors),
 - submitted at <https://types-hotcrp.paris.inria.fr/types26-conf/>.
 
-Important dates (preliminary)
------------------------------
-
-- ~~**Submission deadline:**
-  20 January 2026 [AoE](https://www.timeanddate.com/time/zones/aoe) (extended)~~
-- **Author notification:**
-  20 February 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
-- **Camera-ready version of abstracts due:**
-  3 April 2026 [AoE](https://www.timeanddate.com/time/zones/aoe)
-- **Conference:** 4--8 May 2026
-
 Camera-ready versions of the accepted contributions will be published in an informal book of abstracts for distribution during the conference.
+
+\$include_important_dates\$
 
 Invited speakers
 ----------------
