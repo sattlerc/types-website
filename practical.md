@@ -5,7 +5,7 @@ title: Practical information
 Practical information
 =====================
 
-::: {#venue .section}
+::: {#venue .section .anchor}
 ### Venue
 
 TYPES 2026 will take place at [Lindholmen Conference
@@ -14,14 +14,14 @@ in Gothenburg.
 
 Talks will take place in room
 [**Pascal**](https://chalmerskonferens.se/wp-content/uploads/2018/01/Ritning-konferens-LCC.pdf)
-with coffee in the hall outside the room. \
+with coffee in the hall outside the room.
 
 To get to the venue you can eiher:
 
 - take a bus (21 or X1) or a tram ([10 or 12](https://www.vasttrafik.se/globalassets/media/kartor/linjenatskartor/sparvagn/2025_032-sparvagnslinjekartor-lindholmen_12_10_2.png))
   to the stop
   [Lindholmen](https://www.google.com/maps/place/G%C3%B6teborg+Lindholmen/@57.707436,11.9367542,19z/data=!4m15!1m8!3m7!1s0x464ff3501190f3f1:0x260190792e5efe61!2sLindholmen,+Gothenburg!3b1!8m2!3d57.7077599!4d11.9382865!16s%2Fm%2F0tkf3fq!3m5!1s0x464ff35046e6c701:0xc6ed91e92d532cdb!8m2!3d57.7077887!4d11.9367034!16s%2Fg%2F11w3m6y5sy?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D),
-  about 250m from the conference center. \
+  about 250m from the conference center.
 
 - take a ferry to
   [Lindholmspiren](https://www.google.com/maps/place/Lindholmspiren/@57.7070228,11.9381109,17z/data=!4m14!1m7!3m6!1s0x464ff35aa1bf62a7:0xcb26569fedefe772!2sLindholmen+Conference+Centre+at+Lindholmen+Science+Park!8m2!3d57.7071432!4d11.9400314!16s%2Fg%2F1pzq5rfgk!3m5!1s0x464ff3454d93686d:0x73b41de1688e3841!8m2!3d57.70551!4d11.9399391!16s%2Fg%2F12vry40q0?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D),
@@ -33,7 +33,7 @@ Observe that the free ferry has number 286 and a **green flag**. There are also 
   you will need to pay a regular bus ticket.
 :::
 
-::: {#schedule .section}
+::: {#schedule .section .anchor}
 ### Schedule
 
 The conferene will run from ca 9:00 to ca 18:00 every day. \
@@ -42,7 +42,7 @@ dinner on Thursday evening. For more information see the page on
 [social events](social.html).
 :::
 
-::: {#accommodation .section}
+::: {#accommodation .section .anchor}
 ### Accommodation
 
 There are many hotels both around Lindholmen conference center and in
@@ -163,11 +163,9 @@ reserved a number of rooms for us until **April 1st**.
   Chalmers prices during the period **2-10 May 2026**. \
   Single superior: 1137 sek \
   Double room, 2 people: 1486 sek
-
-
 :::
 
-::: {#travel .section}
+::: {#travel .section .anchor}
 ### Travel
 
 <h5>By plane:</h5>
@@ -205,7 +203,7 @@ There are of course many other companies offering bikes, scooter and
 taxi services.
 :::
 
-::: {#internet .section}
+::: {#internet .section .anchor}
 ### Internet access
 
 Eduroam Internet access is available at the conference venue; if not already configured, you can [download a configuration tool for your device here](https://cat.eduroam.org/).
@@ -213,7 +211,7 @@ If you do not have access to Eduroam. This is also a guest WiFi
 network at the conference center that you can use while there.
 :::
 
-::: {#other .section}
+::: {#other .section .anchor}
 ### Other practical information
 
 <h6>Money</h6>
@@ -246,5 +244,4 @@ If you require such that a letter, please send an e-mail to <types2026@chalmers.
 
 * [Gothenburg's offical visitor's guide](https://www.goteborg.com/en) has much information about places worth visiting in Gothenburg including places to [run](https://www.goteborg.com/en/guides/running-in-gothenburg).
 * [Visit Sweden](https://visitsweden.com/where-to-go/southern-sweden/goteborg/) page on Gothenburg has also quite a lot of information.
-
 :::

@@ -5,7 +5,7 @@ title: Social events
 Social events
 =============
 
-::: {#excursion .section}
+::: {#excursion .section .anchor}
 ### Excursion
 
 <img src="images/ms-st-erik.webp" alt="M/S S:t Erik" title="M/S S:t Erik"
@@ -28,7 +28,7 @@ something to eat. \
 <p><br></p>
 :::
 
-::: {#dinner .section}
+::: {#dinner .section .anchor}
 ### Conference dinner
 
 <!-- ![](images/wijkanders-2048x532.png "Wijkanders"){.img-fluid .d-block .my-5}

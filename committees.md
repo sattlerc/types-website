@@ -9,7 +9,7 @@ Committees
 32nd International Conference on Types for Proofs and Programs\
 4--8 May 2026, Gothenburg, Sweden, <https://types2026.cse.chalmers.se/>
 
-::: {#organisers .section}
+::: {#organisers .section .anchor}
 ## Local organisers
 
 Contact email: <types2026@chalmers.se>
@@ -21,7 +21,7 @@ Contact email: <types2026@chalmers.se>
 - [Christian Sattler](https://www.chalmers.se/en/persons/sattler) (Chalmers University of Technology, Sweden)
 :::
 
-::: {#pc .section}
+::: {#pc .section .anchor}
 ## Program Committee
 
 Contact email: <types2026-pc@chalmers.se>
@@ -52,7 +52,7 @@ Contact email: <types2026-pc@chalmers.se>
 * Stephanie Weirich (University of Pennsylvania, US)
 :::
 
-::: {#sc .section}
+::: {#sc .section .anchor}
 ## Steering Committee
 
 - Malin Altenmüller (University of Edinburgh, Scotland)

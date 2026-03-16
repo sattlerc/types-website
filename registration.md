@@ -5,7 +5,7 @@ title: Registration
 Registration
 ============
 
-::: {#registration .section}
+::: {#registration .section .anchor}
 #### Registration is now open
 
 Please [register here](<https://shop.portal.chalmers.se/shops/496>).
@@ -24,7 +24,7 @@ Prices are as follow:
 - **extra ticket excursion:** 400 SEK
 - **extra ticket banquet:** 800 SEK
 
-::: {#visa .section}
+::: {#visa .section .anchor}
 #### Visa information
 
 If you need to apply for a visa, we are happy to supply a support letter for you **after** you have registered for the conference.

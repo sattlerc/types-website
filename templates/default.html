@@ -21,6 +21,13 @@
     .nav-link {
         color: rgb(255, 255, 255, 0.75);
     }
+    .anchor::before {
+       content: '';
+       display: block;
+       height: 65px;
+       margin-top: -65px;
+       visibility: hidden;
+     }
   </style>
  </head>
  <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
