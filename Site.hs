@@ -1,11 +1,13 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE BlockArguments, OverloadedStrings #-}
 import Control.Arrow ((>>>))
 import Control.Monad (forM)
 import Data.Function ((&))
+import Data.Functor ((<&>))
 import Data.List (stripPrefix)
 import Data.Monoid (mappend)
 import Data.String (fromString)
-import System.FilePath (makeRelative, replaceExtension, (</>))
+import System.FilePath (makeRelative, replaceExtension, takeBaseName, (</>))
+import System.Directory (doesDirectoryExist, listDirectory)
 
 import Hakyll
 
@@ -64,11 +66,28 @@ schedule_id = "data/schedule.json"
 schedule_compiler :: Compiler Schedule
 schedule_compiler = data_compiler schedule_id parse_file_schedule
 
-sponsors_include_id :: Identifier
-sponsors_include_id = "sponsors-include.md"
+dir_include :: FilePath
+dir_include = "include"
 
-page_context :: Context String
-page_context = mconcat
+type Includes = [(String, Identifier)]
+
+list_includes :: IO Includes
+list_includes = do
+  include_exists <- doesDirectoryExist dir_include
+  if not include_exists
+    then return []
+    else listDirectory dir_include <&> map \file ->
+      ( "include_" ++ takeBaseName file
+      , fromFilePath $ dir_include </> file
+      )
+
+include_context :: Includes -> Context String
+include_context = map include_field >>> mconcat
+  where
+  include_field (key, identifier) = field key $ const $ loadBody identifier
+
+data_context :: Context String
+data_context = mconcat
   [ field "papers_list" $ const $ do
       papers <- papers_compiler
       return $ format_papers papers
@@ -77,11 +96,14 @@ page_context = mconcat
       sessions <- sessions_compiler
       schedule <- schedule_compiler
       return $ format_schedule papers sessions schedule
-  , field "include_sponsors" $ const $ loadBody "include/sponsors.md"
   ]
 
 page_compiler :: Compiler (Item String)
-page_compiler = pandocCompiler >>= applyAsTemplate page_context
+page_compiler = do
+  page <- pandocCompiler
+  includes <- unsafeCompiler list_includes
+  let context = include_context includes <> data_context
+  applyAsTemplate context page
 
 main :: IO ()
 main = hakyll $ do
@@ -128,3 +150,4 @@ main = hakyll $ do
   match (("*.md" .||. "*.html") .&&. complement ("README.md" .||. "INSTALL.md")) $ do
     route $ customRoute $ toFilePath >>> (`replaceExtension` "html")
     compile $ page_compiler >>= loadAndApplyTemplate "templates/default.html" navigation_context
+
