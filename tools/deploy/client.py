@@ -7,7 +7,6 @@ import sys
 
 from pathlib import Path
 
-
 SERVER_ADDRESS = "\0types-2026-deploy"
 
 
@@ -53,7 +52,7 @@ def main():
     try:
         [_, path] = sys.argv
     except ValueError:
-        print("usage: <script> <directory to deploy> (ignores .git)", file=sys.stderr)
+        print("usage: <script> <directory to deploy>", file=sys.stderr)
         sys.exit(1)
 
     sys.exit(deploy(path))

@@ -91,7 +91,7 @@ main = hakyll $ do
   --   compile copyFileCompiler
 
   -- README for website editors.
-  -- Delete from generation once everyone has access to the sources.
+  -- Consider deleting from generation once everyone has access to the sources.
   match "README.md" $ do
     route $ customRoute $ toFilePath >>> (`replaceExtension` "html")
     compile pandocCompiler
@@ -125,6 +125,6 @@ main = hakyll $ do
   --   withItemBody (decode_json :: ByteString -> Compiler [Paper]) (bs :: Item ByteString)
 
   -- Pages of the conference website.
-  match (("*.md" .||. "*.html") .&&. complement "README.md") $ do
+  match (("*.md" .||. "*.html") .&&. complement ("README.md" .||. "INSTALL.md")) $ do
     route $ customRoute $ toFilePath >>> (`replaceExtension` "html")
     compile $ page_compiler >>= loadAndApplyTemplate "templates/default.html" navigation_context

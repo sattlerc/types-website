@@ -3,6 +3,11 @@ import subprocess
 import sys
 
 
+def out(line: str):
+    print(line)
+    sys.stdout.flush()
+
+
 def main():
     try:
         [_, prefix, *args] = sys.argv
@@ -20,9 +25,7 @@ def main():
         stderr=subprocess.STDOUT,
     ) as p:
         for line in p.stdout:
-            line = line.removesuffix("\n")
-            print(prefix + line)
-            sys.stdout.flush()
+            out(prefix + line.removesuffix("\n"))
         p.wait()
         sys.exit(p.returncode)
 
