@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
 import contextlib
 import os
+import shlex
 import shutil
 import subprocess
 import sys
 
 from pathlib import Path, PurePosixPath
 
-
 PATH_DEPLOY_CLIENT = Path("/home/types-2026/deploy-client.py")
-IMAGE = "hakyll:latest"
+IMAGE = "haskell:9.6"
 
 PATH_CLONE = Path("deploy_clone")
+
+# Will be mounted in the image.
 REL_SITE = PurePosixPath("_site")
 REL_CACHE = PurePosixPath("_cache")
+REL_CABAL = PurePosixPath("_cabal")
 REL_CABAL_BUILD = PurePosixPath("dist-newstyle")
+
+# Location of the cabal configuration file in the image.
+CABAL_CONFIG = PurePosixPath("/root/.config/cabal/config")
 
 
 def clear_directory(dir_):
@@ -52,6 +58,7 @@ def log(msg):
 
 
 def run(args, return_output=False, **kwargs):
+    # log(shlex.join(map(str, args)))
     p = subprocess.run(
         args,
         text=True,
@@ -66,7 +73,7 @@ def get_reference():
     def revs():
         for line in sys.stdin:
             line = line.removesuffix("\n")
-            (_rev_old, rev_new, rev_name) = line.split(" ")
+            _rev_old, rev_new, rev_name = line.split(" ")
             if rev_name == "refs/heads/main":
                 yield rev_new
 
@@ -116,6 +123,10 @@ class PodmanContainer(contextlib.AbstractContextManager):
         ]
         yield from ["--volume", ":".join(parts)]
 
+    @classmethod
+    def env(cls, key: str, value: str):
+        yield from ["--env", "=".join([key, value])]
+
     def __init__(self, args, **kwargs):
         self.id = run(
             ["podman", "create", *args],
@@ -138,18 +149,18 @@ class PodmanContainer(contextlib.AbstractContextManager):
         return run(["podman", "exec", self.id, *args], **kwargs)
 
 
-def run_hakyll(path, memory=1024 * 1024 * 1024):
+def run_hakyll(path, memory=2 * 1024 * 1024 * 1024):
     log("Running Hakyll...")
 
     def create_args():
         src = Path("/src")
         yield from PodmanContainer.volume(Path(), src, ["ro"])
-        for subdir in [REL_CABAL_BUILD, REL_SITE, REL_CACHE]:
+        for subdir in [REL_CABAL, REL_CABAL_BUILD, REL_SITE, REL_CACHE]:
             (path / subdir).mkdir(exist_ok=True)
             yield from PodmanContainer.volume(subdir, src / subdir, ["rw"])
+        yield from PodmanContainer.env("CABAL_DIR", str(src / REL_CABAL))
         yield from ["--workdir", str(src)]
         yield from ["--memory", str(memory)]
-        yield from ["--network", "none"]
         yield from ["--stop-signal", "SIGKILL"]
         yield IMAGE
         yield from ["sleep", "infinity"]
@@ -157,6 +168,10 @@ def run_hakyll(path, memory=1024 * 1024 * 1024):
     with PodmanContainer(create_args(), cwd=path) as container:
         log(f"Container id: {container.id}")
         container.start()
+
+        # Update cabal if necessary.
+        if not (path / REL_CABAL / "packages").exists():
+            container.exec(["cabal", "update"])
 
         # Watch output of cabal build for rebuild.
         need_rebuild = True
@@ -218,9 +233,13 @@ def main_inner():
 
 
 def main():
-    state = sys.argv[1]
-    if state == "prepared":
-        main_inner()
+    try:
+        state = sys.argv[1]
+    except IndexError:
+        run_hakyll(PATH_CLONE)
+    else:
+        if state == "prepared":
+            main_inner()
 
 
 if __name__ == "__main__":
