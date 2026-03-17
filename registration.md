@@ -11,8 +11,8 @@ Registration
 Please [register here](<https://shop.portal.chalmers.se/shops/496>).
 The registration fees are as follows:
 
-- **Early regular registration (until ~~2 March~~ 16 March):** 3800 SEK (**extended**)
-- **Early student registration (until ~~2 March~~ 16 March):** 3100 SEK (**extended**)
+- **~~Early regular registration~~:** passed
+- **~~Early student registration~~:** passed
 - **Late regular registration (until 16 April):** 4600 SEK
 - **Late student registration (until 16 April):** 3900 SEK
 
