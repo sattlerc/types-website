@@ -66,6 +66,12 @@ papers_compiler = do
   papers <- data_compiler papers_id parse_file_papers
   return $ papers_with_abstract abstracts papers
 
+inviteds_id :: Identifier
+inviteds_id = "data/invited.json"
+
+inviteds_compiler :: Compiler Inviteds
+inviteds_compiler = data_compiler inviteds_id parse_file_inviteds
+
 sessions_id :: Identifier
 sessions_id = "data/sessions.json"
 
@@ -105,9 +111,10 @@ data_context = mconcat
       return $ format_papers papers
   , field "programme_list" $ const $ do
       papers <- papers_compiler
+      inviteds <- inviteds_compiler
       sessions <- sessions_compiler
       schedule <- schedule_compiler
-      return $ format_schedule papers sessions schedule
+      return $ format_schedule papers inviteds sessions schedule
   ]
 
 page_compiler :: Compiler (Item String)
@@ -146,7 +153,7 @@ main = hakyll $ do
     compile navigation_compiler
 
   -- Data.
-  match (fromList [papers_id, sessions_id, schedule_id]) $
+  match (fromList [papers_id, inviteds_id, sessions_id, schedule_id]) $
     compile copyFileCompiler
 
   -- Includes.

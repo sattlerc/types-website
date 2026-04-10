@@ -77,6 +77,29 @@ to_map context key_name = foldM f Map.empty where
     (Nothing, r) -> return r
     _ -> fail $ context ++ ": duplicate " ++ key_name ++ " " ++ show k
 
+-- Reading the JSON invited talks file.
+
+data Invited = Invited
+  { invited_speaker :: String
+  , invited_affiliation :: String
+  , invited_homepage :: String
+  , invited_title :: Maybe String
+  , invited_abstract :: Maybe String
+  } deriving (Eq, Show)
+
+instance FromJSON Invited where
+  parseJSON = withObject "invited" $ \v -> Invited
+    <$> v .: "speaker"
+    <*> v .: "affiliation"
+    <*> v .: "homepage"
+    <*> v .: "title"
+    <*> v .: "abstract"
+
+type Inviteds = Map String Invited
+
+parse_file_inviteds :: FilePath -> IO Inviteds
+parse_file_inviteds = ByteString.readFile >=> decode_json
+
 -- Reading the JSON sessions file.
 
 data Session = Session
@@ -114,7 +137,7 @@ parse_title v = Title
   <*> v .:? "title_html"
 
 data Event = EventBreak { event_break :: Title }
-           | EventInvitedTalk { event_invited_talk_speaker :: String }
+           | EventInvitedTalk { event_invited_talk_key :: String }
            | EventSession { event_session_id :: Integer }
            | EventSpecial { event_special :: Title }
   deriving (Eq, Show)
@@ -290,8 +313,8 @@ format_title title = case title_html title of
   Nothing -> Blaze.string $ title_string title
   Just v -> Blaze.preEscapedString v
 
-format_schedule :: Papers -> Sessions -> Schedule -> String
-format_schedule papers sessions = schedule
+format_schedule :: Papers -> Inviteds -> Sessions -> Schedule -> String
+format_schedule papers inviteds sessions = schedule
   >>> Map.traverseWithKey format_day_schedule >>> void
   >>> BlazePretty.renderHtml
   where
@@ -353,11 +376,7 @@ format_schedule papers sessions = schedule
 m :: IO ()
 m = do
   papers <- parse_file_papers "papers.json"
+  inviteds <- parse_file_inviteds "inviteds.json"
   sessions <- parse_file_sessions "sessions.json"
   schedule <- parse_file_schedule "schedule.json"
-  putStrLn $ format_schedule papers sessions schedule
-  
-
-
-
-
+  putStrLn $ format_schedule papers inviteds sessions schedule
