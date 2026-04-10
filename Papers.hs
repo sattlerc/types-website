@@ -1,40 +1,68 @@
-{-# LANGUAGE DeriveAnyClass, DeriveGeneric, OverloadedStrings, ScopedTypeVariables #-}
+{-# LANGUAGE DeriveAnyClass, DeriveGeneric, ImportQualifiedPost, LambdaCase, OverloadedStrings, ScopedTypeVariables #-}
 module Papers where
 
-import Prelude hiding (last)
-import Control.Monad ((>=>), foldM, forM, forM_, unless, void)
 import Control.Arrow ((>>>))
+import Control.Monad ((>=>), foldM, forM, forM_, guard, unless, void)
+import Control.Monad.State (State, get, lift, runState, put)
 import Data.Aeson (FromJSON, eitherDecode, eitherDecodeFileStrict, fromJSON, parseJSON, withArray, withObject, (.:))
 import Data.Aeson.Types (Object, Parser, Value, (.:?))
 import Data.ByteString.Lazy (ByteString)
-import qualified Data.ByteString.Lazy as ByteString
-import Data.Char (toLower)
+import Data.ByteString.Lazy qualified as ByteString
+import Data.Char (isNumber, toLower)
 import Data.Foldable (toList)
 import Data.Function ((&), on)
-import Data.List (intercalate, sort)
-import Data.Maybe (fromJust)
+import Data.List (intercalate, sort, stripPrefix)
 import Data.Map (Map)
-import qualified Data.Map as Map
-import Control.Monad.State (State, get, lift, runState, put)
+import Data.Map qualified as Map
+import Data.Maybe (fromJust)
+import Data.String (fromString)
 import Data.Text.Lazy (Text, unpack)
 import Data.Time (Day, NominalDiffTime, TimeOfDay)
-import qualified Data.Time as Time
-import qualified Data.Time.Format.ISO8601 as ISO8601
+import Data.Time qualified as Time
+import Data.Time.Format.ISO8601 qualified as ISO8601
 import Data.Tuple (swap)
 import GHC.Generics (Generic)
+import Prelude hiding (last)
+import System.Directory (listDirectory)
+import System.FilePath (takeBaseName)
 
+import Text.Blaze.Html.Renderer.Pretty qualified as BlazePretty
+import Text.Blaze.Html.Renderer.String qualified as BlazeString
 import Text.Blaze.Html5 (Html)
-import qualified Text.Blaze.Html5 as Blaze
-import qualified Text.Blaze.Html5.Attributes as Attributes
-import qualified Text.Blaze.Html.Renderer.Pretty as BlazePretty
-import qualified Text.Blaze.Html.Renderer.String as BlazeString
+import Text.Blaze.Html5 qualified as Blaze
+import Text.Blaze.Html5.Attributes qualified as Blaze
+
+import Debug.Trace
 
 -- Utilities
+
+-- strip_suffix :: (Eq a) => [a] -> [a] -> Maybe [a]
+-- strip_suffix suffix = reverse >>> stripPrefix (reverse suffix) >>> fmap reverse
 
 time_add :: NominalDiffTime -> TimeOfDay -> TimeOfDay
 time_add diff = Time.daysAndTimeOfDayToTime 0
   >>> (+ diff)
   >>> (snd . Time.timeToDaysAndTimeOfDay)
+
+-- Reading the directory of abstracts
+
+type Abstracts = Map Integer FilePath
+
+abstract_id_from_path :: FilePath -> Maybe Integer
+abstract_id_from_path path = do
+  let s = takeBaseName path
+  guard $ all isNumber s
+  return $ read s
+
+parse_abstract :: (MonadFail m) => FilePath -> m (Integer, FilePath)
+parse_abstract path = case abstract_id_from_path path of
+  Just id -> return (id, path)
+  _ -> fail $ "invalid abstract filename: " ++ path
+
+-- parse_abstracts :: FilePath -> IO Abstracts
+-- parse_abstracts = listDirectory
+--   >=> traverse parse_abstract
+--   >>> fmap Map.fromList
 
 -- JSON parsing.
 
@@ -168,6 +196,7 @@ data Paper = Paper
   { paper_id :: Integer
   , paper_title :: String
   , paper_authors :: [Author]
+  , paper_path :: Maybe FilePath
   } deriving (Eq, Show)
 
 instance Ord Paper where
@@ -181,6 +210,7 @@ instance FromJSON Paper where
       <$> v .: "pid"
       <*> v .: "title"
       <*> v .: "authors"
+      <*> return Nothing
 
 type Papers = Map Integer Paper
 
@@ -190,6 +220,15 @@ parse_file_papers = ByteString.readFile
   >>> fmap (map (\s -> (paper_id s, s)))
   >=> to_map "papers" "id"
 
+papers_with_abstract :: Abstracts -> Papers -> Papers
+papers_with_abstract abstracts = Map.mapWithKey $
+    \id paper -> paper { paper_path = Map.lookup id abstracts}
+
+-- parse_papers :: FilePath -> FilePath -> IO Papers
+-- parse_papers path_json path_abstracts = do
+--   papers <- parse_file_papers path_json
+--   abstracts <- parse_abstracts path_json
+--   return $ papers_with_abstract abstracts papers
 
 -- Data.
 
@@ -212,6 +251,11 @@ blaze_ul = map Blaze.li >>> mconcat >>> Blaze.ul
 blaze_ul_strict :: [Html] -> Html
 blaze_ul_strict = map (Blaze.li >>> blaze_strict) >>> mconcat >>> Blaze.ul
 
+blaze_link_else_italic :: Maybe FilePath -> Html -> Html
+blaze_link_else_italic = \case
+  Nothing -> Blaze.i
+  Just path -> Blaze.a >>> (Blaze.! Blaze.href (fromString path))
+
 -- Papers.
 
 format_author :: Author -> String
@@ -224,7 +268,7 @@ format_paper :: Paper -> Html
 format_paper paper = do
   Blaze.string $ format_authors paper
   Blaze.string ": "
-  Blaze.i $ Blaze.string $ paper_title paper
+  blaze_link_else_italic (paper_path paper) (Blaze.string $ paper_title paper)
 
 format_papers :: Papers -> String
 format_papers = toList

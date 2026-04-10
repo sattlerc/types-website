@@ -1,13 +1,14 @@
-{-# LANGUAGE BlockArguments, OverloadedStrings #-}
+{-# LANGUAGE BlockArguments, ImportQualifiedPost, OverloadedStrings #-}
 import Control.Arrow ((>>>))
-import Control.Monad (forM)
+import Control.Monad (forM, (>=>))
 import Data.Function ((&))
 import Data.Functor ((<&>))
 import Data.List (stripPrefix)
+import Data.Map qualified as Map
 import Data.Monoid (mappend)
 import Data.String (fromString)
-import System.FilePath (makeRelative, replaceExtension, takeBaseName, (</>))
 import System.Directory (doesDirectoryExist, listDirectory)
+import System.FilePath (makeRelative, replaceExtension, takeBaseName, (</>))
 
 import Hakyll
 
@@ -48,11 +49,22 @@ data_compiler id parse = do
   CopyFile path <- loadBody id
   unsafeCompiler $ parse path
 
+path_abstracts :: FilePath
+path_abstracts = "abstracts"
+
+pattern_abstracts :: Pattern
+pattern_abstracts = fromString $ path_abstracts ++ "/" ++ "*"
+
 papers_id :: Identifier
 papers_id = "data/papers.json"
 
 papers_compiler :: Compiler Papers
-papers_compiler = data_compiler papers_id parse_file_papers
+papers_compiler = do
+  abstracts <- getMatches pattern_abstracts
+    >>= (traverse (toFilePath >>> parse_abstract))
+    <&> Map.fromList
+  papers <- data_compiler papers_id parse_file_papers
+  return $ papers_with_abstract abstracts papers
 
 sessions_id :: Identifier
 sessions_id = "data/sessions.json"
@@ -120,7 +132,7 @@ main = hakyll $ do
 
   -- Files that should just be copied over.
   -- Files in `monitor` are for monitoring website availability.
-  match ("files/**" .||. "images/**" .||. "monitor/**") $ do
+  match ("files/**" .||. "images/**" .||. pattern_abstracts .||. "monitor/**") $ do
     route $ customRoute $ toFilePath
     compile copyFileCompiler
 
