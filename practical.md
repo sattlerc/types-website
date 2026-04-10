@@ -5,7 +5,6 @@ title: Practical information
 Practical information
 =====================
 
-::: {#venue .section .anchor}
 ### Venue
 
 TYPES 2026 will take place at [Lindholmen Conference
@@ -31,18 +30,14 @@ There is a free ferry from [Stenpiren](https://www.google.com/maps/place/Stenpir
 Observe that the free ferry has number 286 and a **green flag**. There are also ferries
   going to and from Lindholmspiren that have number 285 and an orange flag and there
   you will need to pay a regular bus ticket.
-:::
 
-::: {#schedule .section .anchor}
 ### Schedule
 
 The conferene will run from ca 9:00 to ca 18:00 every day. \
 We are planning an excursion for Tuesday afternoon and a conference
 dinner on Thursday evening. For more information see the page on
 [social events](social.html).
-:::
 
-::: {#accommodation .section .anchor}
 ### Accommodation
 
 There are many hotels both around Lindholmen conference center and in
@@ -165,7 +160,6 @@ reserved a number of rooms for us until **April 1st**.
   Double room, 2 people: 1486 sek
 :::
 
-::: {#travel .section .anchor}
 ### Travel
 
 <h5>By plane:</h5>
@@ -201,17 +195,13 @@ Taxis are expensive in Sweden but
 reasonable prices. \
 There are of course many other companies offering bikes, scooter and
 taxi services.
-:::
 
-::: {#internet .section .anchor}
 ### Internet access
 
 Eduroam Internet access is available at the conference venue; if not already configured, you can [download a configuration tool for your device here](https://cat.eduroam.org/).
 If you do not have access to Eduroam. This is also a guest WiFi
 network at the conference center that you can use while there.
-:::
 
-::: {#other .section .anchor}
 ### Other practical information
 
 <h6>Money</h6>
@@ -244,4 +234,3 @@ If you require such that a letter, please send an e-mail to <types2026@chalmers.
 
 * [Gothenburg's offical visitor's guide](https://www.goteborg.com/en) has much information about places worth visiting in Gothenburg including places to [run](https://www.goteborg.com/en/guides/running-in-gothenburg).
 * [Visit Sweden](https://visitsweden.com/where-to-go/southern-sweden/goteborg/) page on Gothenburg has also quite a lot of information.
-:::

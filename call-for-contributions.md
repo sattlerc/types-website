@@ -37,7 +37,6 @@ interactions are highly valuable.
 If you need to discuss remote participation, please contact the [organizers](mailto:types2026@chalmers.se).
 -->
 
-::: {#contributed-talks .section .anchor}
 Contributed Talks
 -----------------
 
@@ -49,7 +48,6 @@ Selection of those is based on extended abstracts/short papers:
 - submitted at <https://types-hotcrp.paris.inria.fr/types26-conf/>.
 
 Camera-ready versions of the accepted contributions will be published in an informal book of abstracts for distribution during the conference.
-:::
 
 \$include_important_dates\$
 

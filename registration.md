@@ -2,11 +2,7 @@
 title: Registration
 ---
 
-Registration
-============
-
-::: {#registration .section .anchor}
-#### Registration is now open
+# Registration
 
 Please [register here](<https://shop.portal.chalmers.se/shops/496>).
 The registration fees are as follows:
@@ -24,7 +20,6 @@ Prices are as follow:
 - **extra ticket excursion:** 400 SEK
 - **extra ticket banquet:** 800 SEK
 
-::: {#visa .section .anchor}
 #### Visa information
 
 If you need to apply for a visa, we are happy to supply a support letter for you **after** you have registered for the conference.
@@ -35,5 +30,3 @@ Please contact <types2026@chalmers.se> with the following information:
 - your nationality;
 - your passport number;
 - the dates you will be travelling to and from Sweden, and from/to where.
-
-:::
