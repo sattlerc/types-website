@@ -146,7 +146,7 @@ type DaySchedule = [(TimeOfDayRange, Event)]
 parse_ranged_events :: Day -> Value -> Parser DaySchedule
 parse_ranged_events date = withArray "ranged_events" $ \a -> do
   ranged_events <- traverse parse_ranged_event $ toList a
-  forM_ ranged_events check_duration 
+  forM_ ranged_events check_duration
   case ranged_events of
     [] -> return ()
     x : xs -> forM_ (map swap $ zip xs ranged_events) check_overlap
@@ -299,44 +299,56 @@ format_schedule papers sessions = schedule
   format_day_schedule date ranged_events = do
     Blaze.h3 $ Blaze.string $ show $ Time.dayOfWeek date
     Blaze.ul $ mconcat $ map format_ranged_event ranged_events
+
+  format_ranged_event :: (TimeOfDayRange, Event) -> Html
+  format_ranged_event (range@(start, end), event) = do
+    case event of
+      EventBreak title -> inline $ format_title title
+      EventInvitedTalk key -> do
+        inline $ format_invited_talk key (inviteds Map.! key)
+      EventSession id -> format_session (sessions Map.! id)
+      EventSpecial title -> inline $ format_title title
     where
-    format_ranged_event :: (TimeOfDayRange, Event) -> Html
-    format_ranged_event (range@(start, end), event) = do
-      let prefix = do
-            Blaze.b $ Blaze.string $ format_time_range range ++ ":"
-            Blaze.string " "
-      let inline x = blaze_li_strict $ prefix <> x
-      case event of
-        EventBreak title -> inline $ format_title title
-        EventInvitedTalk speaker -> inline $ do
-          Blaze.string "Invited talk:"
-          Blaze.string " "
-          Blaze.string speaker
-        EventSession id -> do
-          let session = sessions Map.! id
-          let papers = session_papers session
-          let (items, end_computed) = flip runState start $ traverse format_talk papers
-          let items_checked = if end_computed == end
-                then items
-                else error $ "session " ++ show_id id ++ " has bad length: "
-                     ++ "ends at " ++ time_show end ++ ", "
-                     ++ "but talks end at " ++ time_show end_computed
-          Blaze.li $ do
-            blaze_strict $ prefix <> (Blaze.string $ "Session " ++ show_id id)
-            blaze_ul_strict items_checked
-          where
-            format_talk :: Integer -> State TimeOfDay Html
-            format_talk paper_id = do
-              let paper = papers Map.! paper_id
-              start <- get
-              let end = time_add talk_length start
-              put end
-              return $ do
-                Blaze.string $ format_time_range (start, end)
-                Blaze.string ": "
-                format_paper paper
-        EventSpecial title -> inline $ format_title title
-      
+    prefix :: Html
+    prefix = do
+      Blaze.b $ Blaze.string $ format_time_range range ++ ":"
+      Blaze.string " "
+
+    inline :: Html -> Html
+    inline x = blaze_li_strict $ prefix <> x
+
+    format_invited_talk :: String -> Invited -> Html
+    format_invited_talk key invited = do
+      Blaze.string "Invited talk:"
+      Blaze.string " "
+      Blaze.string key
+
+    format_talk :: Paper -> State TimeOfDay Html
+    format_talk paper = do
+      start <- get
+      let end = time_add talk_length start
+      put end
+      return $ do
+        Blaze.string $ format_time_range (start, end)
+        Blaze.string ": "
+        format_paper paper
+
+    format_session :: Session -> Html
+    format_session session =
+      Blaze.li $ do
+        blaze_strict $ prefix <> (Blaze.string $ "Session " ++ show_id id)
+        blaze_ul_strict items_checked
+      where
+      id = session_id session
+      (items, end_computed) = session & session_papers &
+        traverse ((papers Map.!) >>> format_talk) &
+        flip runState start
+      items_checked = if end_computed == end
+        then items
+        else error $ "session " ++ show_id id ++ " has bad length: "
+             ++ "ends at " ++ time_show end ++ ", "
+             ++ "but talks end at " ++ time_show end_computed
+
 
 m :: IO ()
 m = do
