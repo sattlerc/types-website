@@ -31,8 +31,7 @@ The TYPES areas of interest include, but are not limited to:
 
 We encourage talks proposing new ways of applying type theory.
 In the spirit of workshops, talks may be based on newly published papers, work submitted for publication, but also work in progress.
-Participation in the meeting is primarily in person, as face-to-face
-interactions are highly valuable.
+Participation in the meeting is primarily in person, as face-to-face interactions are highly valuable.
 <!--
 If you need to discuss remote participation, please contact the [organizers](mailto:types2026@chalmers.se).
 -->

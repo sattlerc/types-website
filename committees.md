@@ -2,9 +2,8 @@
 title: Committees
 ---
 
-:::::: container
 Committees
-======================
+==========
 
 ::: {#organisers .section .anchor}
 ## Local organisers
@@ -59,5 +58,3 @@ Contact email: <types2026-pc@chalmers.se>
 - Rasmus Ejlers Møgelberg (IT University of Copenhagen, Denmark) (chair)
 - Christian Sattler (Chalmers University of Technology, Sweden)
 :::
-
-::::::
