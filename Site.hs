@@ -109,6 +109,9 @@ data_context = mconcat
   [ field "papers_list" $ const $ do
       papers <- papers_compiler
       return $ format_papers papers
+  , field "invited_list" $ const $ do
+      inviteds <- inviteds_compiler
+      return $ format_invited_speakers inviteds
   , field "programme_list" $ const $ do
       papers <- papers_compiler
       inviteds <- inviteds_compiler

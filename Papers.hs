@@ -2,7 +2,7 @@
 module Papers where
 
 import Control.Arrow ((>>>))
-import Control.Monad ((>=>), foldM, forM, forM_, guard, unless, void)
+import Control.Monad ((>=>), foldM, forM, forM_, guard, unless, void, when)
 import Control.Monad.State (State, get, lift, runState, put)
 import Data.Aeson (FromJSON, eitherDecode, eitherDecodeFileStrict, fromJSON, parseJSON, withArray, withObject, (.:))
 import Data.Aeson.Types (Object, Parser, Value, (.:?))
@@ -14,7 +14,7 @@ import Data.Function ((&), on)
 import Data.List (intercalate, sort, stripPrefix)
 import Data.Map (Map)
 import Data.Map qualified as Map
-import Data.Maybe (fromJust)
+import Data.Maybe (fromJust, isJust)
 import Data.String (fromString)
 import Data.Text.Lazy (Text, unpack)
 import Data.Time (Day, NominalDiffTime, TimeOfDay)
@@ -30,7 +30,7 @@ import Text.Blaze.Html.Renderer.Pretty qualified as BlazePretty
 import Text.Blaze.Html.Renderer.String qualified as BlazeString
 import Text.Blaze.Html5 (Html)
 import Text.Blaze.Html5 qualified as Blaze
-import Text.Blaze.Html5.Attributes qualified as Blaze
+import Text.Blaze.Html5.Attributes qualified as BlazeAttr
 
 import Debug.Trace
 
@@ -38,6 +38,12 @@ import Debug.Trace
 
 -- strip_suffix :: (Eq a) => [a] -> [a] -> Maybe [a]
 -- strip_suffix suffix = reverse >>> stripPrefix (reverse suffix) >>> fmap reverse
+
+maybeM_ :: (Monad m) => Maybe a -> (a -> m ()) -> m ()
+maybeM_ x f = maybe (return ()) f x
+
+parens :: String -> String
+parens s = "(" ++ s ++ ")"
 
 time_add :: NominalDiffTime -> TimeOfDay -> TimeOfDay
 time_add diff = Time.daysAndTimeOfDayToTime 0
@@ -82,18 +88,20 @@ to_map context key_name = foldM f Map.empty where
 data Invited = Invited
   { invited_speaker :: String
   , invited_affiliation :: String
-  , invited_homepage :: String
+  , invited_homepage :: Maybe String
   , invited_title :: Maybe String
   , invited_abstract :: Maybe String
+  , invited_abstract_html :: Maybe String
   } deriving (Eq, Show)
 
 instance FromJSON Invited where
   parseJSON = withObject "invited" $ \v -> Invited
     <$> v .: "speaker"
     <*> v .: "affiliation"
-    <*> v .: "homepage"
-    <*> v .: "title"
-    <*> v .: "abstract"
+    <*> v .:? "homepage"
+    <*> v .:? "title"
+    <*> v .:? "abstract"
+    <*> v .:? "abstract_html"
 
 type Inviteds = Map String Invited
 
@@ -274,10 +282,19 @@ blaze_ul = map Blaze.li >>> mconcat >>> Blaze.ul
 blaze_ul_strict :: [Html] -> Html
 blaze_ul_strict = map (Blaze.li >>> blaze_strict) >>> mconcat >>> Blaze.ul
 
-blaze_link_else_italic :: Maybe FilePath -> Html -> Html
+blaze_link :: String -> Html -> Html
+blaze_link target = Blaze.a Blaze.! BlazeAttr.href (fromString target)
+
+blaze_link_maybe :: Maybe String -> Html -> Html
+blaze_link_maybe = maybe id blaze_link
+
+blaze_link_else_italic :: Maybe String -> Html -> Html
 blaze_link_else_italic = \case
   Nothing -> Blaze.i
-  Just path -> Blaze.a >>> (Blaze.! Blaze.href (fromString path))
+  Just target -> blaze_link target
+
+anchorize :: String -> String -> String
+anchorize url anchor = url ++ "#" ++ anchor
 
 -- Papers.
 
@@ -298,6 +315,34 @@ format_papers = toList
   >>> sort
   >>> map format_paper
   >>> blaze_ul_strict
+  >>> BlazePretty.renderHtml
+
+-- Invited speakers.
+
+invited_speaker_link :: String -> Html -> Html
+invited_speaker_link = anchorize "invited-speakers.html" >>> blaze_link
+
+format_invited_speaker :: String -> Invited -> Html
+format_invited_speaker key invited = Blaze.div Blaze.! BlazeAttr.id (fromString key) $ do -- ! Blaze.class_ "col m-2"
+  blaze_strict $ black $ Blaze.h4 $ do
+    blaze_link_maybe (invited_homepage invited) $ Blaze.string $ invited_speaker invited
+    Blaze.string $ " " ++ parens (invited_affiliation invited)
+  maybeM_ (invited_title invited) $ Blaze.string >>> Blaze.h5 >>> black
+  when (any (($ invited) >>> isJust) [invited_abstract_html, invited_abstract]) $ do
+    Blaze.details Blaze.! BlazeAttr.open mempty $ do
+      Blaze.summary $ Blaze.string "Abstract"
+      case invited_abstract_html invited of
+        Just s -> Blaze.preEscapedString s
+        Nothing -> Blaze.p $ Blaze.string $ fromJust $ invited_abstract invited
+  where
+  -- HACK: undo styling of headers.
+  black :: Html -> Html
+  black = (Blaze.! BlazeAttr.style "color: black;")
+
+format_invited_speakers :: Inviteds -> String
+format_invited_speakers = Map.toAscList
+  >>> map (uncurry format_invited_speaker)
+  >>> mconcat
   >>> BlazePretty.renderHtml
 
 -- Schedule
@@ -341,10 +386,12 @@ format_schedule papers inviteds sessions = schedule
     inline x = blaze_li_strict $ prefix <> x
 
     format_invited_talk :: String -> Invited -> Html
-    format_invited_talk key invited = do
-      Blaze.string "Invited talk:"
-      Blaze.string " "
-      Blaze.string key
+    format_invited_talk key invited = case invited_title invited of
+      Nothing -> invited_speaker_link key $ Blaze.string $ invited_speaker invited
+      Just title -> do
+        Blaze.string (invited_speaker invited)
+        Blaze.string ": "
+        invited_speaker_link key $ Blaze.string title
 
     format_talk :: Paper -> State TimeOfDay Html
     format_talk paper = do
