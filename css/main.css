@@ -6,13 +6,9 @@
 }
 
 /* This hack takes into account the menubar when jumping to anchors. */
-*[id]::before {
-   content: '';
-   display: block;
-   height: 65px;
-   margin-top: -65px;
-   visibility: hidden;
- }
+*[id] {
+  scroll-margin-top: 64px;
+}
 
 /*** Programme table ***/
 
