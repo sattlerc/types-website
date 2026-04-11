@@ -22,7 +22,6 @@ import Data.Time qualified as Time
 import Data.Time.Format.ISO8601 qualified as ISO8601
 import Data.Tuple (swap)
 import GHC.Generics (Generic)
-import Prelude hiding (last)
 import System.Directory (listDirectory)
 import System.FilePath (takeBaseName, takeExtension)
 
@@ -209,16 +208,16 @@ parse_file_schedule = ByteString.readFile >=> decode_json
 -- Reading the JSON papers file.
 
 data Author = Author
-  { first :: String
-  , last :: String
-  , affiliation :: String
+  { author_first :: String
+  , author_last :: String
+  , author_affiliation :: String
   } deriving (Eq, FromJSON, Generic, Show)
 
 lowercase :: String -> String
 lowercase = map toLower
 
 instance Ord Author where
-  compare = compare `on` sequence [last, first] >>> map lowercase
+  compare = compare `on` sequence [author_last, author_first] >>> map lowercase
 
 data Paper = Paper
   { paper_id :: Integer
