@@ -4,7 +4,7 @@ title: Programme
 
 # Programme
 
-Below is the preliminary programme for 4--8 May 2026.
+Below is the preliminary programme.
 Click on a slot for details.
 
 \$programme_table\$
