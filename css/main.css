@@ -96,26 +96,18 @@
 }
 
 h1 {
-    margin-top: 8pt;
-    margin-bottom: 8pt;
+  margin-top: 8pt;
+  margin-bottom: 8pt;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #A30000;
+  color: #A30000;
 }
 
-div h4 {
-    color: inherit
-}
-
-div h5 {
-    color: inherit
-}
-
-div h6 {
-    color: inherit
+div div :is(h1, h2, h3, h4, h5, h6) {
+  color: inherit;
 }
 
 .nav-link {
-    color: rgb(255, 255, 255, 0.75);
+  color: rgb(255, 255, 255, 0.75);
 }
