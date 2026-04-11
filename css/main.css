@@ -84,7 +84,7 @@
 
 /*** Invited speakers ***/
 
-#invited-speakers > div > div:first-child {
+#invited-speakers-list > div > div:first-child {
   width: 200px;
 }
 
