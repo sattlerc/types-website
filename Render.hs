@@ -1,18 +1,15 @@
-{-# LANGUAGE ImportQualifiedPost, LambdaCase, OverloadedStrings #-}
 module Render where
 
 import Control.Arrow ((>>>))
-import Control.Monad (guard, void, when)
+import Control.Monad (guard, when)
 import Control.Monad.State (State, get, runState, put)
 import Data.Foldable (toList)
 import Data.Function ((&), on)
-import Data.Functor ((<&>))
 import Data.List (intercalate, sort)
 import Data.Map qualified as Map
 import Data.Maybe (fromJust, fromMaybe, isJust)
 import Data.String (fromString)
-import Data.Time (Day, TimeOfDay, NominalDiffTime, todHour)
-import Data.Time qualified as Time
+import Data.Time (Day, TimeOfDay, NominalDiffTime)
 import Data.Time.Format.ISO8601 qualified as ISO8601
 
 import Text.Blaze.Html.Renderer.Pretty qualified as BlazePretty
@@ -21,6 +18,7 @@ import Text.Blaze.Html5 (Html)
 import Text.Blaze.Html5 qualified as Blaze
 import Text.Blaze.Html5.Attributes qualified as BlazeAttr
 
+import General
 import Parse
 
 -- Needed for preserving whitespace.
