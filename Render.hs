@@ -193,12 +193,11 @@ format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty
   cell_style (start, end) =
     [ css_vert_pos "top" start
     , css_height (start, end)
-    , css_attr "border-color" "gray"
     ]
 
   cell :: Maybe String -> [String] -> [String] -> Html -> Html
   cell link classes styles = maybe Blaze.div blaze_link link
-    Blaze.! blaze_classes (["list", "position-absolute", "border-top", "border-bottom", "border-1", "rounded-0"] ++ classes)
+    Blaze.! blaze_classes (["list", "position-absolute"] ++ classes)
     Blaze.! blaze_styles ([css_attr "display" "block", css_attr "text-decoration" "inherit", css_attr "color" "inherit", css_attr "width" "100%"] ++ styles)
 
   column :: [String] -> [String] -> Html -> Html
@@ -261,7 +260,7 @@ format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty
   format_day :: Day -> DaySchedule -> Html
   format_day date ranged_events = column [] [] $ do
     cell (Just $ anchorize "" $ ISO8601.iso8601Show date)
-      ["d-flex", "align-items-center", "justify-content-center", "border-dark"]
+      ["d-flex", "align-items-center", "justify-content-center", "border-bottom", "border-1", "rounded-0", "border-dark"]
       header_style $
       blaze_strict $ Blaze.b $ Blaze.string $ show_day_detailed date
     mconcat $ map format_ranged_event ranged_events
@@ -269,7 +268,7 @@ format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty
   format :: Html
   format = Blaze.div
     Blaze.! BlazeAttr.id "prgramme-table"
-    Blaze.! blaze_classes ["anchor", "d-flex", "border-start", "border-bottom", "border-1", "border-dark"]
+    Blaze.! blaze_classes ["anchor", "d-flex", "border-start", "border-top", "border-bottom", "border-1", "border-dark"]
     Blaze.! blaze_styles [css_attr "width" "800px"]
     $ mconcat $ map (uncurry format_day) $ Map.toAscList schedule
 
