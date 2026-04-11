@@ -1,19 +1,17 @@
 {-# LANGUAGE BlockArguments, ImportQualifiedPost, OverloadedStrings #-}
 import Control.Arrow ((>>>), (&&&))
 import Control.Monad (forM, (>=>))
-import Data.Function ((&))
 import Data.Functor ((<&>))
-import Data.List (stripPrefix)
 import Data.Map (Map)
 import Data.Map qualified as Map
-import Data.Monoid (mappend)
 import Data.String (fromString)
 import System.Directory (doesDirectoryExist, listDirectory)
-import System.FilePath (makeRelative, replaceExtension, takeBaseName, (</>))
+import System.FilePath (replaceExtension, takeBaseName, (</>))
 
 import Hakyll
 
-import Papers
+import Parse
+import Render
 
 pairA :: (Applicative f) => (f a, f b) -> f (a, b)
 pairA = uncurry $ liftA2 (,)
@@ -35,22 +33,22 @@ navigation_compiler = do
   nav_item_context :: Context Identifier
   nav_item_context = mconcat
     [ field "title" $ \item -> do
-        let id = itemBody item
-        metadata <- getMetadata id
+        let id_ = itemBody item
+        metadata <- getMetadata id_
         let Just title = lookupString "title" metadata
         return title
     , field "url" $ \item -> do
-        let id = itemBody item
-        route <- getRoute id
-        path <- case route of
+        let id_ = itemBody item
+        route_ <- getRoute id_
+        path <- case route_ of
           Just path -> return path
-          Nothing -> fail $ "No route found for identifier " ++ show id
+          Nothing -> fail $ "No route found for identifier " ++ show id_
         return path
     ]
 
 data_compiler :: (FilePath -> IO a) -> Identifier -> Compiler a
-data_compiler parse id = do
-  CopyFile path <- loadBody id
+data_compiler parse id_ = do
+  CopyFile path <- loadBody id_
   unsafeCompiler $ parse path
 
 parse_directory :: (Ord a) => (FilePath -> Compiler a) -> Pattern -> Compiler (Map a FilePath)

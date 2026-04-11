@@ -20,4 +20,4 @@ executable site
     , text         >= 2.0.2    && < 3
     , time         >= 1.12     && < 2
   main-is: Site.hs
-  other-modules: Papers
+  other-modules: Parse, Render
