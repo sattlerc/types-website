@@ -119,7 +119,7 @@ data_context = mconcat
   , field "programme_list" $ const $
       format_schedule <$> papers_compiler <*> inviteds_compiler <*> sessions_compiler <*> schedule_compiler
   , field "programme_table" $ const $
-      format_schedule_table <$> papers_compiler <*> inviteds_compiler <*> sessions_compiler <*> schedule_compiler
+      format_schedule_table <$> inviteds_compiler <*> schedule_compiler
   ]
 
 page_compiler :: Compiler (Item String)

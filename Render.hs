@@ -62,6 +62,24 @@ css_attr attr value = attr ++ ": " ++ value
 css_attr_length :: String -> String -> Double -> String
 css_attr_length attr unit value = css_attr attr $ show value ++ unit
 
+-- Titles.
+
+format_title :: Bool -> Bool -> Title -> Html
+format_title linked shorten title = blaze_link_maybe link $ Blaze.string text
+  where
+  link :: Maybe String
+  link = do
+    guard linked
+    title_link title
+
+  short :: Maybe String
+  short = do
+    guard shorten
+    title_short title
+
+  text :: String
+  text = fromMaybe (title_string title) short
+
 -- Papers.
 
 format_author :: Author -> String
@@ -131,8 +149,8 @@ format_invited_speakers = Map.toAscList
 session_anchor :: Integer -> String
 session_anchor id_ = "session-" ++ show id_
 
-format_schedule_table :: Papers -> Inviteds -> Sessions -> Schedule -> String
-format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty.renderHtml format
+format_schedule_table :: Inviteds -> Schedule -> String
+format_schedule_table inviteds (Schedule schedule) = BlazePretty.renderHtml format
   where
   times :: (TimeOfDayRange -> TimeOfDay) -> [TimeOfDay]
   times f = do
@@ -226,16 +244,13 @@ format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty
     EventSession id_ -> Just $ anchorize "" $ session_anchor id_
     EventSpecial title -> title_link title
 
-  format_title :: Title -> String
-  format_title title = fromMaybe (title_string title) $ title_short title
-
   format_ranged_event :: (TimeOfDayRange, Event) -> Html
   format_ranged_event (range@(start, _), event) = cell (event_link event) classes styles $ do
-    blaze_strict $ Blaze.div $ Blaze.string $ case event of
-      EventBreak title -> format_title title
-      EventInvitedTalk key -> invited_speaker (inviteds Map.! key)
-      EventSession id_ -> "Session " ++ show_id id_
-      EventSpecial title -> format_title title
+    blaze_strict $ Blaze.div $ case event of
+      EventBreak title -> format_title False True title
+      EventInvitedTalk key -> Blaze.string $ invited_speaker (inviteds Map.! key)
+      EventSession id_ -> Blaze.string $ "Session " ++ show_id id_
+      EventSpecial title -> format_title False True title
     blaze_strict $ Blaze.div $ Blaze.string $ time_show start
     where
     duration :: NominalDiffTime
@@ -280,21 +295,16 @@ show_id = (+1) >>> show
 format_time_range :: TimeOfDayRange -> String
 format_time_range (start, end) = time_show start ++ "–" ++ time_show end
 
-format_title :: Title -> Html
-format_title title = case title_html title of
-  Nothing -> Blaze.string $ title_string title
-  Just v -> Blaze.preEscapedString v
-
 format_schedule :: Papers -> Inviteds -> Sessions -> Schedule -> String
 format_schedule papers inviteds sessions (Schedule schedule) = BlazePretty.renderHtml format
   where
   format_ranged_event :: (TimeOfDayRange, Event) -> Html
   format_ranged_event (range@(start, end), event) = do
     case event of
-      EventBreak title -> inline $ format_title title
+      EventBreak title -> inline $ format_title True False title
       EventInvitedTalk key -> inline $ format_invited_talk key $ inviteds Map.! key
       EventSession id_ -> format_session $ sessions Map.! id_
-      EventSpecial title -> inline $ format_title title
+      EventSpecial title -> inline $ format_title True False title
     where
     prefix :: Html
     prefix = do
