@@ -171,7 +171,7 @@ format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty
   pos_unit = pos >>> (height_row *) >>> (height_heading +)
 
   css_vert_origin :: String
-  css_vert_origin = "top: 0px"
+  css_vert_origin = css_attr "top" "0px"
 
   css_attr_height :: String -> Rational -> Rational -> String
   css_attr_height unit margin value = css_attr "height" $ show (fromRational (value + margin) :: Double) ++ unit
@@ -199,7 +199,7 @@ format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty
   cell :: Maybe String -> [String] -> [String] -> Html -> Html
   cell link classes styles = maybe Blaze.div blaze_link link
     Blaze.! blaze_classes (["list", "position-absolute", "border-top", "border-bottom", "border-1", "rounded-0"] ++ classes)
-    Blaze.! blaze_styles (["display: block", "text-decoration: inherit", "color: inherit", "width: 100%"] ++ styles)
+    Blaze.! blaze_styles ([css_attr "display" "block", css_attr "text-decoration" "inherit", css_attr "color" "inherit", css_attr "width" "100%"] ++ styles)
 
   column :: [String] -> [String] -> Html -> Html
   column classes styles = Blaze.div
@@ -207,7 +207,7 @@ format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty
     Blaze.! blaze_styles s
     where
     s =
-      [ "width: 100%"
+      [ css_attr "width" "100%"
       , css_vert_origin
       , css_vert_pos "height" day_end
       , css_attr "background-color" "lightgray"
@@ -256,7 +256,7 @@ format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty
       else ["p-2"]
 
     styles :: [String]
-    styles = cell_style range ++ [css_attr "background-color" $ event_color event] ++ ["font-size: x-small" | tiny]
+    styles = cell_style range ++ [css_attr "background-color" $ event_color event] ++ [css_attr "font-size" "x-small" | tiny]
 
   format_day :: Day -> DaySchedule -> Html
   format_day date ranged_events = column [] [] $ do
@@ -269,8 +269,8 @@ format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty
   format :: Html
   format = Blaze.div
     Blaze.! BlazeAttr.id "prgramme-table"
-    Blaze.! blaze_classes ["anchor", "d-flex", "border-start", "border-bottom", "border-1", "border-dark", "max-w-auto"]
-    Blaze.! blaze_styles ["max-width: 800px"]
+    Blaze.! blaze_classes ["anchor", "d-flex", "border-start", "border-bottom", "border-1", "border-dark"]
+    Blaze.! blaze_styles [css_attr "width" "800px"]
     $ mconcat $ map (uncurry format_day) $ Map.toAscList schedule
 
 -- Schedule
