@@ -5,7 +5,7 @@ title: Social events
 Social events
 =============
 
-::: {#excursion .section .anchor}
+::: {#excursion .section}
 ### Excursion
 
 <img src="images/ms-st-erik.webp" alt="M/S S:t Erik" title="M/S S:t Erik" width="40%" height="40%" class="d-sm-none d-md-block float-end" style="padding-left: 20px">
@@ -18,7 +18,7 @@ There is a café and bar on the boat where you can buy drinks or something to ea
 <p><br></p>
 :::
 
-::: {#dinner .section .anchor}
+::: {#dinner .section}
 ### Conference dinner
 
 <!-- ![](images/wijkanders-2048x532.png "Wijkanders"){.img-fluid .d-block .my-5}
