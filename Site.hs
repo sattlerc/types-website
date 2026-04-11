@@ -60,7 +60,7 @@ path_abstracts :: FilePath
 path_abstracts = "abstracts"
 
 pattern_abstracts :: Pattern
-pattern_abstracts = fromString $ path_abstracts ++ "/" ++ "*"
+pattern_abstracts = fromString $ path_abstracts ++ "/" ++ "*.pdf"
 
 papers_id :: Identifier
 papers_id = "data/papers.json"
