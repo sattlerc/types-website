@@ -263,7 +263,7 @@ format_schedule_table papers inviteds sessions (Schedule schedule) = BlazePretty
     cell (Just $ anchorize "" $ ISO8601.iso8601Show date)
       ["d-flex", "align-items-center", "justify-content-center", "border-dark"]
       header_style $
-      Blaze.b $ Blaze.string $ show_day_detailed date
+      blaze_strict $ Blaze.b $ Blaze.string $ show_day_detailed date
     mconcat $ map format_ranged_event ranged_events
 
   format :: Html
