@@ -1,3 +1,10 @@
+/* Make a link behave like div. */
+.div {
+  color: inherit;
+  display: block;
+  text-decoration: inherit;
+}
+
 /* This hack takes into account the menubar when jumping to anchors. */
 *[id]::before {
    content: '';
@@ -6,6 +13,82 @@
    margin-top: -65px;
    visibility: hidden;
  }
+
+/*** Programme table ***/
+
+#programme-table * {
+  border-radius: 0;
+}
+
+#programme-table > div {
+  border-top: solid thin;
+  border-bottom: solid thin;
+  border-left: solid thin;
+  width: 800px;
+  margin-bottom: 1rem;
+}
+
+/* Programme table column */
+#programme-table > div > div {
+  background-color: lightgray;
+  border-right: solid thin;
+  width: 100%;
+}
+
+/* Programme table column header or slot */
+#programme-table > div > div > * {
+  width: 100%;
+}
+
+/* Programme table column header */
+#programme-table > div > div > *:first-child {
+  background-color: plum;
+  border-bottom: solid thin;
+}
+
+/* Programme table column slot */
+#programme-table > div > div > *:not(:first-child) {
+  padding: 0.5rem;
+}
+
+/* Programme table slot that are vertically small */
+#programme-table > div > div > .programme-table-small {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  z-index: 1;
+}
+
+/* Programme table slot that are vertically tiny */
+#programme-table > div > div > *.programme-table-tiny {
+  padding-bottom: 0;
+  padding-top: 0;
+  font-size: x-small;
+  z-index: 1;
+}
+
+.programme-table-slot-break {
+  background-color: lightyellow;
+}
+
+.programme-table-slot-invited {
+  background-color: lightcyan;
+}
+
+.programme-table-slot-session {
+  background-color: lightblue;
+}
+
+.programme-table-slot-special {
+  background-color: lightgreen;
+}
+
+/*** Invited speakers ***/
+
+#invited-speakers > div > div:first-child {
+  width: 200px;
+}
+
+/*** Tweaks of general elements ***/
 
 .main-header h1 {
   margin-top: 24pt;
@@ -21,7 +104,18 @@ h1, h2, h3, h4, h5, h6 {
     color: #A30000;
 }
 
+div h4 {
+    color: inherit
+}
+
+div h5 {
+    color: inherit
+}
+
+div h6 {
+    color: inherit
+}
+
 .nav-link {
     color: rgb(255, 255, 255, 0.75);
 }
-

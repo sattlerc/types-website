@@ -113,33 +113,27 @@ format_invited_speaker key invited = Blaze.div
   Blaze.! blaze_classes ["row", "border", "rounded", "m-1"] $ do
     Blaze.div Blaze.! blaze_classes ["col-md-auto", "m-2"] $
       case invited_picture invited of
-        Nothing -> Blaze.div Blaze.! blaze_styles ["width: 200px"] $ return ()
+        Nothing -> return ()
         Just picture -> Blaze.img
           Blaze.! BlazeAttr.src (fromString picture)
           Blaze.! BlazeAttr.alt (fromString $ invited_speaker invited)
           Blaze.! blaze_classes ["img-fluid"]
-          Blaze.! BlazeAttr.width "200px"
     Blaze.div Blaze.! blaze_classes ["col", "m-2"] $ do
-      blaze_strict $ black $ Blaze.h4 $ do
+      blaze_strict $ Blaze.h4 $ do
         blaze_link_maybe (invited_homepage invited) $ Blaze.string $ invited_speaker invited
         Blaze.string $ " " ++ parens (invited_affiliation invited)
-      maybeM_ (invited_title invited) $ Blaze.string >>> Blaze.h5 >>> black
+      maybeM_ (invited_title invited) $ Blaze.string >>> Blaze.h5
       when (any (($ invited) >>> isJust) [invited_abstract_html, invited_abstract]) $ do
         Blaze.details Blaze.! BlazeAttr.open mempty $ do
           Blaze.summary $ Blaze.string "Abstract"
           case invited_abstract_html invited of
             Just s -> Blaze.preEscapedString s
             Nothing -> Blaze.p $ Blaze.string $ fromJust $ invited_abstract invited
-  where
-  -- HACK: undo styling of headers.
-  black :: Html -> Html
-  black = (Blaze.! blaze_styles ["color: black"])
 
 format_invited_speakers :: Inviteds -> String
 format_invited_speakers = Map.toAscList
   >>> map (uncurry format_invited_speaker)
   >>> mconcat
-  >>> Blaze.div Blaze.! blaze_classes ["vstack", "gap-3", "mb-4"]
   >>> BlazePretty.renderHtml
 
 -- Schedule table
@@ -186,9 +180,6 @@ format_schedule_table inviteds (Schedule schedule) = BlazePretty.renderHtml form
   pos_unit :: TimeOfDay -> Rational
   pos_unit = pos >>> (height_row *) >>> (height_heading +)
 
-  css_vert_origin :: String
-  css_vert_origin = css_attr "top" "0px"
-
   css_attr_height :: String -> Rational -> Rational -> String
   css_attr_height unit margin value = css_attr "height" $ show (fromRational (value + margin) :: Double) ++ unit
 
@@ -199,41 +190,29 @@ format_schedule_table inviteds (Schedule schedule) = BlazePretty.renderHtml form
   css_height = uncurry (on subtract pos_unit) >>> fromRational >>> css_attr_height height_unit 1
 
   header_style :: [String]
-  header_style =
-    [ css_vert_origin
-    , css_vert_pos "height" day_start
-    , css_attr "background-color" "plum"
-    ]
+  header_style = [css_attr "top" "0", css_vert_pos "height" day_start]
 
   cell_style :: TimeOfDayRange -> [String]
-  cell_style (start, end) =
-    [ css_vert_pos "top" start
-    , css_height (start, end)
-    ]
+  cell_style (start, end) = [css_vert_pos "top" start, css_height (start, end)]
 
   cell :: Maybe String -> [String] -> [String] -> Html -> Html
   cell link classes styles = maybe Blaze.div blaze_link link
-    Blaze.! blaze_classes (["list", "position-absolute"] ++ classes)
-    Blaze.! blaze_styles ([css_attr "display" "block", css_attr "text-decoration" "inherit", css_attr "color" "inherit", css_attr "width" "100%"] ++ styles)
+    Blaze.! blaze_classes (["list", "position-absolute", "div"] ++ classes)
+    Blaze.! blaze_styles styles
 
   column :: [String] -> [String] -> Html -> Html
   column classes styles = Blaze.div
-    Blaze.! blaze_classes (["list-group", "col-lg", "position-relative", "border-end", "border-1", "border-dark", "rounded-0"] ++ classes)
-    Blaze.! blaze_styles s
-    where
-    s =
-      [ css_attr "width" "100%"
-      , css_vert_origin
-      , css_vert_pos "height" day_end
-      , css_attr "background-color" "lightgray"
-      ] ++ styles
+    Blaze.! blaze_classes (["list-group", "col-lg", "position-relative"] ++ classes)
+    Blaze.! blaze_styles ([css_attr "top" "0", css_vert_pos "height" day_end] ++ styles)
 
-  event_color :: Event -> String
-  event_color = \case
-    EventBreak _ -> "lightyellow"
-    EventInvitedTalk _ -> "lightcyan"
-    EventSession _ -> "lightblue"
-    EventSpecial _ -> "lightgreen"
+  event_slot_class :: Event -> String
+  event_slot_class event = "programme-table-slot-" ++ suffix where
+    suffix :: String
+    suffix = case event of
+      EventBreak _ -> "break"
+      EventInvitedTalk _ -> "invited"
+      EventSession _ -> "session"
+      EventSpecial _ -> "special"
 
   event_link :: Event -> Maybe String
   event_link = \case
@@ -243,7 +222,7 @@ format_schedule_table inviteds (Schedule schedule) = BlazePretty.renderHtml form
     EventSpecial title -> title_link title
 
   format_ranged_event :: (TimeOfDayRange, Event) -> Html
-  format_ranged_event (range@(start, _), event) = cell (event_link event) classes styles $ do
+  format_ranged_event (range@(start, _), event) = cell (event_link event) classes (cell_style range) $ do
     blaze_strict $ Blaze.div $ case event of
       EventBreak title -> format_title False True title
       EventInvitedTalk key -> Blaze.string $ invited_speaker (inviteds Map.! key)
@@ -251,39 +230,33 @@ format_schedule_table inviteds (Schedule schedule) = BlazePretty.renderHtml form
       EventSpecial title -> format_title False True title
     blaze_strict $ Blaze.div $ Blaze.string $ time_show start
     where
-    duration :: NominalDiffTime
-    duration = uncurry time_of_day_diff range
+    duration_minutes :: NominalDiffTime
+    duration_minutes = uncurry time_of_day_diff range / 60
 
-    tiny :: Bool
-    tiny = duration <= 15 * 60
+    size :: Maybe String
+    size
+      | duration_minutes <= 15 = Just "tiny"
+      | duration_minutes <= 30 = Just "small"
+      | otherwise = Nothing
 
-    small :: Bool
-    small = duration <= 30 * 60
+    size_classes :: [String]
+    size_classes = case size of
+      Just s -> ["programme-table-" ++ s]
+      Nothing -> []
 
     classes :: [String]
-    classes = ["d-flex", "justify-content-between"] ++ if small
-      then ["px-2", "z-1"]
-      else if small
-      then ["px-2", "py-1"]
-      else ["p-2"]
-
-    styles :: [String]
-    styles = cell_style range ++ [css_attr "background-color" $ event_color event] ++ [css_attr "font-size" "x-small" | tiny]
+    classes = ["d-flex", "justify-content-between", event_slot_class event] ++ size_classes
 
   format_day :: Day -> DaySchedule -> Html
   format_day date ranged_events = column [] [] $ do
     cell (Just $ anchorize "" $ ISO8601.iso8601Show date)
-      ["d-flex", "align-items-center", "justify-content-center", "border-bottom", "border-1", "rounded-0", "border-dark"]
-      header_style $
+      ["d-flex", "align-items-center", "justify-content-center"] header_style $
       blaze_strict $ Blaze.b $ Blaze.string $ show_day_detailed date
     mconcat $ map format_ranged_event ranged_events
 
   format :: Html
-  format = Blaze.div
-    Blaze.! BlazeAttr.id "prgramme-table"
-    Blaze.! blaze_classes ["anchor", "d-flex", "border-start", "border-top", "border-bottom", "border-1", "border-dark"]
-    Blaze.! blaze_styles [css_attr "width" "800px"]
-    $ mconcat $ map (uncurry format_day) $ Map.toAscList schedule
+  format = Blaze.div Blaze.! blaze_classes ["d-flex"] $
+    mconcat $ map (uncurry format_day) $ Map.toAscList schedule
 
 -- Schedule
 

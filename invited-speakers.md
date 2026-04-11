@@ -6,4 +6,4 @@ title: Invited speakers
 
 TYPES 2026 will have the following invited speakers.
 
-<section>\$invited_list\$</section>
+<section id="invited-speakers" class="vstack gap-3 mb-4">\$invited_list\$</section>
