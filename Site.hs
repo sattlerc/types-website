@@ -1,9 +1,10 @@
 {-# LANGUAGE BlockArguments, ImportQualifiedPost, OverloadedStrings #-}
-import Control.Arrow ((>>>))
+import Control.Arrow ((>>>), (&&&))
 import Control.Monad (forM, (>=>))
 import Data.Function ((&))
 import Data.Functor ((<&>))
 import Data.List (stripPrefix)
+import Data.Map (Map)
 import Data.Map qualified as Map
 import Data.Monoid (mappend)
 import Data.String (fromString)
@@ -13,6 +14,9 @@ import System.FilePath (makeRelative, replaceExtension, takeBaseName, (</>))
 import Hakyll
 
 import Papers
+
+pairA :: (Applicative f) => (f a, f b) -> f (a, b)
+pairA = uncurry $ liftA2 (,)
 
 navigation_id :: Identifier
 navigation_id = "templates/navigation.html"
@@ -44,10 +48,15 @@ navigation_compiler = do
         return path
     ]
 
-data_compiler :: Identifier -> (FilePath -> IO a) -> Compiler a
-data_compiler id parse = do
+data_compiler :: (FilePath -> IO a) -> Identifier -> Compiler a
+data_compiler parse id = do
   CopyFile path <- loadBody id
   unsafeCompiler $ parse path
+
+parse_directory :: (Ord a) => (FilePath -> Compiler a) -> Pattern -> Compiler (Map a FilePath)
+parse_directory parse_file = (getMatches :: Pattern -> Compiler [Identifier])
+  >=> traverse (toFilePath >>> parse_file &&& return >>> pairA)
+  >>> fmap Map.fromList
 
 path_abstracts :: FilePath
 path_abstracts = "abstracts"
@@ -60,29 +69,30 @@ papers_id = "data/papers.json"
 
 papers_compiler :: Compiler Papers
 papers_compiler = do
-  abstracts <- getMatches pattern_abstracts
-    >>= (traverse (toFilePath >>> parse_abstract))
-    <&> Map.fromList
-  papers <- data_compiler papers_id parse_file_papers
+  abstracts <- parse_directory parse_abstract pattern_abstracts
+  papers <- data_compiler parse_file_papers papers_id
   return $ papers_with_abstract abstracts papers
 
 inviteds_id :: Identifier
 inviteds_id = "data/invited.json"
 
 inviteds_compiler :: Compiler Inviteds
-inviteds_compiler = data_compiler inviteds_id parse_file_inviteds
+inviteds_compiler = do
+  pictures <- parse_directory parse_picture "images/invited/*"
+  inviteds <- data_compiler parse_file_inviteds inviteds_id
+  return $ inviteds_with_pictures pictures inviteds
 
 sessions_id :: Identifier
 sessions_id = "data/sessions.json"
 
 sessions_compiler :: Compiler Sessions
-sessions_compiler = data_compiler sessions_id parse_file_sessions
+sessions_compiler = data_compiler parse_file_sessions sessions_id
 
 schedule_id :: Identifier
 schedule_id = "data/schedule.json"
 
 schedule_compiler :: Compiler Schedule
-schedule_compiler = data_compiler schedule_id parse_file_schedule
+schedule_compiler = data_compiler parse_file_schedule schedule_id
 
 dir_include :: FilePath
 dir_include = "include"

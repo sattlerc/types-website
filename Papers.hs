@@ -24,7 +24,7 @@ import Data.Tuple (swap)
 import GHC.Generics (Generic)
 import Prelude hiding (last)
 import System.Directory (listDirectory)
-import System.FilePath (takeBaseName)
+import System.FilePath (takeBaseName, takeExtension)
 
 import Text.Blaze.Html.Renderer.Pretty qualified as BlazePretty
 import Text.Blaze.Html.Renderer.String qualified as BlazeString
@@ -32,12 +32,13 @@ import Text.Blaze.Html5 (Html)
 import Text.Blaze.Html5 qualified as Blaze
 import Text.Blaze.Html5.Attributes qualified as BlazeAttr
 
-import Debug.Trace
-
 -- Utilities
 
 -- strip_suffix :: (Eq a) => [a] -> [a] -> Maybe [a]
 -- strip_suffix suffix = reverse >>> stripPrefix (reverse suffix) >>> fmap reverse
+
+fail_maybe :: (MonadFail m) => String -> Maybe a -> m a
+fail_maybe msg = maybe (fail msg) return
 
 maybeM_ :: (Monad m) => Maybe a -> (a -> m ()) -> m ()
 maybeM_ x f = maybe (return ()) f x
@@ -49,26 +50,6 @@ time_add :: NominalDiffTime -> TimeOfDay -> TimeOfDay
 time_add diff = Time.daysAndTimeOfDayToTime 0
   >>> (+ diff)
   >>> (snd . Time.timeToDaysAndTimeOfDay)
-
--- Reading the directory of abstracts
-
-type Abstracts = Map Integer FilePath
-
-abstract_id_from_path :: FilePath -> Maybe Integer
-abstract_id_from_path path = do
-  let s = takeBaseName path
-  guard $ all isNumber s
-  return $ read s
-
-parse_abstract :: (MonadFail m) => FilePath -> m (Integer, FilePath)
-parse_abstract path = case abstract_id_from_path path of
-  Just id -> return (id, path)
-  _ -> fail $ "invalid abstract filename: " ++ path
-
--- parse_abstracts :: FilePath -> IO Abstracts
--- parse_abstracts = listDirectory
---   >=> traverse parse_abstract
---   >>> fmap Map.fromList
 
 -- JSON parsing.
 
@@ -92,6 +73,7 @@ data Invited = Invited
   , invited_title :: Maybe String
   , invited_abstract :: Maybe String
   , invited_abstract_html :: Maybe String
+  , invited_picture :: Maybe String
   } deriving (Eq, Show)
 
 instance FromJSON Invited where
@@ -102,11 +84,26 @@ instance FromJSON Invited where
     <*> v .:? "title"
     <*> v .:? "abstract"
     <*> v .:? "abstract_html"
+    <*> return Nothing
 
 type Inviteds = Map String Invited
 
 parse_file_inviteds :: FilePath -> IO Inviteds
 parse_file_inviteds = ByteString.readFile >=> decode_json
+
+picture_from_path :: FilePath -> Maybe String
+picture_from_path path = do
+  guard $ takeExtension path `elem` [".jpg", ".png", ".webm"]
+  return $ takeBaseName path
+
+parse_picture :: (MonadFail m) => FilePath -> m String
+parse_picture path = fail_maybe ("invalid picture filename: " ++ path) $ picture_from_path path
+
+type InvitedPictures = Map String FilePath
+
+inviteds_with_pictures :: InvitedPictures -> Inviteds -> Inviteds
+inviteds_with_pictures pictures = Map.mapWithKey $
+    \id paper -> paper { invited_picture = Map.lookup id pictures }
 
 -- Reading the JSON sessions file.
 
@@ -251,7 +248,23 @@ parse_file_papers = ByteString.readFile
   >>> fmap (map (\s -> (paper_id s, s)))
   >=> to_map "papers" "id"
 
-papers_with_abstract :: Abstracts -> Papers -> Papers
+type PaperAbstracts = Map Integer FilePath
+
+abstract_id_from_path :: FilePath -> Maybe Integer
+abstract_id_from_path path = do
+  let s = takeBaseName path
+  guard $ all isNumber s
+  return $ read s
+
+parse_abstract :: (MonadFail m) => FilePath -> m Integer
+parse_abstract path = fail_maybe ("invalid abstract filename: " ++ path) $ abstract_id_from_path path
+
+-- parse_abstracts :: FilePath -> IO Abstracts
+-- parse_abstracts = listDirectory
+--   >=> traverse parse_abstract
+--   >>> fmap Map.fromList
+
+papers_with_abstract :: PaperAbstracts -> Papers -> Papers
 papers_with_abstract abstracts = Map.mapWithKey $
     \id paper -> paper { paper_path = Map.lookup id abstracts}
 
@@ -319,21 +332,35 @@ format_papers = toList
 
 -- Invited speakers.
 
-invited_speaker_link :: String -> Html -> Html
-invited_speaker_link = anchorize "invited-speakers.html" >>> blaze_link
+invited_speaker_picture :: String -> String
+invited_speaker_picture = ("images/invited/" ++)
+
+invited_speaker_link :: String -> String
+invited_speaker_link = anchorize "invited-speakers.html"
 
 format_invited_speaker :: String -> Invited -> Html
-format_invited_speaker key invited = Blaze.div Blaze.! BlazeAttr.id (fromString key) $ do -- ! Blaze.class_ "col m-2"
-  blaze_strict $ black $ Blaze.h4 $ do
-    blaze_link_maybe (invited_homepage invited) $ Blaze.string $ invited_speaker invited
-    Blaze.string $ " " ++ parens (invited_affiliation invited)
-  maybeM_ (invited_title invited) $ Blaze.string >>> Blaze.h5 >>> black
-  when (any (($ invited) >>> isJust) [invited_abstract_html, invited_abstract]) $ do
-    Blaze.details Blaze.! BlazeAttr.open mempty $ do
-      Blaze.summary $ Blaze.string "Abstract"
-      case invited_abstract_html invited of
-        Just s -> Blaze.preEscapedString s
-        Nothing -> Blaze.p $ Blaze.string $ fromJust $ invited_abstract invited
+format_invited_speaker key invited = Blaze.div
+  Blaze.! BlazeAttr.id (fromString key)
+  Blaze.! BlazeAttr.class_ "row border rounded m-1" $ do
+    Blaze.div Blaze.! BlazeAttr.class_ "col-md-auto m-2" $
+      case invited_picture invited of
+        Nothing -> Blaze.div Blaze.! BlazeAttr.style "width: 200px;" $ return ()
+        Just picture -> Blaze.img
+          Blaze.! BlazeAttr.src (fromString picture)
+          Blaze.! BlazeAttr.alt (fromString $ invited_speaker invited)
+          Blaze.! BlazeAttr.class_ "img-fluid"
+          Blaze.! BlazeAttr.width "200px"
+    Blaze.div Blaze.! BlazeAttr.class_ "col m-2" $ do
+      blaze_strict $ black $ Blaze.h4 $ do
+        blaze_link_maybe (invited_homepage invited) $ Blaze.string $ invited_speaker invited
+        Blaze.string $ " " ++ parens (invited_affiliation invited)
+      maybeM_ (invited_title invited) $ Blaze.string >>> Blaze.h5 >>> black
+      when (any (($ invited) >>> isJust) [invited_abstract_html, invited_abstract]) $ do
+        Blaze.details Blaze.! BlazeAttr.open mempty $ do
+          Blaze.summary $ Blaze.string "Abstract"
+          case invited_abstract_html invited of
+            Just s -> Blaze.preEscapedString s
+            Nothing -> Blaze.p $ Blaze.string $ fromJust $ invited_abstract invited
   where
   -- HACK: undo styling of headers.
   black :: Html -> Html
@@ -343,6 +370,7 @@ format_invited_speakers :: Inviteds -> String
 format_invited_speakers = Map.toAscList
   >>> map (uncurry format_invited_speaker)
   >>> mconcat
+  >>> Blaze.div Blaze.! BlazeAttr.class_ "vstack gap-3 mb-4"
   >>> BlazePretty.renderHtml
 
 -- Schedule
@@ -387,11 +415,11 @@ format_schedule papers inviteds sessions = schedule
 
     format_invited_talk :: String -> Invited -> Html
     format_invited_talk key invited = case invited_title invited of
-      Nothing -> invited_speaker_link key $ Blaze.string $ invited_speaker invited
+      Nothing -> blaze_link (invited_speaker_link key) $ Blaze.string $ invited_speaker invited
       Just title -> do
         Blaze.string (invited_speaker invited)
         Blaze.string ": "
-        invited_speaker_link key $ Blaze.string title
+        blaze_link (invited_speaker_link key) $ Blaze.string title
 
     format_talk :: Paper -> State TimeOfDay Html
     format_talk paper = do
@@ -418,12 +446,3 @@ format_schedule papers inviteds sessions = schedule
         else error $ "session " ++ show_id id ++ " has bad length: "
              ++ "ends at " ++ time_show end ++ ", "
              ++ "but talks end at " ++ time_show end_computed
-
-
-m :: IO ()
-m = do
-  papers <- parse_file_papers "papers.json"
-  inviteds <- parse_file_inviteds "inviteds.json"
-  sessions <- parse_file_sessions "sessions.json"
-  schedule <- parse_file_schedule "schedule.json"
-  putStrLn $ format_schedule papers inviteds sessions schedule
