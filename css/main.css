@@ -30,9 +30,9 @@
 
 /* Programme table column */
 #programme-table > div > div {
-  background-color: lightgray;
   border-right: solid thin;
   width: 100%;
+  background-color: lightgray;
 }
 
 /* Programme table column header or slot */
@@ -42,8 +42,8 @@
 
 /* Programme table column header */
 #programme-table > div > div > *:first-child {
-  background-color: plum;
   border-bottom: solid thin;
+  background-color: plum;
 }
 
 /* Programme table column slot */
@@ -60,8 +60,8 @@
 
 /* Programme table slot that are vertically tiny */
 #programme-table > div > div > *.programme-table-tiny {
-  padding-bottom: 0;
   padding-top: 0;
+  padding-bottom: 0;
   font-size: x-small;
   z-index: 1;
 }
