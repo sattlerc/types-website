@@ -144,7 +144,7 @@ main = hakyll $ do
 
   -- Files that should just be copied over.
   -- Files in `monitor` are for monitoring website availability.
-  match ("files/**" .||. "images/**" .||. pattern_abstracts .||. "monitor/**") $ do
+  match ("css/*" .||. "images/**" .||. pattern_abstracts .||. "files/**" .||. "monitor/**") $ do
     route $ customRoute $ toFilePath
     compile copyFileCompiler
 
