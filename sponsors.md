@@ -13,4 +13,4 @@ title: Sponsors
 
 ![](images/goteborg-panorama-Amjad-Sheikh-resized.jpg "Gothenburg panorama picture by Amjad Sheikh"){.img-fluid .d-block .my-5}
 
-\$include_sponsors\$
+<section>\$include_sponsors\$</section>

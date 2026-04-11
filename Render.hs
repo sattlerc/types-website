@@ -110,7 +110,7 @@ invited_speaker_link = anchorize "invited-speakers.html"
 format_invited_speaker :: String -> Invited -> Html
 format_invited_speaker key invited = Blaze.div
   Blaze.! BlazeAttr.id (fromString key)
-  Blaze.! blaze_classes ["achnor", "row", "border", "rounded", "m-1"] $ do
+  Blaze.! blaze_classes ["row", "border", "rounded", "m-1"] $ do
     Blaze.div Blaze.! blaze_classes ["col-md-auto", "m-2"] $
       case invited_picture invited of
         Nothing -> Blaze.div Blaze.! blaze_styles ["width: 200px"] $ return ()
@@ -332,9 +332,7 @@ format_schedule papers inviteds sessions (Schedule schedule) = BlazePretty.rende
 
     format_session :: Session -> Html
     format_session session =
-      Blaze.li
-        Blaze.! BlazeAttr.id (fromString $ session_anchor id_)
-        Blaze.! blaze_classes ["anchor"] $ do
+      Blaze.li Blaze.! BlazeAttr.id (fromString $ session_anchor id_) $ do
         blaze_strict $ prefix <> (Blaze.string $ "Session " ++ show_id id_)
         blaze_ul_strict items_checked
       where
@@ -350,13 +348,10 @@ format_schedule papers inviteds sessions (Schedule schedule) = BlazePretty.rende
 
   format_day :: Day -> DaySchedule -> Html
   format_day date ranged_events = do
-    Blaze.h3
-      Blaze.! BlazeAttr.id (fromString $ ISO8601.iso8601Show date)
-      Blaze.! blaze_classes ["anchor"] $
+    blaze_strict $
+      Blaze.h3 Blaze.! BlazeAttr.id (fromString $ ISO8601.iso8601Show date) $
       Blaze.string $ show_day_detailed date
     Blaze.ul $ mconcat $ map format_ranged_event ranged_events
 
   format :: Html
-  format = Blaze.section
-    Blaze.! BlazeAttr.id "programme_list"
-    $ mconcat $ map (uncurry format_day) $ Map.toAscList schedule
+  format = mconcat $ map (uncurry format_day) $ Map.toAscList schedule

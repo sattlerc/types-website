@@ -6,4 +6,4 @@ title: Invited speakers
 
 TYPES 2026 will have the following invited speakers.
 
-\$invited_list\$
+<section>\$invited_list\$</section>

@@ -48,7 +48,7 @@ Selection of those is based on extended abstracts/short papers:
 
 Camera-ready versions of the accepted contributions will be published in an informal book of abstracts for distribution during the conference.
 
-\$include_important_dates\$
+<section>\$include_important_dates\$</section>
 
 Invited speakers
 ----------------

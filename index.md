@@ -38,7 +38,7 @@ Areas of interest include, but are not limited to:
 
 In the spirit of workshops, talks may be based on newly published papers, work submitted for publication, but also work in progress.
 
-\$include_important_dates\$
+<section>\$include_important_dates\$</section>
 
 ### Contact
 
@@ -52,4 +52,4 @@ Previous TYPES meetings were held in Antibes (1990), Edinburgh (1991), Båstad (
 
 ## Sponsors
 
-\$include_sponsors\$
+<section>\$include_sponsors\$</section>

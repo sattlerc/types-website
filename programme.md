@@ -7,6 +7,6 @@ title: Programme
 Below is the preliminary programme.
 Click on a slot for details.
 
-\$programme_table\$
+<section id="programme_table">\$programme_table\$</section>
 
-\$programme_list\$
+<section id="programme_list">\$programme_list\$</section>
