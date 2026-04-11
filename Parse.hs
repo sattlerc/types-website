@@ -1,4 +1,4 @@
-{-# LANGUAGE DeriveAnyClass, DeriveGeneric, ImportQualifiedPost, OverloadedStrings, ScopedTypeVariables #-}
+{-# LANGUAGE ImportQualifiedPost, OverloadedStrings, ScopedTypeVariables #-}
 module Parse where
 
 import Control.Arrow ((>>>))
@@ -13,11 +13,11 @@ import Data.Function ((&), on)
 import Data.Map (Map)
 import Data.Map qualified as Map
 import Data.Text.Lazy (Text, unpack)
-import Data.Time (Day, NominalDiffTime, TimeOfDay)
+import Data.Time (Day, NominalDiffTime, TimeOfDay(TimeOfDay))
 import Data.Time qualified as Time
+import Data.Time.Format (defaultTimeLocale, formatTime)
 import Data.Time.Format.ISO8601 qualified as ISO8601
 import Data.Tuple (swap)
-import GHC.Generics (Generic)
 import System.FilePath (takeBaseName, takeExtension)
 
 -- Utilities
@@ -34,10 +34,38 @@ maybeM_ x f = maybe (return ()) f x
 parens :: String -> String
 parens s = "(" ++ s ++ ")"
 
+time_of_day_to_diff :: TimeOfDay -> NominalDiffTime
+time_of_day_to_diff = Time.daysAndTimeOfDayToTime 0
+
+diff_to_time_of_day :: NominalDiffTime -> TimeOfDay
+diff_to_time_of_day = Time.timeToDaysAndTimeOfDay >>> snd
+
 time_add :: NominalDiffTime -> TimeOfDay -> TimeOfDay
-time_add diff = Time.daysAndTimeOfDayToTime 0
-  >>> (+ diff)
-  >>> (snd . Time.timeToDaysAndTimeOfDay)
+time_add diff = time_of_day_to_diff >>> (+ diff) >>> diff_to_time_of_day
+
+time_ratio :: (Fractional a) => NominalDiffTime -> NominalDiffTime -> a
+time_ratio = curry $ uncurry ((/) `on` toRational) >>> fromRational
+
+time_scale :: (Real a) => a -> NominalDiffTime -> NominalDiffTime
+time_scale s = toRational >>> (toRational s *) >>> fromRational
+
+time_of_day_diff :: TimeOfDay -> TimeOfDay -> NominalDiffTime
+time_of_day_diff = on subtract time_of_day_to_diff
+
+time_format :: ISO8601.Format TimeOfDay
+time_format = ISO8601.hourMinuteFormat ISO8601.ExtendedFormat
+
+time_show :: TimeOfDay -> String
+time_show = ISO8601.formatShow time_format
+
+time_parse :: (MonadFail m) => String -> m TimeOfDay
+time_parse = ISO8601.formatParseM time_format
+
+show_month_and_day :: Day -> String
+show_month_and_day = formatTime defaultTimeLocale "%e %B"
+
+show_day_detailed :: Day -> String
+show_day_detailed date = show (Time.dayOfWeek date) ++ ", " ++ show_month_and_day date
 
 -- JSON parsing.
 
@@ -102,7 +130,7 @@ data Session = Session
   } deriving (Eq, Show)
 
 instance FromJSON Session where
-  parseJSON = withObject "session" $ \v -> Session
+  parseJSON = withObject "Session" $ \v -> Session
     <$> v .: "id"
     <*> v .: "title"
     <*> v .: "papers"
@@ -121,28 +149,23 @@ type TimeOfDayRange = (TimeOfDay, TimeOfDay)
 
 data Title = Title
   { title_string :: String
+  , title_short :: Maybe String
   , title_html :: Maybe String
+  , title_link :: Maybe String
   } deriving (Eq, Show)
 
 parse_title :: Object -> Parser Title
 parse_title v = Title
   <$> v .: "title"
+  <*> v .:? "short"
   <*> v .:? "title_html"
+  <*> v .:? "link"
 
 data Event = EventBreak { event_break :: Title }
            | EventInvitedTalk { event_invited_talk_key :: String }
            | EventSession { event_session_id :: Integer }
            | EventSpecial { event_special :: Title }
   deriving (Eq, Show)
-
-time_format :: ISO8601.Format TimeOfDay
-time_format = ISO8601.hourMinuteFormat ISO8601.ExtendedFormat
-
-time_show :: TimeOfDay -> String
-time_show = ISO8601.formatShow time_format
-
-time_parse :: (MonadFail m) => String -> m TimeOfDay
-time_parse = ISO8601.formatParseM time_format
 
 parse_ranged_event :: Value -> Parser (TimeOfDayRange, Event)
 parse_ranged_event = withObject "ranged_event" $ \v -> do
@@ -200,7 +223,13 @@ data Author = Author
   { author_first :: String
   , author_last :: String
   , author_affiliation :: String
-  } deriving (Eq, FromJSON, Generic, Show)
+  } deriving (Eq, Show)
+
+instance FromJSON Author where
+  parseJSON = withObject "Author" $ \v -> Author
+    <$> v .: "first"
+    <*> v .: "last"
+    <*> v .: "affiliation"
 
 lowercase :: String -> String
 lowercase = map toLower
@@ -265,4 +294,7 @@ papers_with_abstract abstracts = Map.mapWithKey $
 -- Data.
 
 talk_length :: NominalDiffTime
-talk_length = Time.daysAndTimeOfDayToTime 0 $ Time.midnight {Time.todMin = 20}
+talk_length = time_of_day_to_diff $ Time.midnight {Time.todMin = 20}
+
+schedule_unit :: NominalDiffTime
+schedule_unit = time_of_day_to_diff $ TimeOfDay 1 0 0

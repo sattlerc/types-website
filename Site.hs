@@ -66,19 +66,17 @@ papers_id :: Identifier
 papers_id = "data/papers.json"
 
 papers_compiler :: Compiler Papers
-papers_compiler = do
-  abstracts <- parse_directory parse_abstract pattern_abstracts
-  papers <- data_compiler parse_file_papers papers_id
-  return $ papers_with_abstract abstracts papers
+papers_compiler = papers_with_abstract
+  <$> parse_directory parse_abstract pattern_abstracts
+  <*> data_compiler parse_file_papers papers_id
 
 inviteds_id :: Identifier
 inviteds_id = "data/invited.json"
 
 inviteds_compiler :: Compiler Inviteds
-inviteds_compiler = do
-  pictures <- parse_directory parse_picture "images/invited/*"
-  inviteds <- data_compiler parse_file_inviteds inviteds_id
-  return $ inviteds_with_pictures pictures inviteds
+inviteds_compiler = inviteds_with_pictures
+  <$> parse_directory parse_picture "images/invited/*"
+  <*> data_compiler parse_file_inviteds inviteds_id
 
 sessions_id :: Identifier
 sessions_id = "data/sessions.json"
@@ -114,18 +112,14 @@ include_context = map include_field >>> mconcat
 
 data_context :: Context String
 data_context = mconcat
-  [ field "papers_list" $ const $ do
-      papers <- papers_compiler
-      return $ format_papers papers
-  , field "invited_list" $ const $ do
-      inviteds <- inviteds_compiler
-      return $ format_invited_speakers inviteds
-  , field "programme_list" $ const $ do
-      papers <- papers_compiler
-      inviteds <- inviteds_compiler
-      sessions <- sessions_compiler
-      schedule <- schedule_compiler
-      return $ format_schedule papers inviteds sessions schedule
+  [ field "papers_list" $ const $
+      format_papers <$> papers_compiler
+  , field "invited_list" $ const $
+      format_invited_speakers <$> inviteds_compiler
+  , field "programme_list" $ const $
+      format_schedule <$> papers_compiler <*> inviteds_compiler <*> sessions_compiler <*> schedule_compiler
+  , field "programme_table" $ const $
+      format_schedule_table <$> papers_compiler <*> inviteds_compiler <*> sessions_compiler <*> schedule_compiler
   ]
 
 page_compiler :: Compiler (Item String)
