@@ -11,8 +11,6 @@ Social events
 We will offer a simple reception on **Monday 4th of May** right after
 the last talk is over at the same venue of the conference.
 
-<br>
-
 ::: {#excursion .section}
 ### Excursion
 
