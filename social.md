@@ -5,13 +5,11 @@ title: Social events
 Social events
 =============
 
-::: {#reception .section}
 ### Reception
 
 We will offer a simple reception on **Monday 4th of May** right after
 the last talk is over at the same venue of the conference.
 
-::: {#excursion .section}
 ### Excursion
 
 <img src="images/ms-st-erik.webp" alt="M/S S:t Erik" title="M/S S:t Erik" width="40%" height="40%" class="d-sm-none d-md-block float-end" style="padding-left: 20px">
@@ -22,9 +20,7 @@ There is a café and bar on the boat where you can buy drinks or something to ea
 <p><br></p>
 <p><br></p>
 <p><br></p>
-:::
 
-::: {#dinner .section}
 ### Conference dinner
 
 <!-- ![](images/wijkanders-2048x532.png "Wijkanders"){.img-fluid .d-block .my-5}
@@ -34,4 +30,3 @@ There is a café and bar on the boat where you can buy drinks or something to ea
 
 The conference dinner will take place at [Wijkanders](https://wijkanders.se/en/) located on [Vera Sandersbergs allé 5B](https://www.google.com/maps/place/Wijkanders/@57.6926316,11.9571294,15z/data=!3m2!4b1!5s0x464ff37369787c39:0xf5fc7ce3442daded!4m6!3m5!1s0x464ff3736be94497:0x57820489e5a0243a!8m2!3d57.6926215!4d11.9755618!16s%2Fg%2F11cncd4bbc?entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D) on **Thursday 7th of May at 18:30**. \
 To get to Wijkanders get tram 10 from Lindholmen to Kapellplatsen (ca 20 min), from Kapellplatsen it is just  3 min walk.
-:::

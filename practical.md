@@ -118,7 +118,6 @@ Prices are subject to room availability. Some of the hotels have reserved a numb
   E-mail to <info@hotelposeidon.com> and refer to code **TYPES 2026** or reservation number **264917** to get Chalmers prices during the period **2-10 May 2026**. \
   Single superior: 1137 sek \
   Double room, 2 people: 1486 sek
-:::
 
 ### Travel
 

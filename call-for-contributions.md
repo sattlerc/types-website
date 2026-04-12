@@ -70,6 +70,6 @@ Tentative submission deadline for the post-proceedings: October 2026.
 Committees
 ----------
 
-* [Program committee](committees.html#pc)
-* [Organizing comittee](committees.html#organizers)
-* [Steering committee](committees.html#sc)
+* [Program committee](committees.html#program-committee)
+* [Organizing comittee](committees.html#organizing-committee)
+* [Steering committee](committees.html#steering-committee)

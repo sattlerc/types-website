@@ -5,7 +5,6 @@ title: Committees
 Committees
 ==========
 
-::: {#organisers .section}
 ## Local organisers
 
 Contact email: <types2026@chalmers.se>
@@ -15,10 +14,8 @@ Contact email: <types2026@chalmers.se>
 - [Ana Bove](https://www.chalmers.se/en/persons/bove) (Chalmers University of Technology, Sweden)
 - [Peter Dybjer](https://www.chalmers.se/en/persons/peterd) (Chalmers University of Technology, Sweden)
 - [Christian Sattler](https://www.chalmers.se/en/persons/sattler) (Chalmers University of Technology, Sweden)
-:::
 
-::: {#pc .section}
-## Program Committee
+## Program committee
 
 Contact email: <types2026-pc@chalmers.se>
 
@@ -46,10 +43,8 @@ Contact email: <types2026-pc@chalmers.se>
 * Josef Urban (Czech Technical University in Prague, Czech Republic)
 * Niccolò Veltri (Tallinn University of Technology, Estonia)
 * Stephanie Weirich (University of Pennsylvania, US)
-:::
 
-::: {#sc .section}
-## Steering Committee
+## Steering committee
 
 - Malin Altenmüller (University of Edinburgh, Scotland)
 - Fredrik Nordvall Forsberg (University of Strathclyde, Scotland)
@@ -57,4 +52,3 @@ Contact email: <types2026-pc@chalmers.se>
 - Meven Lennon-Bertrand (INRIA, France)
 - Rasmus Ejlers Møgelberg (IT University of Copenhagen, Denmark) (chair)
 - Christian Sattler (Chalmers University of Technology, Sweden)
-:::
