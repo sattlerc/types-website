@@ -180,14 +180,14 @@ format_schedule_table inviteds (Schedule schedule) = BlazePretty.renderHtml form
   pos_unit :: TimeOfDay -> Rational
   pos_unit = pos >>> (height_row *) >>> (height_heading +)
 
-  css_attr_height :: String -> Rational -> Rational -> String
-  css_attr_height unit margin value = css_attr "height" $ show (fromRational (value + margin) :: Double) ++ unit
+  -- css_attr_height :: String -> Rational -> Rational -> String
+  -- css_attr_height unit margin value = css_attr "height" $ show (fromRational (value + margin) :: Double) ++ unit
 
   css_vert_pos :: String -> TimeOfDay -> String
   css_vert_pos attr = pos_unit >>> fromRational >>> css_attr_length attr height_unit
 
   css_height :: TimeOfDayRange -> String
-  css_height = uncurry (on subtract pos_unit) >>> fromRational >>> css_attr_height height_unit 1
+  css_height = uncurry (on subtract pos_unit) >>> fromRational >>> css_attr_length "height" height_unit
 
   header_style :: [String]
   header_style = [css_attr "top" "0", css_vert_pos "height" day_start]
