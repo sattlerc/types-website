@@ -306,18 +306,29 @@ format_schedule papers inviteds sessions (Schedule schedule) = BlazePretty.rende
     format_session :: Session -> Html
     format_session session =
       Blaze.li Blaze.! BlazeAttr.id (fromString $ session_anchor id_) $ do
-        blaze_strict $ prefix <> (Blaze.string $ "Session " ++ show_id id_)
+        blaze_strict $ prefix <> (Blaze.string $ with_chair $ "Session " ++ show_id id_)
         blaze_ul_strict items_checked
       where
+      id_ :: Integer
       id_ = session_id session
+
+      with_chair :: String -> String
+      with_chair info = case session_chair session of
+        Nothing -> info
+        Just chair -> info ++ parens ("chair: " ++ chair)
+
+      items :: [Html]
+      end_computed :: TimeOfDay
       (items, end_computed) = session & session_papers &
         traverse ((papers Map.!) >>> format_talk) &
         flip runState start
-      items_checked = if end_computed == end
-        then items
-        else error $ "session " ++ show_id id_ ++ " has bad length: "
-             ++ "ends at " ++ time_show end ++ ", "
-             ++ "but talks end at " ++ time_show end_computed
+
+      items_checked
+        | end_computed == end = items
+        | otherwise = error
+          $ "session " ++ show_id id_ ++ " has bad length: "
+          ++ "ends at " ++ time_show end ++ ", "
+          ++ "but talks end at " ++ time_show end_computed
 
   format_day :: Day -> DaySchedule -> Html
   format_day date ranged_events = do

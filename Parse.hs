@@ -80,6 +80,7 @@ data Session = Session
   { session_id :: Integer
   , session_title :: String
   , session_papers :: [Integer]
+  , session_chair :: Maybe String
   } deriving (Eq, Show)
 
 instance FromJSON Session where
@@ -87,6 +88,7 @@ instance FromJSON Session where
     <$> v .: "id"
     <*> v .: "title"
     <*> v .: "papers"
+    <*> v .:? "chair"
 
 type Sessions = Map Integer Session
 
