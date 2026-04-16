@@ -18,7 +18,6 @@ If needed, participants can buy an **extra** ticket to the excursion and/or to t
 Prices are as follow:
 
 - **extra ticket excursion:** 400 SEK
-- **extra ticket banquet:** 800 SEK
 
 #### Visa information
 
