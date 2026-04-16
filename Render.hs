@@ -315,7 +315,7 @@ format_schedule papers inviteds sessions (Schedule schedule) = BlazePretty.rende
       with_chair :: String -> String
       with_chair info = case session_chair session of
         Nothing -> info
-        Just chair -> info ++ parens ("chair: " ++ chair)
+        Just chair -> info ++ " " ++ parens ("chair: " ++ chair)
 
       items :: [Html]
       end_computed :: TimeOfDay
