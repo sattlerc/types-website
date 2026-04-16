@@ -12,10 +12,12 @@ The registration fees are as follows:
 - **Late regular registration (until 16 April):** 4600 SEK
 - **Late student registration (until 16 April):** 3900 SEK
 
-The registration fee includes coffee breaks and lunches every day 4--8 May, a ticket to the excursion on 5 May and a ticket to the banquet on 7 May.
+The registration fee includes coffee breaks and lunches every day 4--8
+May, the recption on 4 May, a ticket to the excursion on 5 May and a
+ticket to the banquet on 7 May.
 
-If needed, participants can buy an **extra** ticket to the excursion and/or to the banquet.
-Prices are as follow:
+If needed, participants can buy an **extra** ticket to the excursion.
+Price is as follow:
 
 - **extra ticket excursion:** 400 SEK
 
