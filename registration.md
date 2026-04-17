@@ -12,9 +12,11 @@ Registration is now closed.
 - ~~**Late regular registration (until 16 April):** 4600 SEK~~ passed
 - ~~**Late student registration (until 16 April):** 3900 SEK~~ passed
 
-The registration fee includes coffee breaks and lunches every day 4--8
-May, the recption on 4 May, a ticket to the excursion on 5 May and a
-ticket to the banquet on 7 May.
+The registration fee includes the following:
+* coffee breaks and lunches every day 4--8 May,
+* reception on 4 May,
+* a ticket to the excursion on 5 May,
+* a ticket to the banquet on 7 May.
 
 #### Visa information
 
