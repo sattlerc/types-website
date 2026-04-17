@@ -1,7 +1,9 @@
 module General where
 
 import Control.Arrow ((>>>))
+import Data.Char (isSpace)
 import Data.Function (on)
+import Data.List (dropWhileEnd, groupBy)
 import Data.Time (Day, NominalDiffTime, TimeOfDay)
 import Data.Time qualified as Time
 import Data.Time.Format (defaultTimeLocale, formatTime)
@@ -11,6 +13,12 @@ import Data.Time.Format.ISO8601 qualified as ISO8601
 
 -- strip_suffix :: (Eq a) => [a] -> [a] -> Maybe [a]
 -- strip_suffix suffix = reverse >>> stripPrefix (reverse suffix) >>> fmap reverse
+
+split_at :: (a -> Bool) -> [a] -> [[a]]
+split_at p = groupBy ((==) `on` p) >>> filter (head >>> p >>> not)
+
+trim :: String -> String
+trim = dropWhileEnd isSpace >>> dropWhile isSpace
 
 fail_maybe :: (MonadFail m) => String -> Maybe a -> m a
 fail_maybe msg = maybe (fail msg) return
@@ -53,4 +61,3 @@ show_month_and_day = formatTime defaultTimeLocale "%e %B"
 
 show_day_detailed :: Day -> String
 show_day_detailed date = show (Time.dayOfWeek date) ++ ", " ++ show_month_and_day date
-

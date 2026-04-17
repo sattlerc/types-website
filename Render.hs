@@ -107,6 +107,12 @@ invited_speaker_picture = ("images/invited/" ++)
 invited_speaker_link :: String -> String
 invited_speaker_link = anchorize "invited-speakers.html"
 
+format_invited_abstract :: String -> Html
+format_invited_abstract = lines
+  >>> split_at null
+  >>> map (unlines >>> trim >>> Blaze.string >>> Blaze.p >>> blaze_strict)
+  >>> mconcat
+
 format_invited_speaker :: String -> Invited -> Html
 format_invited_speaker key invited = Blaze.div
   Blaze.! BlazeAttr.id (fromString key)
@@ -125,10 +131,10 @@ format_invited_speaker key invited = Blaze.div
       maybeM_ (invited_title invited) $ Blaze.string >>> Blaze.h5
       when (any (($ invited) >>> isJust) [invited_abstract_html, invited_abstract]) $ do
         Blaze.details Blaze.! BlazeAttr.open mempty $ do
-          Blaze.summary $ Blaze.string "Abstract"
+          blaze_strict $ Blaze.summary $ Blaze.string "Abstract"
           case invited_abstract_html invited of
             Just s -> Blaze.preEscapedString s
-            Nothing -> Blaze.p $ Blaze.string $ fromJust $ invited_abstract invited
+            Nothing -> format_invited_abstract $ fromJust $ invited_abstract invited
 
 format_invited_speakers :: Inviteds -> String
 format_invited_speakers = Map.toAscList
