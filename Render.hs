@@ -147,8 +147,8 @@ format_invited_speakers = Map.toAscList
 session_anchor :: Integer -> String
 session_anchor id_ = "session-" ++ show id_
 
-format_schedule_table :: Inviteds -> Schedule -> String
-format_schedule_table inviteds (Schedule schedule) = BlazePretty.renderHtml format
+format_schedule_table :: Inviteds -> Sessions -> Schedule -> String
+format_schedule_table inviteds sessions (Schedule schedule) = BlazePretty.renderHtml format
   where
   times :: (TimeOfDayRange -> TimeOfDay) -> [TimeOfDay]
   times f = do
@@ -228,14 +228,20 @@ format_schedule_table inviteds (Schedule schedule) = BlazePretty.renderHtml form
     EventSpecial title -> title_link title
 
   format_ranged_event :: (TimeOfDayRange, Event) -> Html
-  format_ranged_event (range@(start, _), event) = cell (event_link event) classes (cell_style range) $ do
-    blaze_strict $ Blaze.div $ case event of
-      EventBreak title -> format_title False True title
-      EventInvitedTalk key -> Blaze.string $ invited_speaker (inviteds Map.! key)
-      EventSession id_ -> Blaze.string $ "Session " ++ show_id id_
-      EventSpecial title -> format_title False True title
-    blaze_strict $ Blaze.div $ Blaze.string $ time_show start
+  format_ranged_event (range@(start, _), event) = cell (event_link event) ([event_slot_class event] ++ size_classes) (cell_style range) $ do
+    Blaze.div Blaze.! blaze_classes ["d-flex", "justify-content-between"] $ do
+      blaze_strict $ Blaze.div $ case event of
+        EventBreak title -> format_title False True title
+        EventInvitedTalk key -> Blaze.string $ invited_speaker (inviteds Map.! key)
+        EventSession id_ -> Blaze.string $ "Session " ++ show_id id_
+        EventSpecial title -> format_title False True title
+      blaze_strict $ Blaze.div $ Blaze.string $ time_show start
+    case event of
+      EventSession id_ -> Blaze.div Blaze.! blaze_styles [css_attr "font-size" "small"] $
+        Blaze.string $ session_title (sessions Map.! id_)
+      _ -> return ()
     where
+
     duration_minutes :: NominalDiffTime
     duration_minutes = uncurry time_of_day_diff range / 60
 
@@ -249,9 +255,6 @@ format_schedule_table inviteds (Schedule schedule) = BlazePretty.renderHtml form
     size_classes = case size of
       Just s -> ["programme-table-" ++ s]
       Nothing -> []
-
-    classes :: [String]
-    classes = ["d-flex", "justify-content-between", event_slot_class event] ++ size_classes
 
   format_day :: Day -> DaySchedule -> Html
   format_day date ranged_events = column [] [] $ do
@@ -312,7 +315,7 @@ format_schedule papers inviteds sessions (Schedule schedule) = BlazePretty.rende
     format_session :: Session -> Html
     format_session session =
       Blaze.li Blaze.! BlazeAttr.id (fromString $ session_anchor id_) $ do
-        blaze_strict $ prefix <> (Blaze.string $ with_chair $ "Session " ++ show_id id_)
+        blaze_strict $ prefix <> (Blaze.string $ with_chair $ "Session " ++ show_id id_ ++ ": " ++ session_title session)
         blaze_ul_strict items_checked
       where
       id_ :: Integer

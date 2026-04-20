@@ -119,7 +119,7 @@ data_context = mconcat
   , field "programme_list" $ const $
       format_schedule <$> papers_compiler <*> inviteds_compiler <*> sessions_compiler <*> schedule_compiler
   , field "programme_table" $ const $
-      format_schedule_table <$> inviteds_compiler <*> schedule_compiler
+      format_schedule_table <$> inviteds_compiler <*> sessions_compiler <*> schedule_compiler
   ]
 
 page_compiler :: Compiler (Item String)
@@ -144,7 +144,7 @@ main = hakyll $ do
 
   -- Files that should just be copied over.
   -- Files in `monitor` are for monitoring website availability.
-  match ("css/*" .||. "images/**" .||. pattern_abstracts .||. "files/**" .||. "monitor/**") $ do
+  match ("css/**" .||. "images/**" .||. pattern_abstracts .||. "files/**" .||. "monitor/**") $ do
     route $ customRoute $ toFilePath
     compile copyFileCompiler
 
