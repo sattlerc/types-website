@@ -79,6 +79,7 @@ inviteds_with_pictures pictures = Map.mapWithKey $
 data Session = Session
   { session_id :: Integer
   , session_title :: String
+  , session_title_short :: Maybe String
   , session_papers :: [Integer]
   , session_chair :: Maybe String
   } deriving (Eq, Show)
@@ -87,8 +88,12 @@ instance FromJSON Session where
   parseJSON = withObject "Session" $ \v -> Session
     <$> v .: "id"
     <*> v .: "title"
+    <*> v .:? "title_short"
     <*> v .: "papers"
     <*> v .:? "chair"
+
+session_title_short_maybe :: Session -> String
+session_title_short_maybe = with_fallback session_title session_title_short
 
 type Sessions = Map Integer Session
 
@@ -108,6 +113,9 @@ data Title = Title
   , title_html :: Maybe String
   , title_link :: Maybe String
   } deriving (Eq, Show)
+
+title_short_maybe :: Title -> String
+title_short_maybe = with_fallback title_string title_short
 
 parse_title :: Object -> Parser Title
 parse_title v = Title

@@ -238,7 +238,7 @@ format_schedule_table inviteds sessions (Schedule schedule) = BlazePretty.render
       blaze_strict $ Blaze.div $ Blaze.string $ time_show start
     case event of
       EventSession id_ -> Blaze.div Blaze.! blaze_styles [css_attr "font-size" "small"] $
-        Blaze.string $ session_title (sessions Map.! id_)
+        Blaze.string $ session_title_short_maybe (sessions Map.! id_)
       _ -> return ()
     where
 

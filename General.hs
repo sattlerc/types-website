@@ -1,9 +1,10 @@
 module General where
 
-import Control.Arrow ((>>>))
+import Control.Arrow ((>>>), (&&&))
 import Data.Char (isSpace)
 import Data.Function (on)
 import Data.List (dropWhileEnd, groupBy)
+import Data.Maybe (fromMaybe)
 import Data.Time (Day, NominalDiffTime, TimeOfDay)
 import Data.Time qualified as Time
 import Data.Time.Format (defaultTimeLocale, formatTime)
@@ -13,6 +14,9 @@ import Data.Time.Format.ISO8601 qualified as ISO8601
 
 -- strip_suffix :: (Eq a) => [a] -> [a] -> Maybe [a]
 -- strip_suffix suffix = reverse >>> stripPrefix (reverse suffix) >>> fmap reverse
+
+with_fallback :: (a -> b) -> (a -> Maybe b) -> (a -> b)
+with_fallback f g = (f &&& g) >>> uncurry fromMaybe
 
 split_at :: (a -> Bool) -> [a] -> [[a]]
 split_at p = groupBy ((==) `on` p) >>> filter (head >>> p >>> not)
