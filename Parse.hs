@@ -43,6 +43,7 @@ data Invited = Invited
   , invited_abstract :: Maybe String
   , invited_abstract_html :: Maybe String
   , invited_picture :: Maybe String
+  , invited_chair :: Maybe String
   } deriving (Eq, Show)
 
 instance FromJSON Invited where
@@ -53,6 +54,7 @@ instance FromJSON Invited where
     <*> v .:? "title"
     <*> v .:? "abstract"
     <*> v .:? "abstract_html"
+    <*> v .:? "chair"
     <*> return Nothing
 
 type Inviteds = Map String Invited
