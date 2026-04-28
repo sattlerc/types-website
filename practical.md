@@ -146,8 +146,7 @@ There are of course many other companies offering bikes, scooter and taxi servic
 
 ### Internet access
 
-Eduroam Internet access is available at the conference venue; if not already configured, you can [download a configuration tool for your device here](https://cat.eduroam.org/).
-If you do not have access to Eduroam. This is also a guest WiFi network at the conference center that you can use while there.
+There is a guest WiFi network named Lindholmen Guest at the conference center that you can use while there.
 
 ### Other practical information
 
