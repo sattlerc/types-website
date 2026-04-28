@@ -298,9 +298,16 @@ format_schedule papers inviteds sessions (Schedule schedule) = BlazePretty.rende
     format_invited_talk key invited = case invited_title invited of
       Nothing -> blaze_link (invited_speaker_link key) $ Blaze.string $ invited_speaker invited
       Just title -> do
+        Blaze.string "Invited talk: "
         Blaze.string (invited_speaker invited)
         Blaze.string ": "
         blaze_link (invited_speaker_link key) $ Blaze.string title
+        format_chair $ invited_chair invited
+
+    format_chair :: Maybe String -> Html
+    format_chair = \case
+      Nothing    -> mempty
+      Just chair -> Blaze.string $ " :" ++ parens ("chair: " ++ chair)
 
     format_talk :: Paper -> State TimeOfDay Html
     format_talk paper = do
@@ -315,16 +322,14 @@ format_schedule papers inviteds sessions (Schedule schedule) = BlazePretty.rende
     format_session :: Session -> Html
     format_session session =
       Blaze.li Blaze.! BlazeAttr.id (fromString $ session_anchor id_) $ do
-        blaze_strict $ prefix <> (Blaze.string $ with_chair $ "Session " ++ show_id id_ ++ ": " ++ session_title session)
+        blaze_strict do
+          prefix
+          Blaze.string $ "Session " ++ show_id id_ ++ ": " ++ session_title session
+          format_chair $ session_chair session
         blaze_ul_strict items_checked
       where
       id_ :: Integer
       id_ = session_id session
-
-      with_chair :: String -> String
-      with_chair info = case session_chair session of
-        Nothing -> info
-        Just chair -> info ++ " " ++ parens ("chair: " ++ chair)
 
       items :: [Html]
       end_computed :: TimeOfDay
