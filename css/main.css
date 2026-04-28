@@ -1,3 +1,18 @@
+/* A color palette generated from out title picture (Gothenburg canal) */
+/* https://coolors.co/71b9ea-d4bf9d-e1d3c6-589fd2-c7bfbc-b1d9bf-eff3f7-b49c7e */
+
+:root {
+  --cool-sky: #71B9EA;
+  --blue-bell:  #91D9FA; /* WAS: #589FD2; */
+  --celadon: #B1D9BF;
+  --pale-oak: #D4BF9D;
+  --almond-cream: #E1D3C6;
+  --camel: #B49C7E;
+  --silver: #C7BFBC;
+  --platinum: #EFF3F7;
+}
+
+
 /* Make a link behave like div. */
 .div {
   color: inherit;
@@ -28,7 +43,7 @@
 .programme-table > div > div {
   border-right: solid thin;
   width: 100%;
-  background-color: lightgray;
+  background-color: var(--platinum); /* WAS: lightgray; */
 }
 
 /* Programme table column header or slot */
@@ -39,7 +54,7 @@
 /* Programme table column header */
 .programme-table > div > div > *:first-child {
   border-bottom: solid thin;
-  background-color: plum;
+  background-color: var(--pale-oak); /* WAS: plum; */
 }
 
 /* Programme table column slot */
@@ -71,19 +86,19 @@
 }
 
 .programme-table-slot-break {
-  background-color: lightyellow;
+  background-color: var(--almond-cream); /* WAS: lightyellow; */
 }
 
 .programme-table-slot-invited {
-  background-color: lightcyan;
+  background-color: var(--cool-sky); /* WAS: lightcyan; */
 }
 
 .programme-table-slot-session {
-  background-color: lightblue;
+  background-color: var(--blue-bell); /* WAS: lightblue; */
 }
 
 .programme-table-slot-special {
-  background-color: lightgreen;
+  background-color: var(--celadon); /* WAS: lightgreen; */
 }
 
 /*** Invited speakers ***/
