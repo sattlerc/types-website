@@ -42,8 +42,8 @@ data Invited = Invited
   , invited_title :: Maybe String
   , invited_abstract :: Maybe String
   , invited_abstract_html :: Maybe String
-  , invited_picture :: Maybe String
   , invited_chair :: Maybe String
+  , invited_picture :: Maybe String
   } deriving (Eq, Show)
 
 instance FromJSON Invited where

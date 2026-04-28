@@ -307,7 +307,7 @@ format_schedule papers inviteds sessions (Schedule schedule) = BlazePretty.rende
     format_chair :: Maybe String -> Html
     format_chair = \case
       Nothing    -> mempty
-      Just chair -> Blaze.string $ " :" ++ parens ("chair: " ++ chair)
+      Just chair -> Blaze.string $ " " ++ parens ("chair: " ++ chair)
 
     format_talk :: Paper -> State TimeOfDay Html
     format_talk paper = do
