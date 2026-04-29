@@ -110,7 +110,7 @@ class CalendarGenerator:
                     case "Excursion":
                         add(location="Lindholmenspiren", trigger=timedelta(minutes=-10))
                     case "Opening address":
-                        add(location=LOCATION_TALK)
+                        add(location=LOCATION_TALK, trigger=timedelta(minutes=-5))
                     case "Business meeting":
                         add(location=LOCATION_TALK, trigger=timedelta(minutes=-5))
             case "invited_talk":
