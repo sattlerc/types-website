@@ -29,13 +29,6 @@ class CalendarGenerator:
         self.cal.add("prodid", "-//Chalmers University of Technology//TYPES 2026//EN")
         self.cal.add("summary", "TYPES 2026")
 
-    def parse_datetime(self, date_str, time_str) -> datetime:
-        return datetime.combine(
-            date.fromisoformat(date_str),
-            time.fromisoformat(time_str),
-            tzinfo=self.TIMEZONE,
-        )
-
     @cached_property
     def inviteds(self):
         return load_json(self.DATA / "invited.json")
@@ -53,6 +46,17 @@ class CalendarGenerator:
     @cached_property
     def schedule(self):
         return load_json(self.DATA / "schedule.json")
+
+    def parse_datetime(self, date_str, time_str) -> datetime:
+        return datetime.combine(
+            date.fromisoformat(date_str),
+            time.fromisoformat(time_str),
+            tzinfo=self.TIMEZONE,
+        )
+
+    def authors(self, paper):
+        for author in paper["authors"]:
+            yield " ".join([author["first"], author["last"]])
 
     def uid(self, identifier: str):
         return identifier + "@types2026.cse.chalmers.se"
@@ -107,6 +111,8 @@ class CalendarGenerator:
                         add(location="Lindholmenspiren", trigger=timedelta(minutes=-10))
                     case "Opening address":
                         add(location=LOCATION_TALK)
+                    case "Business meeting":
+                        add(location=LOCATION_TALK, trigger=timedelta(minutes=-5))
             case "invited_talk":
                 speaker = event["speaker"]
                 invited = self.inviteds[speaker]
@@ -117,16 +123,11 @@ class CalendarGenerator:
                     location=LOCATION_TALK,
                 )
             case "session":
-                id = event["id"]
-                session = self.sessions[id]
+                session = self.sessions[event["id"]]
                 time_start = time_from
                 trigger = timedelta(minutes=-5)
                 for pid in session["papers"]:
                     paper = self.papers[pid]
-
-                    def authors():
-                        for author in paper["authors"]:
-                            yield " ".join([author["first"], author["last"]])
 
                     time_end = time_start + LENGTH_CONTRIBUTED_TALK
                     add(
@@ -134,22 +135,19 @@ class CalendarGenerator:
                         start=time_start,
                         end=time_end,
                         summary=paper["title"],
-                        description=", ".join(authors()),
+                        description=", ".join(self.authors(paper)),
                         location=LOCATION_TALK,
                         trigger=trigger,
                     )
                     time_start = time_end
                     trigger = ALARM_DISABLE
-                pass
 
     def generate(self):
         for schedule_entry in self.schedule:
-            date = schedule_entry["date"]
-            events = schedule_entry["events"]
-            for event in events:
+            for event in schedule_entry["events"]:
                 self.process_event(
-                    self.parse_datetime(date, event["from"]),
-                    self.parse_datetime(date, event["to"]),
+                    self.parse_datetime(schedule_entry["date"], event["from"]),
+                    self.parse_datetime(schedule_entry["date"], event["to"]),
                     event,
                 )
 
