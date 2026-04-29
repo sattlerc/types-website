@@ -11,7 +11,7 @@ from functools import cached_property
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from icalendar import Calendar, Event
+from icalendar import Alarm, Calendar, Event
 
 
 def load_json(path):
@@ -61,6 +61,7 @@ class CalendarGenerator:
         LENGTH_CONTRIBUTED_TALK = timedelta(minutes=20)
         LOCATION_CONFERENCE = "Lindholmen Conference Centre"
         LOCATION_TALK = "Lindholmen Conference Centre, Room Pascal"
+        ALARM_DISABLE = date(year=1984, month=1, day=1)
 
         type_ = event["type"]
         title = event.get("title")
@@ -72,6 +73,7 @@ class CalendarGenerator:
             summary=title,
             description=None,
             location=None,
+            trigger=None,
         ):
             if identifier is None:
                 identifier = summary.lower().replace(" ", "_")
@@ -85,6 +87,11 @@ class CalendarGenerator:
                 event.add("location", location)
             if description is not None:
                 event.add("description", description)
+            if trigger is not None:
+                alarm = Alarm()
+                alarm.add("action", "DISPLAY")
+                alarm.add("trigger", trigger)
+                event.add_component(alarm)
             self.cal.add_component(event)
 
         match type_:
@@ -97,7 +104,7 @@ class CalendarGenerator:
                     case "Dinner":
                         add(location="Wijkanders, Vera Sandersbergs allé 5B")
                     case "Excursion":
-                        add(location="Lindholmenspiren")
+                        add(location="Lindholmenspiren", trigger=timedelta(minutes=-10))
                     case "Opening address":
                         add(location=LOCATION_TALK)
             case "invited_talk":
@@ -113,6 +120,7 @@ class CalendarGenerator:
                 id = event["id"]
                 session = self.sessions[id]
                 time_start = time_from
+                trigger = timedelta(minutes=-5)
                 for pid in session["papers"]:
                     paper = self.papers[pid]
 
@@ -128,8 +136,10 @@ class CalendarGenerator:
                         summary=paper["title"],
                         description=", ".join(authors()),
                         location=LOCATION_TALK,
+                        trigger=trigger,
                     )
                     time_start = time_end
+                    trigger = ALARM_DISABLE
                 pass
 
     def generate(self):
