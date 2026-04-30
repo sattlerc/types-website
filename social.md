@@ -29,4 +29,6 @@ There is a café and bar on the boat where you can buy drinks or something to ea
 
 <img src="images/wijkanders-2048x532.png" alt="Wijkanders" title="Wijkanders" width="50%" height="50%" style="padding-top: 10px">
 
-The conference dinner on **Thursday 7th of May at 18:30** will take place at [Wijkanders](https://wijkanders.se/en/) located on [Vera Sandersbergs allé 5B](https://www.google.com/maps/place/Wijkanders/@57.6926316,11.9571294,15z/data=!3m2!4b1!5s0x464ff37369787c39:0xf5fc7ce3442daded!4m6!3m5!1s0x464ff3736be94497:0x57820489e5a0243a!8m2!3d57.6926215!4d11.9755618!16s%2Fg%2F11cncd4bbc?entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D). To get there, take tram 10 from Lindholmen to Kapellplatsen (ca. 20 min). From there, it is just a 3-minute walk.
+The conference dinner on **Thursday 7th of May at 18:30** will take place at [Wijkanders](https://wijkanders.se/en/) located at [Vera Sandersbergs allé 5B](https://www.google.com/maps/place/Wijkanders/@57.6926316,11.9571294,15z/data=!3m2!4b1!5s0x464ff37369787c39:0xf5fc7ce3442daded!4m6!3m5!1s0x464ff3736be94497:0x57820489e5a0243a!8m2!3d57.6926215!4d11.9755618!16s%2Fg%2F11cncd4bbc?entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D).
+To get there, take tram 10 from Lindholmen to Kapellplatsen (ca. 20 min).
+From there, it is just a 3-minute walk.
