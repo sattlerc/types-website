@@ -24,9 +24,9 @@ To get to the venue you can eiher:
 
 ### Schedule
 
+The [programme](programme.html) is now available.
 The conference will run from ca 9:00 to ca 18:00 every day.
-We are planning a reception for Monday evening, an excursion for Tuesday afternoon, and a conference dinner on Thursday evening.
-For more information, see [social events](social.html).
+We are planning a reception for Monday evening, an excursion for Tuesday afternoon, and a conference dinner on Thursday evening (see [social events](social.html)).
 
 ### Internet access
 
