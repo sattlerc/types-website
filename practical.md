@@ -26,7 +26,11 @@ To get to the venue you can eiher:
 
 The conference will run from ca 9:00 to ca 18:00 every day.
 We are planning a reception for Monday evening, an excursion for Tuesday afternoon, and a conference dinner on Thursday evening.
-For more information see the page on [social events](social.html).
+For more information, see [social events](social.html).
+
+### Internet access
+
+The conference center has a guest WiFi network named **Lindholmen Guest**.
 
 ### Zulip channel
 
@@ -148,10 +152,6 @@ When bought via the app, the tickets are activated at the time of time of purcha
 Other options are [bikes for hire](https://styrochstall.se/en/) or electric scooters such as [Voi](https://www.voi.com/city/gothenburg). \
 Taxis are expensive in Sweden but [Bolt](https://bolt.eu/en/cities/gothenburg/) seems to have more reasonable prices. \
 There are of course many other companies offering bikes, scooter and taxi services.
-
-### Internet access
-
-There is a guest WiFi network named Lindholmen Guest at the conference center that you can use while there.
 
 ### Other practical information
 
