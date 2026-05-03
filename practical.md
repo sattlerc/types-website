@@ -30,7 +30,7 @@ For more information see the page on [social events](social.html).
 
 ### Zulip channel
 
-There is an unofficial [channel on the TYPES Zulip](https://typ.zulipchat.com/#narrow/channel/595239-TYPES26) you can use for communication between participants.
+There is an unofficial channel [#TYPES26](https://typ.zulipchat.com/#narrow/channel/595239-TYPES26) on the Types Zulip that you can use for communication between participants.
 Note that the organizers are not responsible for monitoring this channel.
 
 ### Accommodation
