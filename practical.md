@@ -24,8 +24,8 @@ To get to the venue you can eiher:
 
 ### Schedule
 
-The conferene will run from ca 9:00 to ca 18:00 every day. \
-We are planning an excursion for Tuesday afternoon and a conference dinner on Thursday evening.
+The conference will run from ca 9:00 to ca 18:00 every day.
+We are planning a reception for Monday evening, an excursion for Tuesday afternoon, and a conference dinner on Thursday evening.
 For more information see the page on [social events](social.html).
 
 ### Zulip channel
