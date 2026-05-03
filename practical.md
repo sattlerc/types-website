@@ -28,6 +28,11 @@ The conferene will run from ca 9:00 to ca 18:00 every day. \
 We are planning an excursion for Tuesday afternoon and a conference dinner on Thursday evening.
 For more information see the page on [social events](social.html).
 
+### Zulip channel
+
+There is an unofficial [channel on the TYPES Zulip](https://typ.zulipchat.com/#narrow/channel/595239-TYPES26) you can use for communication between participants.
+Note that the organizers are not responsible for monitoring this channel.
+
 ### Accommodation
 
 There are many hotels both around Lindholmen conference center and in the city centre.  \
