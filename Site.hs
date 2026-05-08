@@ -11,6 +11,7 @@ import System.FilePath (replaceExtension, takeBaseName, (</>))
 import Hakyll
 
 import Parse
+import Paths qualified
 import Render
 
 pairA :: (Applicative f) => (f a, f b) -> f (a, b)
@@ -56,47 +57,29 @@ parse_directory parse_file = (getMatches :: Pattern -> Compiler [Identifier])
   >=> traverse (toFilePath >>> parse_file &&& return >>> pairA)
   >>> fmap Map.fromList
 
-path_abstracts :: FilePath
-path_abstracts = "abstracts"
-
 pattern_abstracts :: Pattern
-pattern_abstracts = fromString $ path_abstracts ++ "/" ++ "*.pdf"
-
-path_slides_invited :: FilePath
-path_slides_invited = "slides-invited"
+pattern_abstracts = fromString $ Paths.abstracts ++ "/" ++ "*.pdf"
 
 pattern_slides_invited :: Pattern
-pattern_slides_invited = fromString $ path_slides_invited ++ "/" ++ "*.pdf"
-
-papers_id :: Identifier
-papers_id = "data/papers.json"
+pattern_slides_invited = fromString $ Paths.slides_invited ++ "/" ++ "*.pdf"
 
 papers_compiler :: Compiler Papers
 papers_compiler = papers_with_abstract
   <$> parse_directory parse_abstract pattern_abstracts
-  <*> data_compiler parse_file_papers papers_id
-
-inviteds_id :: Identifier
-inviteds_id = "data/invited.json"
+  <*> data_compiler parse_file_papers (fromString Paths.papers)
 
 inviteds_compiler :: Compiler Inviteds
 inviteds_compiler = do
-  inviteds <- data_compiler parse_file_inviteds inviteds_id
+  inviteds <- data_compiler parse_file_inviteds $ fromString Paths.inviteds
   pictures <- parse_directory parse_picture "images/invited/*"
   slides <- parse_directory parse_slides pattern_slides_invited
   return $ inviteds_with_slides slides $ inviteds_with_pictures pictures inviteds
 
-sessions_id :: Identifier
-sessions_id = "data/sessions.json"
-
 sessions_compiler :: Compiler Sessions
-sessions_compiler = data_compiler parse_file_sessions sessions_id
-
-schedule_id :: Identifier
-schedule_id = "data/schedule.json"
+sessions_compiler = data_compiler parse_file_sessions $ fromString Paths.sessions
 
 schedule_compiler :: Compiler Schedule
-schedule_compiler = data_compiler parse_file_schedule schedule_id
+schedule_compiler = data_compiler parse_file_schedule $ fromString Paths.schedule
 
 dir_include :: FilePath
 dir_include = "include"
@@ -166,7 +149,7 @@ main = hakyll $ do
     compile navigation_compiler
 
   -- Data.
-  match (fromList [papers_id, inviteds_id, sessions_id, schedule_id]) $
+  match (fromList $ map fromString [Paths.papers, Paths.inviteds, Paths.sessions, Paths.schedule]) $
     compile copyFileCompiler
 
   -- Includes.

@@ -27,4 +27,4 @@ executable site
     , time               >= 1.12     && < 2
     , unicode-collation  >= 0.1.3    && < 2
   main-is: Site.hs
-  other-modules: General, Parse, Render
+  other-modules: General, Parse, Paths, Render

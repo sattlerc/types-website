@@ -12,7 +12,7 @@ import Data.Function ((&), on)
 import Data.List (intercalate)
 import Data.Map (Map)
 import Data.Map qualified as Map
-import Data.Maybe (fromMaybe)
+import Data.Maybe (catMaybes, fromMaybe)
 import Data.Text.Lazy (Text, unpack)
 import Data.Time (Day, NominalDiffTime, TimeOfDay(TimeOfDay))
 import Data.Time qualified as Time
@@ -280,20 +280,22 @@ abstract_id_from_path path = do
 parse_abstract :: (MonadFail m) => FilePath -> m Integer
 parse_abstract path = fail_maybe ("invalid abstract filename: " ++ path) $ abstract_id_from_path path
 
--- parse_abstracts :: FilePath -> IO Abstracts
--- parse_abstracts = listDirectory
---   >=> traverse parse_abstract
---   >>> fmap Map.fromList
+parse_abstracts :: FilePath -> IO PaperAbstracts
+parse_abstracts = list_directory >>> fmap h where
+  h :: [FilePath] -> PaperAbstracts
+  h = map (\path -> do {id <- abstract_id_from_path path; return (id, path)})
+      >>> catMaybes
+      >>> Map.fromList
 
 papers_with_abstract :: PaperAbstracts -> Papers -> Papers
 papers_with_abstract abstracts = Map.mapWithKey $
     \id_ paper -> paper { paper_path = Map.lookup id_ abstracts}
 
--- parse_papers :: FilePath -> FilePath -> IO Papers
--- parse_papers path_json path_abstracts = do
---   papers <- parse_file_papers path_json
---   abstracts <- parse_abstracts path_json
---   return $ papers_with_abstract abstracts papers
+parse_papers :: FilePath -> FilePath -> IO Papers
+parse_papers path_json path_abstracts = do
+  papers <- parse_file_papers path_json
+  abstracts <- parse_abstracts path_abstracts
+  return $ papers_with_abstract abstracts papers
 
 -- Data.
 

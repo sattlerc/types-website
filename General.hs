@@ -13,6 +13,8 @@ import Data.Time qualified as Time
 import Data.Time.Format (defaultTimeLocale, formatTime)
 import Data.Time.Format.ISO8601 qualified as ISO8601
 import Data.Word (Word16)
+import System.Directory (listDirectory)
+import System.FilePath ((</>))
 import Text.Collate as Collate
 
 -- Utilities
@@ -99,3 +101,8 @@ unicode_sort_key_ascii s = do
   key <- Collate.sortKey collator $ pack s
   return $ ByteString.unpack $ ByteString.toLazyByteString $ ByteString.byteStringHex key
 -}
+
+list_directory :: FilePath -> IO [FilePath]
+list_directory path = do
+  entries <- listDirectory path
+  return $ map (path </>) entries
