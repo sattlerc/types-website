@@ -9,8 +9,10 @@ import Data.ByteString.Lazy qualified as ByteString
 import Data.Char (isNumber, toLower)
 import Data.Foldable (toList)
 import Data.Function ((&), on)
+import Data.List (intercalate)
 import Data.Map (Map)
 import Data.Map qualified as Map
+import Data.Maybe (fromMaybe)
 import Data.Text.Lazy (Text, unpack)
 import Data.Time (Day, NominalDiffTime, TimeOfDay(TimeOfDay))
 import Data.Time qualified as Time
@@ -19,6 +21,16 @@ import Data.Tuple (swap)
 import System.FilePath (takeBaseName, takeExtension)
 
 import General
+
+-- Path parsing.
+
+picture_from_path :: FilePath -> Maybe String
+picture_from_path path = do
+  guard $ takeExtension path `elem` [".jpg", ".png", ".webm"]
+  return $ takeBaseName path
+
+parse_picture :: (MonadFail m) => FilePath -> m String
+parse_picture path = fail_maybe ("invalid picture filename: " ++ path) $ picture_from_path path
 
 -- JSON parsing.
 
@@ -62,17 +74,9 @@ type Inviteds = Map String Invited
 parse_file_inviteds :: FilePath -> IO Inviteds
 parse_file_inviteds = ByteString.readFile >=> decode_json
 
-picture_from_path :: FilePath -> Maybe String
-picture_from_path path = do
-  guard $ takeExtension path `elem` [".jpg", ".png", ".webm"]
-  return $ takeBaseName path
+type InvitedFiles = Map String FilePath
 
-parse_picture :: (MonadFail m) => FilePath -> m String
-parse_picture path = fail_maybe ("invalid picture filename: " ++ path) $ picture_from_path path
-
-type InvitedPictures = Map String FilePath
-
-inviteds_with_pictures :: InvitedPictures -> Inviteds -> Inviteds
+inviteds_with_pictures :: InvitedFiles -> Inviteds -> Inviteds
 inviteds_with_pictures pictures = Map.mapWithKey $
     \id_ invited -> invited { invited_picture = Map.lookup id_ pictures }
 
@@ -196,11 +200,26 @@ instance FromJSON Author where
     <*> v .: "last"
     <*> v .: "affiliation"
 
+author_last_first :: Author -> String
+author_last_first author = author_last author ++ ", " ++ author_first author
+
 lowercase :: String -> String
 lowercase = map toLower
 
+author_sort_key :: Author -> (String, Maybe String, String)
+author_sort_key author =
+  ( map toLower last_core
+  , map toLower <$> tussenvoegsels
+  , map toLower $ author_first author
+  ) where
+  (tussenvoegsels, last_core) = split_tussenvoegsels (author_last author)
+
+author_sort_key_string :: Author -> String
+author_sort_key_string author = intercalate ", " [last, fromMaybe "_" tussenvoegsels, first] where
+  (last, tussenvoegsels, first) = author_sort_key author
+
 instance Ord Author where
-  compare = compare `on` sequence [author_last, author_first] >>> map lowercase
+  compare = compare `on` author_sort_key
 
 data Paper = Paper
   { paper_id :: Integer

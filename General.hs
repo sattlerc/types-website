@@ -1,7 +1,7 @@
 module General where
 
-import Control.Arrow ((>>>), (&&&))
-import Data.Char (isSpace)
+import Control.Arrow ((>>>), (&&&), (***))
+import Data.Char (isLower, isSpace)
 import Data.Function (on)
 import Data.List (dropWhileEnd, groupBy)
 import Data.Maybe (fromMaybe)
@@ -65,3 +65,9 @@ show_month_and_day = formatTime defaultTimeLocale "%e %B"
 
 show_day_detailed :: Day -> String
 show_day_detailed date = show (Time.dayOfWeek date) ++ ", " ++ show_month_and_day date
+
+split_tussenvoegsels :: String -> (Maybe String, String)
+split_tussenvoegsels = words >>> span (all isLower) >>> (f *** unwords) where
+  f :: [String] -> Maybe String
+  f [] = Nothing
+  f xs = Just $ unwords xs
