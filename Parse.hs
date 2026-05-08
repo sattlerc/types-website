@@ -56,7 +56,8 @@ to_map context key_name = foldM f Map.empty where
 -- Reading the JSON invited talks file.
 
 data Invited = Invited
-  { invited_speaker :: String
+  { invited_first :: String
+  , invited_last :: String
   , invited_affiliation :: String
   , invited_homepage :: Maybe String
   , invited_title :: Maybe String
@@ -69,7 +70,8 @@ data Invited = Invited
 
 instance FromJSON Invited where
   parseJSON = withObject "invited" $ \v -> Invited
-    <$> v .: "speaker"
+    <$> v .: "first"
+    <*> v .: "last"
     <*> v .: "affiliation"
     <*> v .:? "homepage"
     <*> v .:? "title"
@@ -93,6 +95,16 @@ inviteds_with_pictures pictures = Map.mapWithKey $
 inviteds_with_slides :: InvitedFiles -> Inviteds -> Inviteds
 inviteds_with_slides slides = Map.mapWithKey $
     \id_ invited -> invited { invited_slides = Map.lookup id_ slides }
+
+invited_author :: Invited -> Author
+invited_author invited = Author
+  { author_first = invited_first invited
+  , author_last = invited_last invited
+  , author_affiliation = invited_affiliation invited
+  }
+
+invited_speaker :: Invited -> String
+invited_speaker = invited_author >>> format_author
 
 -- Reading the JSON sessions file.
 
@@ -213,6 +225,12 @@ instance FromJSON Author where
     <$> v .: "first"
     <*> v .: "last"
     <*> v .: "affiliation"
+
+format_author :: Author -> String
+format_author = sequence [author_first, author_last] >>> intercalate " "
+
+format_authors :: Paper -> String
+format_authors = paper_authors >>> map format_author >>> intercalate ", "
 
 author_last_first :: Author -> String
 author_last_first author = author_last author ++ ", " ++ author_first author

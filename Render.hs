@@ -80,12 +80,6 @@ format_title linked shorten title = blaze_link_maybe link $ Blaze.string text
 
 -- Papers.
 
-format_author :: Author -> String
-format_author = sequence [author_first, author_last] >>> intercalate " "
-
-format_authors :: Paper -> String
-format_authors = paper_authors >>> map format_author >>>  intercalate ", "
-
 format_paper :: Paper -> Html
 format_paper paper = do
   Blaze.string $ format_authors paper
