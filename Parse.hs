@@ -229,7 +229,13 @@ author_sort_key author =
   (tussenvoegsels, last_core) = split_tussenvoegsels (author_last author)
 
 author_sort_key_string :: Author -> String
-author_sort_key_string author = intercalate ", " [last, fromMaybe "_" tussenvoegsels, first] where
+author_sort_key_string author = unicode_sort_key_ascii s where
+  s :: String
+  s = intercalate ", " [last, fromMaybe "_" tussenvoegsels, first]
+
+  last :: String
+  tussenvoegsels :: Maybe String
+  first :: String
   (last, tussenvoegsels, first) = author_sort_key author
 
 instance Ord Author where

@@ -14,16 +14,17 @@ executable site
     ScopedTypeVariables
   hs-source-dirs: .
   build-depends:
-    , aeson        >= 2.2.0    && < 3
-    , base         >= 4.16.0.0 && < 4.22
-    , blaze-html   >= 0.9.0    && < 1
-    , bytestring   >= 0.11.2   && < 1
-    , containers   >= 0.6      && < 1
-    , directory    >= 1.3      && < 2
-    , filepath     >= 1.4.2.2  && < 1.6
-    , hakyll       >= 4.16.7.0 && < 5
-    , mtl          >= 2.3.1    && < 3
-    , text         >= 2.0.2    && < 3
-    , time         >= 1.12     && < 2
+    , aeson              >= 2.2.0    && < 3
+    , base               >= 4.16.0.0 && < 4.22
+    , blaze-html         >= 0.9.0    && < 1
+    , bytestring         >= 0.11.2   && < 1
+    , containers         >= 0.6      && < 1
+    , directory          >= 1.3      && < 2
+    , filepath           >= 1.4.2.2  && < 1.6
+    , hakyll             >= 4.16.7.0 && < 5
+    , mtl                >= 2.3.1    && < 3
+    , text               >= 2.0.2    && < 3
+    , time               >= 1.12     && < 2
+    , unicode-collation  >= 0.1.3    && < 2
   main-is: Site.hs
   other-modules: General, Parse, Render

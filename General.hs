@@ -1,14 +1,19 @@
 module General where
 
 import Control.Arrow ((>>>), (&&&), (***))
+import Data.ByteString.Builder qualified as ByteString
+import Data.ByteString.Lazy.Char8 qualified as ByteString
 import Data.Char (isLower, isSpace)
 import Data.Function (on)
 import Data.List (dropWhileEnd, groupBy)
 import Data.Maybe (fromMaybe)
+import Data.Text (pack)
 import Data.Time (Day, NominalDiffTime, TimeOfDay)
 import Data.Time qualified as Time
 import Data.Time.Format (defaultTimeLocale, formatTime)
 import Data.Time.Format.ISO8601 qualified as ISO8601
+import Data.Word (Word16)
+import Text.Collate as Collate
 
 -- Utilities
 
@@ -71,3 +76,26 @@ split_tussenvoegsels = words >>> span (all isLower) >>> (f *** unwords) where
   f :: [String] -> Maybe String
   f [] = Nothing
   f xs = Just $ unwords xs
+
+unicode_sort_key :: String -> Collate.SortKey
+unicode_sort_key = pack >>> Collate.sortKey "en-US"
+
+sort_key_ascii :: Collate.SortKey -> String
+sort_key_ascii = (\(Collate.SortKey ws) -> ws)
+  >>> map ByteString.word16BE
+  >>> mconcat
+  >>> ByteString.toLazyByteString
+  >>> ByteString.lazyByteStringHex
+  >>> ByteString.toLazyByteString
+  >>> ByteString.unpack
+
+unicode_sort_key_ascii :: String -> String
+unicode_sort_key_ascii = unicode_sort_key >>> sort_key_ascii
+
+{- Using text-icu
+unicode_sort_key_ascii :: String -> IO String
+unicode_sort_key_ascii s = do
+  collator <- Collate.open "en-US"
+  key <- Collate.sortKey collator $ pack s
+  return $ ByteString.unpack $ ByteString.toLazyByteString $ ByteString.byteStringHex key
+-}
