@@ -129,6 +129,7 @@ format_invited_speaker key invited = Blaze.div
         blaze_link_maybe (invited_homepage invited) $ Blaze.string $ invited_speaker invited
         Blaze.string $ " " ++ parens (invited_affiliation invited)
       maybeM_ (invited_title invited) $ Blaze.string >>> Blaze.h5
+      maybeM_ (invited_slides invited) $ flip blaze_link (Blaze.string "Slides") >>> Blaze.p
       when (any (($ invited) >>> isJust) [invited_abstract_html, invited_abstract]) $ do
         Blaze.details Blaze.! BlazeAttr.open mempty $ do
           blaze_strict $ Blaze.summary $ Blaze.string "Abstract"

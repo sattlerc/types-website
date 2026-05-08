@@ -32,6 +32,14 @@ picture_from_path path = do
 parse_picture :: (MonadFail m) => FilePath -> m String
 parse_picture path = fail_maybe ("invalid picture filename: " ++ path) $ picture_from_path path
 
+slides_from_path :: FilePath -> Maybe String
+slides_from_path path = do
+  guard $ takeExtension path `elem` [".pdf"]
+  return $ takeBaseName path
+
+parse_slides :: (MonadFail m) => FilePath -> m String
+parse_slides path = fail_maybe ("invalid slides path: " ++ path) $ slides_from_path path
+
 -- JSON parsing.
 
 decode_json :: (FromJSON a, MonadFail m) => ByteString -> m a
@@ -56,6 +64,7 @@ data Invited = Invited
   , invited_abstract_html :: Maybe String
   , invited_chair :: Maybe String
   , invited_picture :: Maybe String
+  , invited_slides :: Maybe String
   } deriving (Eq, Show)
 
 instance FromJSON Invited where
@@ -68,6 +77,7 @@ instance FromJSON Invited where
     <*> v .:? "abstract_html"
     <*> v .:? "chair"
     <*> return Nothing
+    <*> return Nothing
 
 type Inviteds = Map String Invited
 
@@ -79,6 +89,10 @@ type InvitedFiles = Map String FilePath
 inviteds_with_pictures :: InvitedFiles -> Inviteds -> Inviteds
 inviteds_with_pictures pictures = Map.mapWithKey $
     \id_ invited -> invited { invited_picture = Map.lookup id_ pictures }
+
+inviteds_with_slides :: InvitedFiles -> Inviteds -> Inviteds
+inviteds_with_slides slides = Map.mapWithKey $
+    \id_ invited -> invited { invited_slides = Map.lookup id_ slides }
 
 -- Reading the JSON sessions file.
 

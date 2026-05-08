@@ -62,6 +62,12 @@ path_abstracts = "abstracts"
 pattern_abstracts :: Pattern
 pattern_abstracts = fromString $ path_abstracts ++ "/" ++ "*.pdf"
 
+path_slides_invited :: FilePath
+path_slides_invited = "slides-invited"
+
+pattern_slides_invited :: Pattern
+pattern_slides_invited = fromString $ path_slides_invited ++ "/" ++ "*.pdf"
+
 papers_id :: Identifier
 papers_id = "data/papers.json"
 
@@ -74,9 +80,11 @@ inviteds_id :: Identifier
 inviteds_id = "data/invited.json"
 
 inviteds_compiler :: Compiler Inviteds
-inviteds_compiler = inviteds_with_pictures
-  <$> parse_directory parse_picture "images/invited/*"
-  <*> data_compiler parse_file_inviteds inviteds_id
+inviteds_compiler = do
+  inviteds <- data_compiler parse_file_inviteds inviteds_id
+  pictures <- parse_directory parse_picture "images/invited/*"
+  slides <- parse_directory parse_slides pattern_slides_invited
+  return $ inviteds_with_slides slides $ inviteds_with_pictures pictures inviteds
 
 sessions_id :: Identifier
 sessions_id = "data/sessions.json"
@@ -144,7 +152,7 @@ main = hakyll $ do
 
   -- Files that should just be copied over.
   -- Files in `monitor` are for monitoring website availability.
-  match ("css/**" .||. "images/**" .||. pattern_abstracts .||. "files/**" .||. "monitor/**") $ do
+  match ("css/**" .||. "images/**" .||. pattern_abstracts .||. pattern_slides_invited .||. "files/**" .||. "monitor/**") $ do
     route $ customRoute $ toFilePath
     compile copyFileCompiler
 
