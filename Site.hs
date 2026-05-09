@@ -60,12 +60,16 @@ parse_directory parse_file = (getMatches :: Pattern -> Compiler [Identifier])
 pattern_abstracts :: Pattern
 pattern_abstracts = fromString $ Paths.abstracts ++ "/" ++ "*.pdf"
 
+pattern_slides :: Pattern
+pattern_slides = fromString $ Paths.slides ++ "/" ++ "*.pdf"
+
 pattern_slides_invited :: Pattern
 pattern_slides_invited = fromString $ Paths.slides_invited ++ "/" ++ "*.pdf"
 
 papers_compiler :: Compiler Papers
-papers_compiler = papers_with_abstract
+papers_compiler = papers_with_abstract_and_slides
   <$> parse_directory parse_abstract pattern_abstracts
+  <*> parse_directory parse_abstract pattern_slides
   <*> data_compiler parse_file_papers (fromString Paths.papers)
 
 inviteds_compiler :: Compiler Inviteds
@@ -135,7 +139,7 @@ main = hakyll $ do
 
   -- Files that should just be copied over.
   -- Files in `monitor` are for monitoring website availability.
-  match ("css/**" .||. "images/**" .||. pattern_abstracts .||. pattern_slides_invited .||. "files/**" .||. "monitor/**") $ do
+  match ("css/**" .||. "images/**" .||. pattern_abstracts .||. pattern_slides .||. pattern_slides_invited .||. "files/**" .||. "monitor/**") $ do
     route $ customRoute $ toFilePath
     compile copyFileCompiler
 

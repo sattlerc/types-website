@@ -273,6 +273,7 @@ data Paper = Paper
   , paper_title_latex :: Maybe String
   , paper_authors :: [Author]
   , paper_path :: Maybe FilePath
+  , paper_slides_path :: Maybe FilePath
   } deriving (Eq, Show)
 
 instance Ord Paper where
@@ -287,6 +288,7 @@ instance FromJSON Paper where
       <*> v .: "title"
       <*> v .:? "title_latex"
       <*> v .: "authors"
+      <*> return Nothing
       <*> return Nothing
 
 paper_title_latex_maybe :: Paper -> String
@@ -324,11 +326,19 @@ papers_with_abstract :: PaperAbstracts -> Papers -> Papers
 papers_with_abstract abstracts = Map.mapWithKey $
     \id_ paper -> paper { paper_path = Map.lookup id_ abstracts}
 
-parse_papers :: FilePath -> FilePath -> IO Papers
-parse_papers path_json path_abstracts = do
+papers_with_slides :: PaperAbstracts -> Papers -> Papers
+papers_with_slides abstracts = Map.mapWithKey $
+    \id_ paper -> paper { paper_slides_path = Map.lookup id_ abstracts}
+
+papers_with_abstract_and_slides :: PaperAbstracts -> PaperAbstracts -> Papers -> Papers
+papers_with_abstract_and_slides abstracts slides = papers_with_abstract abstracts >>> papers_with_slides slides
+
+parse_papers :: FilePath -> FilePath -> FilePath -> IO Papers
+parse_papers path_json path_abstracts path_slides = do
   papers <- parse_file_papers path_json
   abstracts <- parse_abstracts path_abstracts
-  return $ papers_with_abstract abstracts papers
+  slides <- parse_abstracts path_slides
+  return $ papers_with_slides slides $ papers_with_abstract abstracts papers
 
 -- Data.
 

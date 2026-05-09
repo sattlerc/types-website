@@ -85,6 +85,10 @@ format_paper paper = do
   Blaze.string $ format_authors paper
   Blaze.string ": "
   blaze_link_else_italic (paper_path paper) (Blaze.string $ paper_title paper)
+  maybeM_ (paper_slides_path paper) $ \path -> do
+    Blaze.string " ["
+    blaze_link path $ Blaze.string "slides"
+    Blaze.string "]"
 
 format_papers :: Papers -> String
 format_papers = toList
