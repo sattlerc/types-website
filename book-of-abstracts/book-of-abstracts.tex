@@ -1,0 +1,241 @@
+\RequirePackage{pdfmanagement}
+\documentclass[a4paper,extrafontsizes]{memoir}
+
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    citecolor=Green,
+    linkcolor=NavyBlue,
+    filecolor=magenta,
+    urlcolor=BrickRed
+}
+\usepackage{microtype}
+\usepackage{pdfpages}
+\usepackage{newpax}
+
+\setlrmarginsandblock{1in}{1in}{*}
+\setulmarginsandblock{0.8in}{*}{1}
+\checkandfixthelayout
+
+\newcommand{\paper}[2]{%
+  \includepdf[pagecommand*={\phantomsection\addcontentsline{toc}{section}{#2}\thispagestyle{empty}}]{abstracts/#1.pdf}%
+}
+
+\makeindex
+
+\title{Preproceedings of the 32nd International Conference on Types for Proofs and Programs (TYPES 2026)}
+
+\author{Andreas Abel and Christian Sattler}
+
+\pagestyle{empty}
+
+\begin{document}
+\frontmatter
+
+{
+\calccentering{\unitlength}
+\begin{adjustwidth*}{\unitlength}{-\unitlength}
+
+  \phantom{m}
+
+  \vspace{1cm}
+
+  \begin{center}
+    {\LARGE 32$^{\text{st}}$ International Conference on \\ Types for Proofs and Programs \par}
+  \end{center}
+
+  \vspace{0.8cm}
+
+  \begin{center}
+    {\HUGE TYPES 2026}
+  \end{center}
+
+  \vspace{1cm}
+
+  \begin{center}
+    {\Huge \noindent Abstracts}
+  \end{center}
+
+  \vspace{2cm}
+
+  % \begin{center}
+  %   \includegraphics[scale=0.5]{images/logo-v2.pdf}
+  % \end{center}
+
+  \vspace{1.8cm}
+
+  \begin{center}
+    {\LARGE University of Strathclyde, Glasgow, Scotland, 9--13 June 2025}
+  \end{center}
+
+  \vspace{3cm}
+
+  % \begin{center}
+  %   \includegraphics[height=22pt]{images/jane-street.png}
+  %   \qquad
+  %   \includegraphics[height=22pt]{images/well-typed.png}
+  %   \qquad
+  %   \includegraphics[height=22pt]{images/fv.png}
+  %   \qquad
+  %   \includegraphics[height=22pt]{images/iog.png}
+  %   \qquad
+  %   \includegraphics[height=22pt]{images/strath_main.jpg}
+  % \end{center}
+
+\end{adjustwidth*}
+}
+
+\clearpage
+%% copyrightpage
+\begingroup
+\footnotesize
+\parindent 0pt
+\parskip \baselineskip
+
+32$^{\text{st}}$ International Conference on Types for Proofs and Programs \\
+TYPES 2026 \\
+Chalmers University of Technology and University of Gothenburg, Gothenburg, Sweden, 4--8 May 2026 \\
+Abstracts \\
+\url{https://types2026.cse.chalmers.se/}
+
+\vspace{2\baselineskip}
+
+Edited by Andreas Abel and Christian Sattler.
+
+\vspace{2\baselineskip}
+
+Department of Computer Science and Engineering \\
+Chalmers University of Technology and University of Gothenburg \\
+Livingstone Tower \\
+26 Richmond Street \\
+Glasgow \\
+G1 1XH
+
+\vspace{4\baselineskip}
+
+\textcopyright{} 2026 the authors and the editor.
+
+\endgroup
+
+\addtocounter{page}{-2}
+
+\chapter{Preface}
+
+The TYPES meetings are a forum to present new and ongoing work in all
+aspects of type theory and its applications, especially in formalized
+and computer-assisted reasoning and computer programming. In the
+spirit of workshops, talks may be based on newly published papers,
+work submitted for publication, but also work in progress.
+
+This year, 91 abstracts were submitted, and each submission was
+reviewed by at least three program committee members. Due to the large
+number of high-quality submissions and the limited space in the
+programme, it was decided by the programme committee to select some
+submissions for 20 minute talks, and some for 15 minute talks. In the
+end, 82 submissions were accepted (40 for a 20 minute slot, and 42 for
+a 15 minute slot).
+
+The programme will also feature invited talks by Ingo Blechschmidt
+(University of Antwerp), Sonia Marin (University of Birmingham), Chris
+Martens (Northeastern University), Christian Sattler (Chalmers
+University of Technology and University of Gothenburg). One afternoon
+of the conference is co-located with the Women in EuroProofNet 2025
+workshop, and will be dedicated to gender balance in the community.
+
+The conference received financial support from the gold sponsor Jane
+Street, and the bronze sponsors Formal Vindications, Well-typed, and
+Input Output. It also received support in the form of caramel wafers
+from the local company Tunnock's. We gratefully acknowledge all
+support.
+
+Similarly to previous years, a formal post-proceedings volume in
+Dagstuhl’s \emph{Leibniz International Proceedings in Informatics
+  (LIPIcs)} series is planned for after the conference; papers
+submitted to that volume must not have been selected for presentation
+at the conference, but must represent unpublished work, and are
+subjected to (another) full peer-review process.
+
+\vspace{1em}
+
+\noindent June 2025, Glasgow \hfill Fredrik Nordvall Forsberg
+
+\openany
+
+\chapter{Organisation}
+
+\section*{Programme Committee}
+
+\begin{tabular}{ll}
+Danel Ahman & University of Tartu, Estonia \\
+Guillaume Allais & University of Strathclyde, Scotland \\
+Malin Altenmüller & University of Edinburgh, Scotland \\
+Sandra Alves & University of Porto, Portugal \\
+Casper Bach & University of Southern Denmark, Denmark \\
+Ana Bove & Chalmers University of Technology and University of Gothenburg, Sweden \\
+Liang-Ting Chen & Academia Sinica, Taiwan \\
+Vikraman Choudhury & University of Bologna, Italy \\
+Gilda Ferreira & Universidade Aberta, Portugal \\
+Daniel Gratzer & Aarhus University, Denmark \\
+Tom de Jong & University of Nottingham, England \\
+Dominik Kirst & Inria Paris, France \\
+Neel Krishnaswami & University of Cambridge, England \\
+András Kovács & University of Gothenburg and Chalmers University of Technology, Sweden \\
+Peter LeFanu Lumsdaine & Stockholm University, Sweden \\
+Kenji Maillard & Inria Rennes-Bretagne Atlantique, France \\
+Max New & University of Michigan, United States of America \\
+Fredrik Nordvall Forsberg & University of Strathclyde, Scotland) (\emph{chair}) \\
+Elaine Pimentel & University College London, England \\
+Andrew Swan & University of Ljubljana, Slovenia \\
+Tarmo Uustalu & Reykjavík University, Iceland \\
+Niels van der Weide & Radboud University Nijmegen, The Netherlands \\
+Théo Winterhalter & Inria Saclay, France \\
+Maaike Zwart & IT University Copenhagen, Denmark
+\end{tabular}
+
+\section*{Steering Committee}
+
+\begin{tabular}{ll}
+Eduardo Hermo Reyes & Formal Vindications, Spain \\
+Tom de Jong & University of Nottingham, England \\
+Rasmus Ejlers Møgelberg & IT University of Copenhagen, Denmark \\
+Fredrik Nordvall Forsberg & University of Strathclyde, Scotland \\
+Paige Randall North & Utrecht University, The Netherlands (\emph{chair}) \\
+Benno van den Berg & University of Amsterdam, The Netherlands (\emph{secretary})
+\end{tabular}
+
+\section*{Local organisers}
+
+Guillaume Allais, Stuart Gale, Fredrik Nordvall Forsberg, and the rest of the Mathematically Structured Programming Group at the University of Strathclyde.
+
+\section*{Sponsors}
+
+\begin{tabular}{ll}
+  Jane Street & (\emph{Gold sponsor}) \\
+  Formal Vindications &\\
+  Well-Typed &\\
+  Input Output &\\
+  Tunnock's &
+\end{tabular}
+
+
+\clearpage
+
+\setcounter{tocdepth}{2}
+{
+  \renewcommand{\aftertoctitle}{\par\nobreak \mbox{}{\normalfont \normalsize An alphabetical index of all authors can be found on page \pageref{indexpage}.}\par\nobreak}
+  \small
+  \tableofcontents
+}
+
+\clearpage
+
+\mainmatter
+
+\input{core}
+
+\renewcommand{\indexname}{Author index}
+\phantomsection\label{indexpage}
+\printindex
+\end{document}
