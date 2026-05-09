@@ -305,7 +305,9 @@ type PaperAbstracts = Map Integer FilePath
 abstract_id_from_path :: FilePath -> Maybe Integer
 abstract_id_from_path path = do
   let s = takeBaseName path
+  let e = takeExtension path
   guard $ all isNumber s
+  guard $ e == ".pdf"
   return $ read s
 
 parse_abstract :: (MonadFail m) => FilePath -> m Integer
