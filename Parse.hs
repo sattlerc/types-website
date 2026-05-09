@@ -12,7 +12,7 @@ import Data.Function ((&), on)
 import Data.List (intercalate)
 import Data.Map (Map)
 import Data.Map qualified as Map
-import Data.Maybe (catMaybes, fromMaybe)
+import Data.Maybe (catMaybes, fromJust, fromMaybe)
 import Data.Text.Lazy (Text, unpack)
 import Data.Time (Day, NominalDiffTime, TimeOfDay(TimeOfDay))
 import Data.Time qualified as Time
@@ -61,6 +61,7 @@ data Invited = Invited
   , invited_affiliation :: String
   , invited_homepage :: Maybe String
   , invited_title :: Maybe String
+  , invited_title_latex :: Maybe String
   , invited_abstract :: Maybe String
   , invited_abstract_html :: Maybe String
   , invited_chair :: Maybe String
@@ -75,11 +76,15 @@ instance FromJSON Invited where
     <*> v .: "affiliation"
     <*> v .:? "homepage"
     <*> v .:? "title"
+    <*> v .:? "title_latex"
     <*> v .:? "abstract"
     <*> v .:? "abstract_html"
     <*> v .:? "chair"
     <*> return Nothing
     <*> return Nothing
+
+invited_title_latex_maybe :: Invited -> String
+invited_title_latex_maybe = with_fallback (invited_title >>> fromJust) invited_title_latex
 
 type Inviteds = Map String Invited
 
@@ -126,6 +131,9 @@ instance FromJSON Session where
 
 session_title_short_maybe :: Session -> String
 session_title_short_maybe = with_fallback session_title session_title_short
+
+show_id :: Integer -> String
+show_id = (+1) >>> show
 
 type Sessions = Map Integer Session
 
@@ -262,6 +270,7 @@ instance Ord Author where
 data Paper = Paper
   { paper_id :: Integer
   , paper_title :: String
+  , paper_title_latex :: Maybe String
   , paper_authors :: [Author]
   , paper_path :: Maybe FilePath
   } deriving (Eq, Show)
@@ -276,8 +285,12 @@ instance FromJSON Paper where
     Paper
       <$> v .: "pid"
       <*> v .: "title"
+      <*> v .:? "title_latex"
       <*> v .: "authors"
       <*> return Nothing
+
+paper_title_latex_maybe :: Paper -> String
+paper_title_latex_maybe = with_fallback paper_title paper_title_latex
 
 type Papers = Map Integer Paper
 

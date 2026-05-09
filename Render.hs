@@ -264,9 +264,6 @@ format_schedule_table inviteds sessions (Schedule schedule) = BlazePretty.render
 
 -- Schedule
 
-show_id :: Integer -> String
-show_id = (+1) >>> show
-
 format_time_range :: TimeOfDayRange -> String
 format_time_range (start, end) = time_show start ++ "–" ++ time_show end
 
