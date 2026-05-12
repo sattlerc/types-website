@@ -1,4 +1,4 @@
-\RequirePackage{pdfmanagement}
+\RequirePackage{pdfmanagement-testphase}
 \documentclass[a4paper,extrafontsizes]{memoir}
 
 \usepackage{amsmath}
@@ -52,7 +52,13 @@
     {\HUGE TYPES 2026}
   \end{center}
 
-  \vspace{1cm}
+  \vspace{0.8cm}
+
+  \begin{center}
+    {\LARGE A Marcus Wallenberg Symposium}
+  \end{center}
+
+  \vspace{1.2cm}
 
   \begin{center}
     {\Huge \noindent Abstracts}
@@ -60,29 +66,29 @@
 
   \vspace{2cm}
 
-  % \begin{center}
-  %   \includegraphics[scale=0.5]{images/logo-v2.pdf}
-  % \end{center}
+  \begin{center}
+    \includegraphics[scale=0.4]{../images/goteborg-Bengt-Nyman-resized.jpg}
+  \end{center}
 
   \vspace{1.8cm}
 
   \begin{center}
-    {\LARGE University of Strathclyde, Glasgow, Scotland, 9--13 June 2025}
+    {\LARGE Chalmers University of Technology and University of Gothenburg, Gothenburg, Sweden, 4--8 May 2026}
   \end{center}
 
-  \vspace{3cm}
+  \vspace{2.5cm}
 
-  % \begin{center}
-  %   \includegraphics[height=22pt]{images/jane-street.png}
-  %   \qquad
-  %   \includegraphics[height=22pt]{images/well-typed.png}
-  %   \qquad
-  %   \includegraphics[height=22pt]{images/fv.png}
-  %   \qquad
-  %   \includegraphics[height=22pt]{images/iog.png}
-  %   \qquad
-  %   \includegraphics[height=22pt]{images/strath_main.jpg}
-  % \end{center}
+  \begin{center}
+    \includegraphics[height=22pt]{../images/sponsors/chalmers-ict.png}
+    \\[4ex]
+    \includegraphics[height=22pt]{../images/sponsors/amazon.png}
+    \qquad
+    \includegraphics[height=22pt]{../images/sponsors/jane-street.png}
+    \qquad
+    \includegraphics[height=22pt]{../images/sponsors/formal-vindications.png}
+    \qquad
+    \includegraphics[height=22pt]{../images/sponsors/quantinuum.png}
+  \end{center}
 
 \end{adjustwidth*}
 }
@@ -96,6 +102,7 @@
 
 32$^{\text{st}}$ International Conference on Types for Proofs and Programs \\
 TYPES 2026 \\
+A Marcus Wallenberg Symposium \\
 Chalmers University of Technology and University of Gothenburg, Gothenburg, Sweden, 4--8 May 2026 \\
 Abstracts \\
 \url{https://types2026.cse.chalmers.se/}
@@ -108,14 +115,15 @@ Edited by Andreas Abel and Christian Sattler.
 
 Department of Computer Science and Engineering \\
 Chalmers University of Technology and University of Gothenburg \\
-Livingstone Tower \\
-26 Richmond Street \\
-Glasgow \\
-G1 1XH
+Gothenburg, Sweden \\
 
 \vspace{4\baselineskip}
 
 \textcopyright{} 2026 the authors and the editor.
+
+\vspace{4\baselineskip}
+
+Title photo by Bengt Nyman from Vaxholm, Sweden, licensed under \href{CC BY 2.0}{https://creativecommons.org/licenses/by/2.0/}
 
 \endgroup
 
@@ -129,37 +137,32 @@ and computer-assisted reasoning and computer programming. In the
 spirit of workshops, talks may be based on newly published papers,
 work submitted for publication, but also work in progress.
 
-This year, 91 abstracts were submitted, and each submission was
-reviewed by at least three program committee members. Due to the large
-number of high-quality submissions and the limited space in the
-programme, it was decided by the programme committee to select some
-submissions for 20 minute talks, and some for 15 minute talks. In the
-end, 82 submissions were accepted (40 for a 20 minute slot, and 42 for
-a 15 minute slot).
+This year, 69 abstracts were submitted, and each submission was
+reviewed by at least three program committee members.
+62 abstract were accepted for short presentations (20 minute slots).
+The programme was complemented by five long invited presentations (60 minute slots):
+András Kovács (Chalmers University of Technology and University of Gothenburg),
+Assia Mahboubi (INRIA Nantes),
+Clément Pit-Claudel (EPFL),
+Emily Riehl (Johns Hopkins University), and
+Daniel Gratzer (Aarhus University).
 
-The programme will also feature invited talks by Ingo Blechschmidt
-(University of Antwerp), Sonia Marin (University of Birmingham), Chris
-Martens (Northeastern University), Christian Sattler (Chalmers
-University of Technology and University of Gothenburg). One afternoon
-of the conference is co-located with the Women in EuroProofNet 2025
-workshop, and will be dedicated to gender balance in the community.
-
-The conference received financial support from the gold sponsor Jane
-Street, and the bronze sponsors Formal Vindications, Well-typed, and
-Input Output. It also received support in the form of caramel wafers
-from the local company Tunnock's. We gratefully acknowledge all
-support.
+The conference received financial support from
+the Marcus Wallenberg Foundation,
+the Chalmers Area of Advance \emph{Information and Communication Technology},
+and from Amazon, Jane Street, Formal Vindications and Quantinuum.
+We gratefully acknowledge all support.
 
 Similarly to previous years, a formal post-proceedings volume in
 Dagstuhl’s \emph{Leibniz International Proceedings in Informatics
   (LIPIcs)} series is planned for after the conference; papers
-submitted to that volume must not have been selected for presentation
+submitted to that volume need not have been selected for presentation
 at the conference, but must represent unpublished work, and are
 subjected to (another) full peer-review process.
 
 \vspace{1em}
 
-\noindent June 2025, Glasgow \hfill Fredrik Nordvall Forsberg
+\noindent May 2026, Gothenburg\hfill Andreas Abel and Christian Sattler
 
 \openany
 
@@ -167,57 +170,72 @@ subjected to (another) full peer-review process.
 
 \section*{Programme Committee}
 
-\begin{tabular}{ll}
-Danel Ahman & University of Tartu, Estonia \\
-Guillaume Allais & University of Strathclyde, Scotland \\
-Malin Altenmüller & University of Edinburgh, Scotland \\
-Sandra Alves & University of Porto, Portugal \\
-Casper Bach & University of Southern Denmark, Denmark \\
-Ana Bove & Chalmers University of Technology and University of Gothenburg, Sweden \\
-Liang-Ting Chen & Academia Sinica, Taiwan \\
-Vikraman Choudhury & University of Bologna, Italy \\
-Gilda Ferreira & Universidade Aberta, Portugal \\
-Daniel Gratzer & Aarhus University, Denmark \\
-Tom de Jong & University of Nottingham, England \\
-Dominik Kirst & Inria Paris, France \\
-Neel Krishnaswami & University of Cambridge, England \\
-András Kovács & University of Gothenburg and Chalmers University of Technology, Sweden \\
-Peter LeFanu Lumsdaine & Stockholm University, Sweden \\
-Kenji Maillard & Inria Rennes-Bretagne Atlantique, France \\
-Max New & University of Michigan, United States of America \\
-Fredrik Nordvall Forsberg & University of Strathclyde, Scotland) (\emph{chair}) \\
-Elaine Pimentel & University College London, England \\
-Andrew Swan & University of Ljubljana, Slovenia \\
-Tarmo Uustalu & Reykjavík University, Iceland \\
-Niels van der Weide & Radboud University Nijmegen, The Netherlands \\
-Théo Winterhalter & Inria Saclay, France \\
-Maaike Zwart & IT University Copenhagen, Denmark
+\begin{tabular}{@{}ll}
+Andreas Abel & University of Gothenburg, Sweden (\emph{co-chair}) \\
+Thorsten Altenkirch & University of Nottingham, UK \\
+Andrej Bauer & University of Ljubljana, Slovenia \\
+Jasmin Blanchette & Ludwig-Maximilians-Universität München, Germany \\
+Edwin Brady & University of St Andrews, UK \\
+Ivan Di Liberti & University of Gothenburg, Sweden \\
+Silvia Ghilezan & University of Novi Sad, Serbia \\
+Dan Licata & Wesleyan University, US \\
+Zhaohui Luo & Royal Holloway, University of London, UK \\
+Marino Miculan & University of Udine, Italy \\
+Rasmus Ejlers Møgelberg & IT University of Copenhagen, Denmark \\
+Paige North & Utrecht University, Netherlands \\
+Vincent Rahli & University of Birmingham, UK \\
+Christian Sattler & Chalmers University of Technology, Sweden (\emph{co-chair}) \\
+Gabriel Scherer & INRIA, Université Paris Cité, France \\
+Michael Shulman & University of San Diego, US \\
+Gert Smolka & Saarland University, Germany \\
+Matthieu Sozeau & INRIA, MTI Atlantique, Nantes University, France \\
+Kathrin Stark & Heriot-Watt University, UK \\
+Nicolas Tabareau & INRIA, MTI Atlantique, Nantes University, France \\
+Sebastian Ullrich & Lean Focused Research Organization \\
+Josef Urban & Czech Technical University in Prague, Czech Republic \\
+Niccolò Veltri & Tallinn University of Technology, Estonia \\
+Stephanie Weirich & University of Pennsylvania, US \\
 \end{tabular}
 
 \section*{Steering Committee}
 
-\begin{tabular}{ll}
-Eduardo Hermo Reyes & Formal Vindications, Spain \\
+\begin{tabular}{@{}ll}
+% Eduardo Hermo Reyes & Formal Vindications, Spain \\
+Malin Altenmüller & University of Edinburg, Scotland \\
 Tom de Jong & University of Nottingham, England \\
-Rasmus Ejlers Møgelberg & IT University of Copenhagen, Denmark \\
+Meven Lennon-Bertrand & Inria – IRIF, Université Paris Cité, France \\
+Rasmus Ejlers Møgelberg & IT University of Copenhagen, Denmark  (\emph{chair}) \\
 Fredrik Nordvall Forsberg & University of Strathclyde, Scotland \\
-Paige Randall North & Utrecht University, The Netherlands (\emph{chair}) \\
-Benno van den Berg & University of Amsterdam, The Netherlands (\emph{secretary})
+Christian Sattler & Chalmers University of Technology, Sweden \\
 \end{tabular}
 
 \section*{Local organisers}
 
-Guillaume Allais, Stuart Gale, Fredrik Nordvall Forsberg, and the rest of the Mathematically Structured Programming Group at the University of Strathclyde.
+Ana Bove, Andreas Abel, Robin Adams, Peter Dybjer, and Christian Sattler.
 
 \section*{Sponsors}
 
-\begin{tabular}{ll}
-  Jane Street & (\emph{Gold sponsor}) \\
-  Formal Vindications &\\
-  Well-Typed &\\
-  Input Output &\\
-  Tunnock's &
+\begin{tabular}{@{}l@{\qquad}l}
+  \emph{Gold} &
+  Chalmers Area of Advance \emph{Information and Communication Technology} \\[1ex]
+  \emph{Silver} &
+  Amazon \\
+  &
+  Jane Street \\[1ex]
+  \emph{Bronze} &
+  Formal Vindications \\
+  &
+  Quantinuum  \\
 \end{tabular}
+
+
+% \begin{tabular}{@{}ll}
+%   Chalmers Area of Advance \emph{Information and Communication Technology} & (\emph{Gold sponsor}) \\
+%   Amazon & (\emph{Silver sponsor})\\
+%   Jane Street & (\emph{Silver sponsor})\\
+%   Formal Vindications  & (\emph{Bronze sponsor})\\
+%   Quantinuum  & (\emph{Bronze sponsor})\\
+% \end{tabular}
 
 
 \clearpage
