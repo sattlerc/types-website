@@ -132,7 +132,7 @@ gen_paper paper = gen_entry
 
 gen_invited :: (MonadIO m) => String -> Invited -> LaTeXT_ m
 gen_invited key invited = gen_entry
-  [invited_author invited] 
+  [invited_author invited]
   (invited_title_latex_maybe invited)
   (path_invited_abstracts </> addExtension key "pdf")
 
@@ -160,7 +160,7 @@ gen_book_of_abstracts papers inviteds sessions = do
 --   LaTeX.document $ return () where
 --     lua_func_lit :: String -> String -> String
 --     lua_func_lit function literal = function ++ "(" ++ show literal ++ ")"
-    
+
 --     lua :: String
 --     lua = unlines $ ["require(" ++ show "newpax" ++ ")"] ++ map (dropExtension >>> lua_func_lit "newpax.writenewpax") paths
 
