@@ -3,7 +3,8 @@ import Control.Monad (forM_, replicateM_, void)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Trans (lift)
 import Control.Monad.Writer (WriterT, runWriterT, tell)
-import Data.List (intercalate)
+import Data.Char (isSpace)
+import Data.List (intercalate, dropWhileEnd)
 import Data.Map qualified as Map
 import Data.Maybe (fromJust)
 import Data.String (fromString)
@@ -12,7 +13,7 @@ import System.Directory (createDirectoryIfMissing, copyFile, renameFile)
 import System.Environment (getArgs)
 import System.FilePath (FilePath, (</>), addExtension, dropExtension, replaceExtension, takeFileName)
 import System.IO (hPutStrLn, stderr)
-import System.Process (CreateProcess(close_fds, cwd, std_err, std_out), callCreateProcess, proc)
+import System.Process (CreateProcess(close_fds, cwd, std_err, std_out), callCreateProcess, proc, readProcess)
 import Text.LaTeX (LaTeX, LaTeXT, LaTeXT_)
 import Text.LaTeX qualified as LaTeX
 import Text.LaTeX.Base.Class qualified as LaTeX
@@ -106,8 +107,12 @@ gen_include_pdf title rel_path = LaTeX.fromLaTeX $ LaTeX.TeXComm "includepdf"
     LaTeX.thispagestyle "empty"
 
 run_pax :: FilePath -> FilePath -> IO ()
-run_pax cwd path = callCreateProcess $
-  (proc "java" ["-jar", "/usr/share/texmf-dist/scripts/pax/pax.jar", path]) { cwd = Just cwd, close_fds = True }
+run_pax cwd path = do
+  texroot <- trim <$> readProcess "kpsewhich" ["-var-value", "TEXMFMAIN"] ""
+  callCreateProcess $
+    (proc "java" ["-jar", texroot ++ "/scripts/pax/pax.jar", path]) { cwd = Just cwd, close_fds = True }
+  where
+    trim = dropWhileEnd isSpace
 
 gen_entry :: (MonadIO m) => [Author] -> String -> FilePath -> LaTeXT_ m
 gen_entry authors title path = do
