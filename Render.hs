@@ -80,15 +80,18 @@ format_title linked shorten title = blaze_link_maybe link $ Blaze.string text
 
 -- Papers.
 
+format_slides :: Maybe String -> Html
+format_slides = flip maybeM_ $ \path -> do
+  Blaze.string " ["
+  blaze_link path $ Blaze.string "slides"
+  Blaze.string "]"
+
 format_paper :: Paper -> Html
 format_paper paper = do
   Blaze.string $ format_authors paper
   Blaze.string ": "
   blaze_link_else_italic (paper_path paper) (Blaze.string $ paper_title paper)
-  maybeM_ (paper_slides_path paper) $ \path -> do
-    Blaze.string " ["
-    blaze_link path $ Blaze.string "slides"
-    Blaze.string "]"
+  format_slides $ paper_slides_path paper
 
 format_papers :: Papers -> String
 format_papers = toList
@@ -298,12 +301,11 @@ format_schedule papers inviteds sessions (Schedule schedule) = BlazePretty.rende
         Blaze.string (invited_speaker invited)
         Blaze.string ": "
         blaze_link (invited_speaker_link key) $ Blaze.string title
+        format_slides $ invited_slides invited
         format_chair $ invited_chair invited
 
     format_chair :: Maybe String -> Html
-    format_chair = \case
-      Nothing    -> mempty
-      Just chair -> Blaze.string $ " " ++ parens ("chair: " ++ chair)
+    format_chair = flip maybeM_ $ \chair -> Blaze.string $ " " ++ parens ("chair: " ++ chair)
 
     format_talk :: Paper -> State TimeOfDay Html
     format_talk paper = do
