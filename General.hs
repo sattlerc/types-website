@@ -1,12 +1,12 @@
 module General where
 
-import Control.Arrow ((>>>), (&&&), (***))
+import Control.Arrow ((>>>), (&&&), (***), first)
 import Data.ByteString.Builder qualified as ByteString
 import Data.ByteString.Lazy.Char8 qualified as ByteString
 import Data.Char (isLower, isSpace)
 import Data.Function (on)
-import Data.List (dropWhileEnd, groupBy)
-import Data.Maybe (fromMaybe)
+import Data.List (dropWhileEnd, groupBy, uncons)
+import Data.Maybe (fromJust, fromMaybe)
 import Data.Text (pack)
 import Data.Time (Day, NominalDiffTime, TimeOfDay)
 import Data.Time qualified as Time
@@ -106,3 +106,6 @@ list_directory :: FilePath -> IO [FilePath]
 list_directory path = do
   entries <- listDirectory path
   return $ map (path </>) entries
+
+update_head :: (a -> a) -> [a] -> [a]
+update_head f = uncons >>> fromJust >>> first f >>> uncurry (:)

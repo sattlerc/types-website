@@ -3,7 +3,7 @@ import Control.Monad (forM_, replicateM_, void)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Trans (lift)
 import Control.Monad.Writer (WriterT, runWriterT, tell)
-import Data.Char (isSpace)
+import Data.Char (isSpace, toUpper)
 import Data.List (intercalate, dropWhileEnd)
 import Data.Map qualified as Map
 import Data.Maybe (fromJust)
@@ -102,7 +102,7 @@ gen_include_pdf title rel_path = LaTeX.fromLaTeX $ LaTeX.TeXComm "includepdf"
     LaTeX.fromLaTeX $ LaTeX.TeXComm "addcontentsline"
       [ LaTeX.FixArg $ fromString "toc"
       , LaTeX.FixArg $ fromString "section"
-      , LaTeX.FixArg $ fromString title
+      , LaTeX.FixArg $ LaTeX.raw $ pack title
       ]
     LaTeX.thispagestyle "empty"
 
@@ -141,18 +141,20 @@ gen_invited key invited = gen_entry
   (invited_title_latex_maybe invited)
   (path_invited_abstracts </> addExtension key "pdf")
 
-gen_book_of_abstracts :: (MonadIO m) => Papers -> Inviteds -> Sessions -> LaTeXT_ m
-gen_book_of_abstracts papers inviteds sessions = do
+gen_book_of_abstracts :: (MonadIO m) => Papers -> Inviteds -> Sessions -> Schedule -> LaTeXT_ m
+gen_book_of_abstracts papers inviteds sessions schedule = do
   LaTeX.comment $ pack "Invited talks."
   gen_empty_line
+
   gen_section "Invited talks"
-  forM_ (Map.assocs inviteds) (uncurry gen_invited)
+  forM_ (invited_key_by_schedule schedule) $ \key ->
+    gen_invited key (inviteds Map.! key)
   gen_empty_line
 
   forM_ (Map.assocs sessions) $ \(session_id, session) -> do
     LaTeX.comment $ pack $ "Session " ++ show_id session_id ++ "."
     gen_empty_line
-    gen_section $ session_title session
+    gen_section $ update_head toUpper $ session_title session
     forM_ (session_papers session) $ \paper_id -> do
       gen_paper $ papers Map.! paper_id
     gen_empty_line
@@ -174,7 +176,8 @@ generate = do
   papers <- parse_papers Paths.papers Paths.abstracts
   sessions <- parse_file_sessions Paths.sessions
   inviteds <- parse_file_inviteds Paths.inviteds
-  gen <- LaTeX.execLaTeXT $ gen_book_of_abstracts papers inviteds sessions
+  schedule <- parse_file_schedule Paths.schedule
+  gen <- LaTeX.execLaTeXT $ gen_book_of_abstracts papers inviteds sessions schedule
   createDirectoryIfMissing True dir_book_of_abstracts
   writeFile path_book_of_abstracts_core $ LaTeX.prettyLaTeX gen
 

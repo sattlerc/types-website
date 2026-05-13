@@ -220,6 +220,12 @@ instance FromJSON Schedule where
 parse_file_schedule :: FilePath -> IO Schedule
 parse_file_schedule = ByteString.readFile >=> decode_json
 
+invited_key_by_schedule :: Schedule -> [String]
+invited_key_by_schedule (Schedule schedule) = do
+  day_schedule <- Map.elems schedule
+  (_, EventInvitedTalk key) <- day_schedule
+  return key
+
 -- Reading the JSON papers file.
 
 data Author = Author
