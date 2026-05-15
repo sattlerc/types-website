@@ -1,5 +1,5 @@
 \RequirePackage{pdfmanagement}
-\documentclass[a4paper,extrafontsizes]{memoir}
+\documentclass[a4paper,extrafontsizes,oneside]{memoir}
 
 \usepackage{amsmath}
 \usepackage[dvipsnames]{xcolor}
@@ -28,7 +28,9 @@
 \pagestyle{empty}
 
 \begin{document}
-\frontmatter
+
+\hypersetup{pageanchor=false}
+\pagenumbering{gobble}
 
 {
 \calccentering{\unitlength}
@@ -90,6 +92,7 @@
 }
 
 \clearpage
+
 %% copyrightpage
 \begingroup
 \footnotesize
@@ -123,7 +126,12 @@ Title photo by Bengt Nyman from Vaxholm, Sweden, licensed under \href{https://cr
 
 \endgroup
 
+\clearpage
+
 \addtocounter{page}{-2}
+\hypersetup{pageanchor=true}
+
+\frontmatter
 
 \chapter{Preface}
 
@@ -224,7 +232,6 @@ Ana Bove, Andreas Abel, Robin Adams, Peter Dybjer, and Christian Sattler.
   Quantinuum  \\
 \end{tabular}
 
-
 % \begin{tabular}{@{}ll}
 %   Chalmers Area of Advance \emph{Information and Communication Technology} & (\emph{Gold sponsor}) \\
 %   Amazon & (\emph{Silver sponsor})\\
@@ -233,12 +240,11 @@ Ana Bove, Andreas Abel, Robin Adams, Peter Dybjer, and Christian Sattler.
 %   Quantinuum  & (\emph{Bronze sponsor})\\
 % \end{tabular}
 
-
 \clearpage
 
 \setcounter{tocdepth}{2}
 {
-  \renewcommand{\aftertoctitle}{\par\nobreak \mbox{}{\normalfont \normalsize An alphabetical index of all authors can be found on page \pageref{indexpage}.}\par\nobreak}
+  \renewcommand{\aftertoctitle}{\par\nobreak \mbox{}{\normalfont \normalsize An alphabetical index of all authors can be found on page~\pageref{indexpage}.}\par\nobreak}
   \small
   \tableofcontents
 }
