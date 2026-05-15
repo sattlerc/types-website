@@ -83,9 +83,6 @@ instance FromJSON Invited where
     <*> return Nothing
     <*> return Nothing
 
-invited_title_latex_maybe :: Invited -> String
-invited_title_latex_maybe = with_fallback (invited_title >>> fromJust) invited_title_latex
-
 type Inviteds = Map String Invited
 
 parse_file_inviteds :: FilePath -> IO Inviteds
@@ -294,9 +291,6 @@ instance FromJSON Paper where
       <*> v .:? "title_latex"
       <*> v .: "authors"
       <*> return Nothing
-
-paper_title_latex_maybe :: Paper -> String
-paper_title_latex_maybe = with_fallback paper_title paper_title_latex
 
 type Papers = Map Integer Paper
 

@@ -1,4 +1,4 @@
-import Control.Arrow ((>>>))
+import Control.Arrow ((>>>), (&&&))
 import Control.Monad (forM_, replicateM_, void)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Trans (lift)
@@ -78,20 +78,45 @@ build_abstracts_invited = do
     run_latex "xelatex" path_invited_abstracts key
 
 
-gen_section :: (Monad m) => String -> LaTeXT_ m
-gen_section title = do
+type Reference = (LaTeX, String)
+
+ref_from_string :: String -> Reference
+ref_from_string s = (fromString s, s)
+
+ref_from_title_latex :: (String, Maybe String) -> Reference
+ref_from_title_latex (title, latex_maybe) = (latex, title) where
+  latex = case latex_maybe of
+    Nothing -> LaTeX.fromString title
+    Just s -> LaTeX.raw $ pack s
+
+
+gen_tex_or_pdf :: (Monad m) => Reference -> LaTeXT_ m
+gen_tex_or_pdf (tex, pdf) = do
+  LaTeX.fromLaTeX $ LaTeX.TeXComm "texorpdfstring"
+    [ LaTeX.FixArg tex
+    , LaTeX.FixArg $ fromString pdf
+    ]
+
+gen_toc_entry :: (Monad m) => String -> Reference -> LaTeXT_ m
+gen_toc_entry heading title = do
   LaTeX.fromLaTeX $ LaTeX.TeXComm "phantomsection" []
   LaTeX.fromLaTeX $ LaTeX.TeXComm "addcontentsline"
     [ LaTeX.FixArg "toc"
-    , LaTeX.FixArg "chapter"
-    , LaTeX.FixArg $ fromString title
+    , LaTeX.FixArg $ fromString heading
+    , LaTeX.FixArg $ LaTeX.execLaTeXM $ gen_tex_or_pdf title
     ]
+
+gen_toc_chapter :: (Monad m) => Reference -> LaTeXT_ m
+gen_toc_chapter = gen_toc_entry "chapter"
+
+gen_toc_section :: (Monad m) => Reference -> LaTeXT_ m
+gen_toc_section = gen_toc_entry "section"
 
 gen_index_author :: (Monad m) => Author -> LaTeXT_ m
 gen_index_author author = LaTeX.fromLaTeX $ LaTeX.TeXComm "index"
   [LaTeX.FixArg $ fromString $ author_sort_key_string author ++ "@" ++ author_last_first author]
 
-gen_include_pdf :: (Monad m) => String -> FilePath -> LaTeXT_ m
+gen_include_pdf :: (Monad m) => Reference -> FilePath -> LaTeXT_ m
 gen_include_pdf title rel_path = LaTeX.fromLaTeX $ LaTeX.TeXComm "includepdf"
     [ LaTeX.OptArg $ LaTeX.raw $ pack $ options
     [ ("pages", Just "-")
@@ -102,11 +127,7 @@ gen_include_pdf title rel_path = LaTeX.fromLaTeX $ LaTeX.TeXComm "includepdf"
   page_command :: LaTeX
   page_command = LaTeX.TeXBraces $ LaTeX.execLaTeXM $ do
     LaTeX.fromLaTeX $ LaTeX.TeXComm "phantomsection" []
-    LaTeX.fromLaTeX $ LaTeX.TeXComm "addcontentsline"
-      [ LaTeX.FixArg $ fromString "toc"
-      , LaTeX.FixArg $ fromString "section"
-      , LaTeX.FixArg $ LaTeX.raw $ pack title
-      ]
+    gen_toc_section title
     LaTeX.thispagestyle "empty"
 
 run_pax :: FilePath -> FilePath -> IO ()
@@ -135,8 +156,8 @@ run_newpax paths = do
   LaTeX.execLaTeXT (gen_newpax paths) >>= LaTeX.renderFile (dir_book_of_abstracts </> file_newpax_generator)
   run_latex "lualatex" dir_book_of_abstracts file_newpax_generator
 
-gen_entry :: (MonadIO m) => [Author] -> String -> FilePath -> WriterT [FilePath] (LaTeXT m) ()
-gen_entry authors title path = do
+gen_entry :: (MonadIO m) => [Author] -> (String, Maybe String) -> FilePath -> WriterT [FilePath] (LaTeXT m) ()
+gen_entry authors title_data path = do
   tell [rel_path]
   liftIO $ do
     let target = dir_book_of_abstracts </> rel_path
@@ -146,7 +167,7 @@ gen_entry authors title path = do
 
   lift $ do
     forM_ authors gen_index_author
-    gen_include_pdf title rel_path
+    gen_include_pdf (ref_from_title_latex title_data) rel_path
     gen_empty_line
   where
     rel_path :: FilePath
@@ -155,13 +176,13 @@ gen_entry authors title path = do
 gen_paper :: (MonadIO m) => Paper -> WriterT [FilePath] (LaTeXT m) ()
 gen_paper paper = gen_entry
   (paper_authors paper)
-  (paper_title_latex_maybe paper)
+  ((paper_title &&& paper_title_latex) $ paper)
   (fromJust $ paper_path paper)
 
 gen_invited :: (MonadIO m) =>String -> Invited -> WriterT [FilePath] (LaTeXT m) ()
 gen_invited key invited = gen_entry
   [invited_author invited]
-  (invited_title_latex_maybe invited)
+  (((invited_title >>> fromJust) &&& invited_title_latex) $ invited)
   (path_invited_abstracts </> addExtension key "pdf")
 
 gen_book_of_abstracts :: (MonadIO m) => Papers -> Inviteds -> Sessions -> Schedule -> WriterT [FilePath] (LaTeXT m) ()
@@ -169,7 +190,7 @@ gen_book_of_abstracts papers inviteds sessions schedule = do
   lift $ do
     LaTeX.comment $ pack "Invited talks."
     gen_empty_line
-    gen_section "Invited talks"
+    gen_toc_chapter $ ref_from_string "Invited talks"
   forM_ (invited_key_by_schedule schedule) $ \key ->
     gen_invited key (inviteds Map.! key)
   lift gen_empty_line
@@ -178,7 +199,7 @@ gen_book_of_abstracts papers inviteds sessions schedule = do
     lift $ do
       LaTeX.comment $ pack $ "Session " ++ show_id session_id ++ "."
       gen_empty_line
-      gen_section $ update_head toUpper $ session_title session
+      gen_toc_chapter $ ref_from_string $ update_head toUpper $ session_title session
     forM_ (session_papers session) $ \paper_id -> do
       gen_paper $ papers Map.! paper_id
     lift gen_empty_line
