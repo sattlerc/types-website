@@ -38,6 +38,10 @@ Areas of interest include, but are not limited to:
 
 In the spirit of workshops, talks may be based on newly published papers, work submitted for publication, but also work in progress.
 
+### Attendees
+
+![Group photo](images/group-photo.jpg "taken by Jeremy Pope"){.img-fluid}
+
 <section>\$include_important_dates\$</section>
 
 ### Contact
