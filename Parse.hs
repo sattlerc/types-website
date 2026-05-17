@@ -83,9 +83,6 @@ instance FromJSON Invited where
     <*> return Nothing
     <*> return Nothing
 
-invited_title_latex_maybe :: Invited -> String
-invited_title_latex_maybe = with_fallback (invited_title >>> fromJust) invited_title_latex
-
 type Inviteds = Map String Invited
 
 parse_file_inviteds :: FilePath -> IO Inviteds
@@ -220,6 +217,12 @@ instance FromJSON Schedule where
 parse_file_schedule :: FilePath -> IO Schedule
 parse_file_schedule = ByteString.readFile >=> decode_json
 
+invited_key_by_schedule :: Schedule -> [String]
+invited_key_by_schedule (Schedule schedule) = do
+  day_schedule <- Map.elems schedule
+  (_, EventInvitedTalk key) <- day_schedule
+  return key
+
 -- Reading the JSON papers file.
 
 data Author = Author
@@ -290,9 +293,6 @@ instance FromJSON Paper where
       <*> v .: "authors"
       <*> return Nothing
       <*> return Nothing
-
-paper_title_latex_maybe :: Paper -> String
-paper_title_latex_maybe = with_fallback paper_title paper_title_latex
 
 type Papers = Map Integer Paper
 

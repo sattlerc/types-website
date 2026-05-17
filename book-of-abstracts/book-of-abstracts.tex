@@ -1,0 +1,263 @@
+\RequirePackage{pdfmanagement}
+\documentclass[a4paper,extrafontsizes,oneside]{memoir}
+
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    citecolor=ForestGreen,
+    linkcolor=NavyBlue,
+    filecolor=magenta,
+    urlcolor=BrickRed
+}
+\usepackage{microtype}
+\usepackage{pdfpages}
+\usepackage{newpax}
+
+\setlrmarginsandblock{1in}{1in}{*}
+\setulmarginsandblock{0.8in}{*}{1}
+\checkandfixthelayout
+
+\makeindex
+
+\title{Preproceedings of the 32nd International Conference on Types for Proofs and Programs (TYPES 2026)}
+
+\author{Andreas Abel and Christian Sattler}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\hypersetup{pageanchor=false}
+\pagenumbering{gobble}
+
+{
+\calccentering{\unitlength}
+\begin{adjustwidth*}{\unitlength}{-\unitlength}
+
+  \phantom{m}
+
+  \vspace{1cm}
+
+  \begin{center}
+    {\LARGE 32$^{\text{st}}$ International Conference on \\ Types for Proofs and Programs \par}
+  \end{center}
+
+  \vspace{0.8cm}
+
+  \begin{center}
+    {\HUGE TYPES 2026}
+  \end{center}
+
+  \vspace{0.8cm}
+
+  \begin{center}
+    {\LARGE A Marcus Wallenberg Symposium}
+  \end{center}
+
+  \vspace{1.2cm}
+
+  \begin{center}
+    {\Huge \noindent Abstracts}
+  \end{center}
+
+  \vspace{2cm}
+
+  \begin{center}
+    \includegraphics[scale=0.4]{../images/goteborg-Bengt-Nyman-resized.jpg}
+  \end{center}
+
+  \vspace{1.8cm}
+
+  \begin{center}
+    {\LARGE Chalmers University of Technology and University of Gothenburg, Gothenburg, Sweden, 4--8 May 2026 \par}
+  \end{center}
+
+  \vspace{2.5cm}
+
+  \begin{center}
+    \includegraphics[height=22pt]{../images/sponsors/chalmers-ict.png}
+    \\[4ex]
+    \includegraphics[height=22pt]{../images/sponsors/amazon.png}
+    \qquad
+    \includegraphics[height=22pt]{../images/sponsors/jane-street.png}
+    \qquad
+    \includegraphics[height=22pt]{../images/sponsors/formal-vindications.png}
+    \qquad
+    \includegraphics[height=22pt]{../images/sponsors/quantinuum.png}
+  \end{center}
+
+\end{adjustwidth*}
+}
+
+\clearpage
+
+%% copyrightpage
+\begingroup
+\footnotesize
+\parindent 0pt
+\parskip \baselineskip
+
+32$^{\text{st}}$ International Conference on Types for Proofs and Programs \\
+TYPES 2026 \\
+A Marcus Wallenberg Symposium \\
+Chalmers University of Technology and University of Gothenburg, Gothenburg, Sweden, 4--8 May 2026 \\
+Abstracts \\
+\url{https://types2026.cse.chalmers.se/}
+
+\vspace{2\baselineskip}
+
+Edited by Andreas Abel and Christian Sattler.
+
+\vspace{2\baselineskip}
+
+Department of Computer Science and Engineering \\
+Chalmers University of Technology and University of Gothenburg \\
+Gothenburg, Sweden \\
+
+\vspace{4\baselineskip}
+
+\textcopyright{} 2026 the authors and the editor.
+
+\vspace{1\baselineskip}
+
+Title photo by Bengt Nyman from Vaxholm, Sweden, licensed under \href{https://creativecommons.org/licenses/by/2.0/}{CC BY 2.0}
+
+\endgroup
+
+\clearpage
+
+\addtocounter{page}{-2}
+\hypersetup{pageanchor=true}
+
+\frontmatter
+
+\chapter{Preface}
+
+The TYPES meetings are a forum to present new and ongoing work in all
+aspects of type theory and its applications, especially in formalized
+and computer-assisted reasoning and computer programming. In the
+spirit of workshops, talks may be based on newly published papers,
+work submitted for publication, but also work in progress.
+
+This year, 69 abstracts were submitted, and each submission was
+reviewed by at least three program committee members.
+62 abstract were accepted for short presentations (20 minute slots), of which 2 were withdrawn before the conference.
+The programme was complemented by five long invited presentations (60 minute slots):
+András Kovács (Chalmers University of Technology and University of Gothenburg),
+Assia Mahboubi (INRIA Nantes),
+Clément Pit-Claudel (EPFL),
+Emily Riehl (Johns Hopkins University), and
+Daniel Gratzer (Aarhus University).
+
+The conference received financial support from
+the Marcus Wallenberg Foundation,
+the Chalmers Area of Advance \emph{Information and Communication Technology},
+and from Amazon, Jane Street, Formal Vindications and Quantinuum.
+We gratefully acknowledge all support.
+
+Similarly to previous years, a formal post-proceedings volume in
+Dagstuhl’s \emph{Leibniz International Proceedings in Informatics
+  (LIPIcs)} series is planned for after the conference; papers
+submitted to that volume need not have been selected for presentation
+at the conference, but must represent unpublished work, and are
+subjected to (another) full peer-review process.
+
+\vspace{1em}
+
+\noindent May 2026, Gothenburg\hfill Andreas Abel and Christian Sattler
+
+\openany
+
+\chapter{Organisation}
+
+\section*{Programme Committee}
+
+\begin{tabular}{@{}ll}
+Andreas Abel & University of Gothenburg, Sweden (\emph{co-chair}) \\
+Thorsten Altenkirch & University of Nottingham, United Kingdom \\
+Andrej Bauer & University of Ljubljana, Slovenia \\
+Jasmin Blanchette & Ludwig-Maximilians-Universität München, Germany \\
+Edwin Brady & University of St Andrews, United Kingdom \\
+Ivan Di Liberti & University of Gothenburg, Sweden \\
+Silvia Ghilezan & University of Novi Sad, Serbia \\
+Dan Licata & Wesleyan University, United States \\
+Zhaohui Luo & Royal Holloway, University of London, United Kingdom \\
+Marino Miculan & University of Udine, Italy \\
+Rasmus Ejlers Møgelberg & IT University of Copenhagen, Denmark \\
+Paige North & Utrecht University, Netherlands \\
+Vincent Rahli & University of Birmingham, United Kingdom \\
+Christian Sattler & Chalmers University of Technology, Sweden (\emph{co-chair}) \\
+Gabriel Scherer & INRIA, Université Paris Cité, France \\
+Michael Shulman & University of San Diego, United States \\
+Gert Smolka & Saarland University, Germany \\
+Matthieu Sozeau & INRIA, MTI Atlantique, Nantes University, France \\
+Kathrin Stark & Heriot-Watt University, United Kingdom \\
+Nicolas Tabareau & INRIA, MTI Atlantique, Nantes University, France \\
+Sebastian Ullrich & Lean Focused Research Organization \\
+Josef Urban & Czech Technical University in Prague, Czech Republic \\
+Niccolò Veltri & Tallinn University of Technology, Estonia \\
+Stephanie Weirich & University of Pennsylvania, United States \\
+\end{tabular}
+
+\section*{Steering Committee}
+
+\begin{tabular}{@{}ll}
+% Eduardo Hermo Reyes & Formal Vindications, Spain \\
+Malin Altenmüller & University of Edinburgh, Scotland \\
+Tom de Jong & University of Nottingham, England \\
+Meven Lennon-Bertrand & Inria – IRIF, Université Paris Cité, France \\
+Rasmus Ejlers Møgelberg & IT University of Copenhagen, Denmark  (\emph{chair}) \\
+Fredrik Nordvall Forsberg & University of Strathclyde, Scotland \\
+Christian Sattler & Chalmers University of Technology, Sweden \\
+\end{tabular}
+
+\section*{Local organisers}
+
+Ana Bove, Andreas Abel, Robin Adams, Peter Dybjer, and Christian Sattler.
+
+\section*{Sponsors}
+
+\begin{tabular}{@{}l@{\qquad}l}
+  \emph{Main sponsor} &
+  Marcus Wallenberg Foundation, \emph{Program for International Scientific Collaboration} \\[1ex]
+  \emph{Gold} &
+  Chalmers Area of Advance \emph{Information and Communication Technology} \\[1ex]
+  \emph{Silver} &
+  Amazon \\
+  &
+  Jane Street \\[1ex]
+  \emph{Bronze} &
+  Formal Vindications \\
+  &
+  Quantinuum  \\
+\end{tabular}
+
+% \begin{tabular}{@{}ll}
+%   Chalmers Area of Advance \emph{Information and Communication Technology} & (\emph{Gold sponsor}) \\
+%   Amazon & (\emph{Silver sponsor})\\
+%   Jane Street & (\emph{Silver sponsor})\\
+%   Formal Vindications  & (\emph{Bronze sponsor})\\
+%   Quantinuum  & (\emph{Bronze sponsor})\\
+% \end{tabular}
+
+\clearpage
+
+\setcounter{tocdepth}{2}
+{
+  \renewcommand{\aftertoctitle}{\par\nobreak \mbox{}{\normalfont \normalsize An alphabetical index of all authors can be found on page~\pageref{indexpage}.}\par\nobreak}
+  \small
+  \tableofcontents
+}
+
+\clearpage
+
+\mainmatter
+
+\input{core}
+
+\renewcommand{\indexname}{Author index}
+\phantomsection\label{indexpage}
+\printindex
+\end{document}
