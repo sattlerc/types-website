@@ -43,6 +43,8 @@ Here is an example hook hooks/reference-transaction:
 {textwrap.indent(EXAMPLE_HOOK.strip(), prefix='  ')}
 
 You can test this script by calling it without positional arguments.
+
+To trigger a cabal update, simply delete the package folder in the cabal directory.
 """
 
 
