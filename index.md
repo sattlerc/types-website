@@ -40,7 +40,7 @@ In the spirit of workshops, talks may be based on newly published papers, work s
 
 ### Attendees
 
-![Group photo](images/group-photo.jpg "taken by Jeremy Pope"){.img-fluid}
+![](images/group-photo.jpg "taken by Jeremy Pope"){.img-fluid}
 
 <section>\$include_important_dates\$</section>
 
