@@ -4,12 +4,14 @@ import Control.Monad (forM, (>=>))
 import Data.Functor ((<&>))
 import Data.Map (Map)
 import Data.Map qualified as Map
+import Data.Maybe (fromJust)
 import Data.String (fromString)
 import System.Directory (doesDirectoryExist, listDirectory)
 import System.FilePath (replaceExtension, takeBaseName, (</>))
 
 import Hakyll
 
+import General
 import Parse
 import Paths qualified
 import Render
@@ -52,31 +54,46 @@ data_compiler parse id_ = do
   CopyFile path <- loadBody id_
   unsafeCompiler $ parse path
 
-parse_directory :: (Ord a) => (FilePath -> Compiler a) -> Pattern -> Compiler (Map a FilePath)
-parse_directory parse_file = (getMatches :: Pattern -> Compiler [Identifier])
-  >=> traverse (toFilePath >>> parse_file &&& return >>> pairA)
-  >>> fmap Map.fromList
+parse_directory :: (Ord a, Show a) => String -> (FilePath -> Compiler a) -> FilePath -> Pattern -> Compiler (Map a FilePath)
+parse_directory kind parse_file base_dir = (getMatches :: Pattern -> Compiler [Identifier])
+  >=> traverse (toFilePath >>> (path_strip_prefix base_dir >>> fromJust >>> parse_file) &&& return >>> pairA)
+  >=> map_from_list_unique_m ("could not parse " ++ kind)
+
+pattern_pdf :: FilePath -> Pattern
+pattern_pdf dir = fromString $ dir </> "*.pdf"
+
+pattern_pdf_or_html_dir :: FilePath -> Pattern
+pattern_pdf_or_html_dir dir = (fromString $ dir </> "*.pdf") .||. (fromString $ dir </> "*/**")
+
+pattern_pdf_or_html_dir_index :: FilePath -> Pattern
+pattern_pdf_or_html_dir_index dir = (fromString $ dir </> "*.pdf") .||. (fromString $ dir </> "*/index.html")
 
 pattern_abstracts :: Pattern
-pattern_abstracts = fromString $ Paths.abstracts ++ "/" ++ "*.pdf"
+pattern_abstracts = pattern_pdf Paths.abstracts
 
 pattern_slides :: Pattern
-pattern_slides = fromString $ Paths.slides ++ "/" ++ "*.pdf"
+pattern_slides = pattern_pdf_or_html_dir Paths.slides
+
+pattern_slides_index :: Pattern
+pattern_slides_index = pattern_pdf_or_html_dir_index Paths.slides
 
 pattern_slides_invited :: Pattern
-pattern_slides_invited = fromString $ Paths.slides_invited ++ "/" ++ "*.pdf"
+pattern_slides_invited = pattern_pdf_or_html_dir Paths.slides_invited
+
+pattern_slides_invited_index :: Pattern
+pattern_slides_invited_index = pattern_pdf_or_html_dir_index Paths.slides_invited
 
 papers_compiler :: Compiler Papers
 papers_compiler = papers_with_abstract_and_slides
-  <$> parse_directory parse_abstract pattern_abstracts
-  <*> parse_directory parse_abstract pattern_slides
+  <$> parse_directory "abstracts" parse_abstract Paths.abstracts pattern_abstracts
+  <*> parse_directory "slides" parse_abstract Paths.slides pattern_slides_index
   <*> data_compiler parse_file_papers (fromString Paths.papers)
 
 inviteds_compiler :: Compiler Inviteds
 inviteds_compiler = do
   inviteds <- data_compiler parse_file_inviteds $ fromString Paths.inviteds
-  pictures <- parse_directory parse_picture "images/invited/*"
-  slides <- parse_directory parse_slides pattern_slides_invited
+  pictures <- parse_directory "pictures" parse_picture "images/invited" "images/invited/*"
+  slides <- parse_directory "invited slides" parse_slides Paths.slides_invited pattern_slides_invited_index
   return $ inviteds_with_slides slides $ inviteds_with_pictures pictures inviteds
 
 sessions_compiler :: Compiler Sessions

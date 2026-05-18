@@ -1,11 +1,14 @@
 module General where
 
-import Control.Arrow ((>>>), (&&&), (***), first)
+import Control.Arrow ((>>>), (&&&), (***), first, second)
+import Control.Monad (guard)
 import Data.ByteString.Builder qualified as ByteString
 import Data.ByteString.Lazy.Char8 qualified as ByteString
-import Data.Char (isLower, isSpace)
+import Data.Char (isLower, isNumber, isSpace)
 import Data.Function (on)
-import Data.List (dropWhileEnd, groupBy, uncons)
+import Data.List (dropWhileEnd, groupBy, stripPrefix, uncons)
+import Data.Map (Map)
+import Data.Map qualified as Map
 import Data.Maybe (fromJust, fromMaybe)
 import Data.Text (pack)
 import Data.Time (Day, NominalDiffTime, TimeOfDay)
@@ -14,7 +17,7 @@ import Data.Time.Format (defaultTimeLocale, formatTime)
 import Data.Time.Format.ISO8601 qualified as ISO8601
 import Data.Word (Word16)
 import System.Directory (listDirectory)
-import System.FilePath ((</>))
+import System.FilePath ((</>), joinPath, splitDirectories)
 import Text.Collate as Collate
 
 -- Utilities
@@ -107,5 +110,29 @@ list_directory path = do
   entries <- listDirectory path
   return $ map (path </>) entries
 
+path_strip_prefix :: FilePath -> FilePath -> Maybe FilePath
+path_strip_prefix = curry $ (splitDirectories *** splitDirectories >>> uncurry stripPrefix) >>> fmap joinPath
+
 update_head :: (a -> a) -> [a] -> [a]
 update_head f = uncons >>> fromJust >>> first f >>> uncurry (:)
+
+parse_integer :: String -> Maybe Integer
+parse_integer s = do
+  guard $ all isNumber s
+  return $ read s
+
+multimap :: (Ord k) => [(k, a)] -> Map k [a]
+multimap = map (second return) >>> Map.fromListWith (++)
+
+map_from_multimap :: (Ord k) => Map k [a] -> Either (k, (a, a)) (Map k a)
+map_from_multimap = Map.traverseWithKey $ \k xs -> case xs of
+  x : y : _ -> Left (k, (x, y))
+  [x] -> Right x
+
+map_from_list_unique :: (Ord k) => [(k, a)] -> Either (k, (a, a)) (Map k a)
+map_from_list_unique = multimap >>> map_from_multimap
+
+map_from_list_unique_m :: (MonadFail m, Ord k, Show k, Show a) => String -> [(k, a)] -> m (Map k a)
+map_from_list_unique_m msg xs = case map_from_list_unique xs of
+  Left (k, (x, y)) -> fail $ msg ++ ": key " ++ show k ++ " has duplicate values " ++ show x ++ " and " ++ show y
+  Right r -> return r

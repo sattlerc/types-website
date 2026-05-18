@@ -1,7 +1,10 @@
 module Parse where
 
+import Control.Applicative ((<|>))
 import Control.Arrow ((>>>))
 import Control.Monad ((>=>), foldM, forM_, guard, unless)
+import Control.Monad.Trans.Class (lift)
+import Control.Monad.Trans.Maybe (MaybeT, hoistMaybe, runMaybeT)
 import Data.Aeson (FromJSON, eitherDecode, parseJSON, withArray, withObject, (.:))
 import Data.Aeson.Types (Object, Parser, Value, (.:?))
 import Data.ByteString.Lazy (ByteString)
@@ -9,6 +12,7 @@ import Data.ByteString.Lazy qualified as ByteString
 import Data.Char (isNumber, toLower)
 import Data.Foldable (toList)
 import Data.Function ((&), on)
+import Data.Functor.Identity (runIdentity)
 import Data.List (intercalate)
 import Data.Map (Map)
 import Data.Map qualified as Map
@@ -18,11 +22,24 @@ import Data.Time (Day, NominalDiffTime, TimeOfDay(TimeOfDay))
 import Data.Time qualified as Time
 import Data.Time.Format.ISO8601 qualified as ISO8601
 import Data.Tuple (swap)
-import System.FilePath (takeBaseName, takeExtension)
+import System.Directory (doesDirectoryExist, doesFileExist)
+import System.FilePath ((</>), splitDirectories, takeBaseName, takeExtension)
 
 import General
 
 -- Path parsing.
+
+list_files_or_index_html :: FilePath -> IO [FilePath]
+list_files_or_index_html dir = do
+  paths <- list_directory dir
+  traverse h paths where
+
+  h :: FilePath -> IO FilePath
+  h path = do
+    is_dir <- doesDirectoryExist (dir </> path)
+    return $ if is_dir
+      then path </> "index.html"
+      else path
 
 picture_from_path :: FilePath -> Maybe String
 picture_from_path path = do
@@ -305,30 +322,42 @@ parse_file_papers = ByteString.readFile
 type PaperAbstracts = Map Integer FilePath
 
 abstract_id_from_path :: FilePath -> Maybe Integer
-abstract_id_from_path path = do
-  let s = takeBaseName path
-  let e = takeExtension path
-  guard $ all isNumber s
-  guard $ e == ".pdf"
-  return $ read s
+abstract_id_from_path path = pdf <|> html_dir where
+    pdf :: Maybe Integer
+    pdf = do
+      [file] <- return $ splitDirectories path
+      let s = takeBaseName file
+      let e = takeExtension file
+      guard $ e == ".pdf"
+      parse_integer s
+
+    html_dir :: Maybe Integer
+    html_dir = do
+      [dir, "index.html"] <- return $ splitDirectories path
+      parse_integer dir
 
 parse_abstract :: (MonadFail m) => FilePath -> m Integer
 parse_abstract path = fail_maybe ("invalid abstract filename: " ++ path) $ abstract_id_from_path path
 
-parse_abstracts :: FilePath -> IO PaperAbstracts
-parse_abstracts = list_directory >>> fmap h where
-  h :: [FilePath] -> PaperAbstracts
-  h = map (\path -> do {id <- abstract_id_from_path path; return (id, path)})
-      >>> catMaybes
-      >>> Map.fromList
+parse_abstracts :: String -> FilePath -> IO PaperAbstracts
+parse_abstracts kind dir = do
+  u <- list_files_or_index_html dir
+  map_from_list_unique_m ("could not parse " ++ kind) $ h u
+  where
+    h :: [FilePath] -> [(Integer, FilePath)]
+    h paths = do
+      path <- paths
+      case abstract_id_from_path path of
+        Nothing -> mempty
+        Just id -> return (id, dir </> path)
 
 papers_with_abstract :: PaperAbstracts -> Papers -> Papers
 papers_with_abstract abstracts = Map.mapWithKey $
     \id_ paper -> paper { paper_path = Map.lookup id_ abstracts}
 
 papers_with_slides :: PaperAbstracts -> Papers -> Papers
-papers_with_slides abstracts = Map.mapWithKey $
-    \id_ paper -> paper { paper_slides_path = Map.lookup id_ abstracts}
+papers_with_slides slides = Map.mapWithKey $
+    \id_ paper -> paper { paper_slides_path = Map.lookup id_ slides}
 
 papers_with_abstract_and_slides :: PaperAbstracts -> PaperAbstracts -> Papers -> Papers
 papers_with_abstract_and_slides abstracts slides = papers_with_abstract abstracts >>> papers_with_slides slides
@@ -336,8 +365,8 @@ papers_with_abstract_and_slides abstracts slides = papers_with_abstract abstract
 parse_papers :: FilePath -> FilePath -> FilePath -> IO Papers
 parse_papers path_json path_abstracts path_slides = do
   papers <- parse_file_papers path_json
-  abstracts <- parse_abstracts path_abstracts
-  slides <- parse_abstracts path_slides
+  abstracts <- parse_abstracts "abstracts" path_abstracts
+  slides <- parse_abstracts "slides" path_slides
   return $ papers_with_slides slides $ papers_with_abstract abstracts papers
 
 -- Data.
