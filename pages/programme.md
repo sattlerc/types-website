@@ -5,7 +5,7 @@ title: Programme
 # Programme
 
 Click on a slot for details.
-The programme is available also as an [ICS file](files/types2026.ics) to import into your calendar.
+The programme is available also as an [ICS file](files/types20XX.ics) to import into your calendar.
 
 <section class="programme-table">\$programme_table\$</section>
 

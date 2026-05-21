@@ -1,0 +1,20 @@
+[
+  {
+    "id": 0,
+    "title": "cat happiness",
+    "papers": [1, 1, 1],
+    "chair": "Christian Sattler"
+  },
+  {
+    "id": 1,
+    "title": "cat food, feeding",
+    "papers": [1, 1, 1, 1],
+    "chair": "Christian Sattler"
+  },
+  {
+    "id": 2,
+    "title": "cat games, cat play",
+    "papers": [1, 1, 1, 1, 1],
+    "chair": "Christian Sattler"
+  }
+]

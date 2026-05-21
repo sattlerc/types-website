@@ -7,13 +7,13 @@ Committees
 
 ## Local organisers
 
-Contact email: <types2026@chalmers.se>
+Contact email: <email@example.com>
 
 <section>\$organizing_committee\$</section>
 
 ## Program committee
 
-Contact email: <types2026-pc@chalmers.se>
+Contact email: <email@example.com>
 
 <section>\$program_committee\$</section>
 

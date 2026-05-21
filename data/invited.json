@@ -1,0 +1,11 @@
+{
+  "steve": {
+    "first": "Steve",
+    "last": "Stevensson",
+    "affiliation": "Z University, Earth",
+    "homepage": "https://example.com/",
+    "title": "The underappreciated value of cats",
+    "abstract": "Meow.",
+    "chair": "Christian Sattler"
+  }
+}

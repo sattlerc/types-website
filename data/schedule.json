@@ -1,0 +1,271 @@
+[
+  {
+    "date": "2026-05-04",
+    "events": [
+      {
+        "from": "08:45",
+        "to": "09:20",
+        "type": "break",
+        "title": "Registration"
+      },
+      {
+        "from": "09:20",
+        "to": "09:30",
+        "type": "special",
+        "title": "Opening address"
+      },
+      {
+        "from": "09:30",
+        "to": "10:30",
+        "type": "invited_talk",
+        "speaker": "steve"
+      },
+      {
+        "from": "10:30",
+        "to": "11:10",
+        "type": "break",
+        "title": "Coffee, registration",
+        "short": "Coffee, reg."
+      },
+      {
+        "from": "11:10",
+        "to": "12:10",
+        "type": "session",
+        "id": 0
+      },
+      {
+        "from": "12:10",
+        "to": "13:40",
+        "type": "break",
+        "title": "Lunch"
+      },
+      {
+        "from": "13:40",
+        "to": "15:00",
+        "type": "session",
+        "id": 1
+      },
+      {
+        "from": "15:00",
+        "to": "15:40",
+        "type": "break",
+        "title": "Coffee"
+      },
+      {
+        "from": "15:40",
+        "to": "17:00",
+        "type": "session",
+        "id": 1
+      },
+      {
+        "from": "17:00",
+        "to": "19:00",
+        "type": "special",
+          "title": "Reception",
+        "link": "social.html#reception"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-05",
+    "events": [
+      {
+        "from": "09:00",
+        "to": "10:00",
+        "type": "invited_talk",
+        "speaker": "steve"
+      },
+      {
+        "from": "10:00",
+        "to": "10:30",
+        "type": "break",
+        "title": "Coffee"
+      },
+      {
+        "from": "10:30",
+        "to": "12:10",
+        "type": "session",
+        "id": 2
+      },
+      {
+        "from": "12:10",
+        "to": "13:30",
+        "type": "break",
+        "title": "Lunch"
+      },
+      {
+        "from": "13:30",
+        "to": "15:10",
+        "type": "session",
+        "id": 2
+      },
+      {
+        "from": "15:10",
+        "to": "15:40",
+        "type": "break",
+        "title": "Coffee"
+      },
+      {
+        "from": "15:45",
+        "to": "18:40",
+        "type": "special",
+        "title": "Excursion",
+        "link": "social.html#excursion"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-06",
+    "events": [
+      {
+        "from": "09:00",
+        "to": "10:00",
+        "type": "invited_talk",
+        "speaker": "steve"
+      },
+      {
+        "from": "10:00",
+        "to": "10:30",
+        "type": "break",
+        "title": "Coffee"
+      },
+      {
+        "from": "10:30",
+        "to": "12:10",
+        "type": "session",
+        "id": 2
+      },
+      {
+        "from": "12:10",
+        "to": "13:40",
+        "type": "break",
+        "title": "Lunch"
+      },
+      {
+        "from": "13:40",
+        "to": "15:00",
+        "type": "session",
+        "id": 1
+      },
+      {
+        "from": "15:00",
+        "to": "15:30",
+        "type": "break",
+        "title": "Coffee"
+      },
+      {
+        "from": "15:30",
+        "to": "16:50",
+        "type": "session",
+        "id": 1
+      },
+      {
+        "from": "17:00",
+        "to": "18:00",
+        "type": "special",
+        "title": "Business meeting"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-07",
+    "events": [
+      {
+        "from": "09:00",
+        "to": "10:00",
+        "type": "invited_talk",
+        "speaker": "steve"
+      },
+      {
+        "from": "10:00",
+        "to": "10:30",
+        "type": "break",
+        "title": "Coffee"
+      },
+      {
+        "from": "10:30",
+        "to": "12:10",
+        "type": "session",
+        "id": 2
+      },
+      {
+        "from": "12:10",
+        "to": "13:40",
+        "type": "break",
+        "title": "Lunch"
+      },
+      {
+        "from": "13:40",
+        "to": "15:00",
+        "type": "session",
+        "id": 1
+      },
+      {
+        "from": "15:00",
+        "to": "15:40",
+        "type": "break",
+        "title": "Coffee"
+      },
+      {
+        "from": "15:40",
+        "to": "17:00",
+        "type": "session",
+        "id": 1
+      },
+      {
+        "from": "18:30",
+        "to": "21:00",
+        "type": "special",
+        "title": "Dinner",
+        "link": "social.html#dinner"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-08",
+    "events": [
+      {
+        "from": "09:00",
+        "to": "10:00",
+        "type": "invited_talk",
+        "speaker": "steve"
+      },
+      {
+        "from": "10:00",
+        "to": "10:30",
+        "type": "break",
+        "title": "Coffee"
+      },
+      {
+        "from": "10:30",
+        "to": "12:10",
+        "type": "session",
+        "id": 2
+      },
+      {
+        "from": "12:10",
+        "to": "13:40",
+        "type": "break",
+        "title": "Lunch"
+      },
+      {
+        "from": "13:40",
+        "to": "15:00",
+        "type": "session",
+        "id": 1
+      },
+      {
+        "from": "15:00",
+        "to": "15:40",
+        "type": "break",
+        "title": "Coffee"
+      },
+      {
+        "from": "15:40",
+        "to": "16:40",
+        "type": "session",
+        "id": 0
+      }
+    ]
+  }
+]

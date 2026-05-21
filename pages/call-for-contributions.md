@@ -5,8 +5,8 @@ title: Call for contributions
 Call for Contributions
 ======================
 
-32nd International Conference on Types for Proofs and Programs\
-4--8 May 2026, Gothenburg, Sweden, <https://types2026.cse.chalmers.se/>
+XXnd International Conference on Types for Proofs and Programs\
+4--8 May 20XX, Earth, <https://example.com>
 
 Overview
 --------
@@ -33,7 +33,7 @@ We encourage talks proposing new ways of applying type theory.
 In the spirit of workshops, talks may be based on newly published papers, work submitted for publication, but also work in progress.
 Participation in the meeting is primarily in person, as face-to-face interactions are highly valuable.
 <!--
-If you need to discuss remote participation, please contact the [organizers](mailto:types2026@chalmers.se).
+If you need to discuss remote participation, please contact the [organizers](mailto:email@example.com).
 -->
 
 Contributed Talks
@@ -44,7 +44,7 @@ Selection of those is based on extended abstracts/short papers:
 
 - limited to 2 pages (not counting the bibliography),
 - formatted using [easychair.cls](https://easychair.org/publications/for_authors),
-- submitted at <https://types-hotcrp.paris.inria.fr/types26-conf/>.
+- submitted at <http://hot-crp.example.com>.
 
 Camera-ready versions of the accepted contributions will be published in an informal book of abstracts for distribution during the conference.
 
@@ -53,19 +53,13 @@ Camera-ready versions of the accepted contributions will be published in an info
 Invited speakers
 ----------------
 
-* [Daniel Gratzer](https://www.danielgratzer.com/) (Aarhus University, Denmark)
-* [András Kovács](https://andraskovacs.github.io/) (University of Gothenburg, Sweden)
-* [Assia Mahboubi](https://people.rennes.inria.fr/Assia.Mahboubi/) (INRIA, France, and Vrije Universiteit Amsterdam, Netherlands)
-* [Clément Pit-Claudel](https://pit-claudel.fr/clement/) (EPFL, Switzerland)
-* [Emily Riehl](https://emilyriehl.github.io/) (Johns Hopkins University, US)
-
 Post-proceedings
 ----------------
 
 A post-proceedings volume will be published in the Leibniz International Proceedings in Informatics (LIPIcs) series.
 Submission to that volume will be open to everyone.
 
-Tentative submission deadline for the post-proceedings: October 2026.
+Tentative submission deadline for the post-proceedings: October 20XX.
 
 Committees
 ----------

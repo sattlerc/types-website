@@ -1,0 +1,21 @@
+[
+    {
+        "object": "paper",
+        "pid": 1,
+        "title": "Playing with cats, feeding them, and making them happy",
+        "authors": [
+            {
+                "first": "Person",
+                "last": "A"
+            },
+            {
+                "first": "Person",
+                "last": "B"
+            },
+            {
+                "first": "Peron",
+                "last": "C"
+            }
+        ]
+    }
+]

@@ -22,7 +22,7 @@ The registration fee includes the following:
 #### Visa information
 
 If you need to apply for a visa, we are happy to supply a support letter for you **after** you have registered for the conference.
-Please contact <types2026@chalmers.se> with the following information:
+Please contact <email@example.com> with the following information:
 
 - your name (as it appears in your passport);
 - your date of birth;

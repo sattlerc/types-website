@@ -7,7 +7,7 @@ Practical information
 
 ### Venue
 
-TYPES 2026 will take place at [Lindholmen Conference
+TYPES 20XX will take place at [Lindholmen Conference
 Center](https://www.google.com/maps/place/Lindholmen+Conference+Centre+at+Lindholmen+Science+Park/@57.7071432,11.9400314,16z/data=!3m1!4b1!4m6!3m5!1s0x464ff35aa1bf62a7:0xcb26569fedefe772!8m2!3d57.7071432!4d11.9400314!16s%2Fg%2F1pzq5rfgk?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D)
 in Gothenburg.
 
@@ -34,99 +34,17 @@ The conference center has a guest WiFi network named **Lindholmen Guest**.
 
 ### Zulip channel
 
-There is an unofficial channel [#TYPES26](https://typ.zulipchat.com/#narrow/channel/595239-TYPES26) on the Types Zulip that you can use for communication between participants.
+There is an unofficial channel on the Types Zulip that you can use for communication between participants.
 Note that the organizers are not responsible for monitoring this channel.
 
 ### Accommodation
 
 There are many hotels both around Lindholmen conference center and in the city centre.  \
-Be aware that there is a big fair in Gothenburg around the days of TYPES 2026 so make sure to book you accommodation in good time!
+Be aware that there is a big fair in Gothenburg around the days of TYPES 20XX so make sure to book you accommodation in good time!
 
 Chalmers has agreement with some hotels and here you can see their prices and how to book them. \
 Prices below are per room and night and **include taxes and breakfast**. \
 Prices are subject to room availability. Some of the hotels have reserved a number of rooms for us until **April 1st**.
-
-##### Hotels close to the conference center:
-
-- [Clarion Hotel
-  Karlatornet](https://www.strawberryhotels.com/hotels/sweden/gothenburg/clarion-hotel-karlatornet/)
-  ([map](https://www.google.com/maps/place/Clarion+Hotel+Karlatornet/@57.7098167,11.9367739,17z/data=!4m11!3m10!1s0x464ff3214a6678f7:0xb2e91b70df8e787b!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.7098139!4d11.9393488!16s%2Fg%2F11vt592yzm?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D))
-  \
-  Located 600m from the conference center. \
-  Create an account and add the code **60267544** in the "Corporate   agreement" in your profile. \
-  Standard double room, 1 pers: 1331 sek \
-  Standard double room, 2 pers: 1531 sek
-
-- [Clarion Hotel The
-  Pier](https://www.strawberryhotels.com/hotels/sweden/gothenburg/clarion-hotel-the-pier/)
-  ([map](https://www.google.com/maps/place/Clarion+Hotel%C2%AE+The+Pier/@57.7106759,11.9460203,17z/data=!4m11!3m10!1s0x464ff3e14431f3bb:0xeb133600983c44e1!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.7106731!4d11.9485952!16s%2Fg%2F11ryq4_1yk?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D)) \
-  Located 600m from the conference center. \
-  Create an account and add the code **60267544** in the "Corporate   agreement" in your profile. \
-  Standard double room, 1 pers: 1331 sek \
-  Standard double room, 2 pers: 1531 sek
-
-- [Comfort Hotel
-  Göteborg](https://www.strawberryhotels.com/hotels/sweden/gothenburg/comfort-hotel-goteborg/)
-  ([map](https://www.google.com/maps/place/Comfort+Hotel+G%C3%B6teborg/@57.7058196,11.9405299,15z/data=!3m1!5s0x464ff3679508075f:0x8584b5456b82ff12!4m11!3m10!1s0x464ff367962ffcd3:0xccdfd66b4b3c30e4!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.7058095!4d11.9589837!16s%2Fg%2F1tfcgcdm?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D))
-  \
-  About 7 min ride in ferry 286 from **Stenpiren** , located 100m from the hotel. \
-  Create an account and add the code **60267544** in the "Corporate agreement" in your profile. \
-  Standard double room, 1 pers: 1180 sek \
-  Standard double room, 2 pers: 1380 sek
-
-- [Radisson Blue Riverside
-  hotel](https://www.radissonhotels.com/en-us/hotels/radisson-blu-gothenburg-riverside)
-  ([map](https://www.google.com/maps/place/Radisson+Blu+Riverside+Hotel,+Gothenburg/@57.7079561,11.9381556,16z/data=!4m11!3m10!1s0x464ff35a971a6d95:0xad3b02d2a152701d!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.7079533!4d11.9407305!16s%2Fg%2F11h145xr6?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D))
-  \
-  Located 100m from the conference center. \
-  Use the link to the hotel when booking a room. Under "Special Rates" choose the option "Corporate account ID" and give the code **57072**. \
-  Double room, 1 person: 1439 sek \
-  Double room, 2 people: 1639 sek
-
-##### Hotels downtown:
-
-- [Comfort Hotel
-  City](https://www.strawberryhotels.com/hotels/sweden/gothenburg/comfort-hotel-city/)
-  ([map](https://www.google.com/maps/place/Comfort+Hotel+City/@57.7063483,11.9692407,17z/data=!4m11!3m10!1s0x464ff364fb000001:0xf72177d7388d9b3f!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.7063455!4d11.9718156!16s%2Fg%2F1q62dzvv5?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D)) \
-  About 7 min ride in ferry 286 from **Stenpiren** , located 1km from the hotel. \
-  Alternative, about 10 min ride on tram 12 or buses 21 or X1 from stop **Nordstan**,
-  located 350m from the hotel. \
-  Create an account and add the code **60267544** in the "Corporate agreement" in your profile. \
-  Standard double room, 1 pers: 1095 sek \
-  Standard double room, 2 pers: 1295 sek
-
-- [Hyatt Place Gothenburg
-  Central](https://www.hyatt.com/hyatt-place/en-US/gotzg-hyatt-place-gothenburg-central)
-  ([map](https://www.google.com/maps/place/Hyatt+Place+Gothenburg+Central/@57.7092461,11.9695314,17z/data=!3m1!5s0x464ff36368bb1529:0x6c1168e36b4bf9db!4m11!3m10!1s0x464ff363786312bb:0xead6b9f8b1bb95e5!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.7092433!4d11.9721063!16s%2Fg%2F11dyjsdzh?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D)) \
-  About 10 min ride on tram 12 or buses 21 or X1 from stop **Nordstan**, located 100m from the hotel. \
-  Use [this link for booking](https://go.hyatt.com/link/v2/eae__80egYdHM0pGGnm6Nd5Va--NKEKR2ui2I) rooms during the period **2-10 May 2026** (outside this period the system will not find rooms at the agreed priced below).\
-  Double room, 1 person: 1152 sek \
-  Double room, 2 people: 1352 sek
-
-##### Hotels in town:
-
-- [Hotell City Avenyn](https://www.hotellcityavenyn.se/)
-  ([map](https://www.google.com/maps/place/City+Hotell+Avenyn/@57.7004862,11.9738753,17z/data=!4m11!3m10!1s0x464ff344c1c3c673:0x5f73645b6e0e930f!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.7004834!4d11.9764502!16s%2Fg%2F11vf502sqj?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D)) \
-  About 15 min ride on tram 10 from stop **Valand**, located 200m from the hotel. \
-  Use the hotel page for booking and apply the code **TYPES2026** to get Chalmers prices. \
-  Single room: 889 sek \
-  Double room, 2 people: 1249 sek \
-  The price of a Double room for 1 person is 924 sek, but this option does not show up in the online booking. To get this price, you either book a double room and send a mail to <info@hotellcityavenyn.se> to get the reduced price, or directly send a mail so the hotel books the room for you.
-
-- [Hotel Loresnberg](https://www.hotel-lorensberg.se/?lang=en)
- ([map](https://www.google.com/maps/place/Hotel+Lorensberg,+G%C3%B6teborg/@57.6988273,11.9808888,16z/data=!4m11!3m10!1s0x464ff377034ef085:0x28ba16a30a9f5b7c!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.6988245!4d11.9834691!16s%2Fg%2F1vg_bgls?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D))\
-  About 15 min ride on tram 12 from stop **Scandinavium**, located 200m from the hotel. \
-  Use the promotional code **TYPES2026** or simply use [this link to book](https://reservations.bookvisit.com/campaign/campaign-details?channelId=59bd1351-1053-4770-83ec-b812f1a37807&culture=en-GB&campaignId=47bf474f-a119-4074-a0c9-79bdab375270&year=2026&month=5&day=2&stayLength=6&roomConfig=a1&promoCode=TYPES2026) with Chalmers prices during the period **2-10 May 2026**. \
-  Single room: 935 sek \
-  Double room, 1 person: 995 sek \
-  Double room, 2 people: 1145 sek
-
-
-- [Hotel Poseidon](https://www.hotelposeidon.com/) ([map](https://www.google.com/maps/place/Hotel+Poseidon/@57.7001441,11.9515212,15z/data=!4m11!3m10!1s0x464ff36fcae42825:0xe21a204e4e508119!5m4!1s2026-05-03!2i5!4m1!1i2!8m2!3d57.700134!4d11.969975!16s%2Fg%2F1vljdysx?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D))  \
-  About 15 min ride on tram 10 from stop **Vasaplatsen**, located 200m from the hotel. \
-  E-mail to <info@hotelposeidon.com> and refer to code **TYPES 2026** or reservation number **264917** to get Chalmers prices during the period **2-10 May 2026**. \
-  Single superior: 1137 sek \
-  Double room, 2 people: 1486 sek
 
 ### Travel
 
@@ -164,7 +82,7 @@ Most paying machines at the restaurants have the option to add a fixed percentag
 
 ###### Time zone
 
-During TYPES 2026, Gothenburg will be in the [Central Europe Summer Time](https://www.timeanddate.com/time/zones/cest) time zone (UTC+2).
+During TYPES 20XX, Gothenburg will be in the [Central Europe Summer Time](https://www.timeanddate.com/time/zones/cest) time zone (UTC+2).
 
 ###### Electricity
 
@@ -176,7 +94,7 @@ The standard electrical system uses [Type F plugs](https://www.worldstandards.eu
 If you are not a citizen of a EU country, you may need to apply for a Schengen visa to visit Sweden for up to 90 days.
 Please check the pages at [Swedish migration office](https://www.migrationsverket.se/en/you-want-to-apply/visiting-sweden/visiting-sweden-for-up-to-90-days-entry-visa.html).
 If you need to apply for a visa, we are happy to supply a support letter for you after you have registered for the conference.
-If you require such that a letter, please send an e-mail to <types2026@chalmers.se> with your name (as it appears in your passport) and your physical address.
+If you require such that a letter, please send an e-mail to <email@example.com> with your name (as it appears in your passport) and your physical address.
 
 ###### Things to see and do
 
