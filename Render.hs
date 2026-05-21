@@ -100,6 +100,47 @@ format_papers = toList
   >>> blaze_ul_strict
   >>> BlazePretty.renderHtml
 
+-- Persons.
+
+data PersonOptions = PersonOptions
+  { person_options_homepage :: Bool
+  , person_options_affiliation_short :: Bool
+  , person_options_role :: Bool
+  }
+
+options_base :: PersonOptions
+options_base = PersonOptions
+  { person_options_homepage = True
+  , person_options_affiliation_short = True
+  , person_options_role = True
+  }
+
+format_person_homepage :: PersonOptions -> Person -> Maybe String
+format_person_homepage options person = do
+  guard $ person_options_homepage options
+  person_homepage person
+
+format_person :: PersonOptions -> Person -> Html
+format_person options person = do
+  blaze_link_maybe homepage $ Blaze.string $ format_name $ person_name person
+  maybeM_ affiliation $ \a -> Blaze.string $ " " ++ parens a
+  maybeM_ role $ \a -> Blaze.string $ " " ++ parens a
+
+  where
+  homepage :: Maybe String
+  homepage = do
+    guard $ person_options_homepage options
+    person_homepage person
+
+  affiliation :: Maybe String
+  affiliation = person_options_affiliation_shorten (person_options_affiliation_short options) person
+
+  role :: Maybe String
+  role = do
+    guard $ person_options_role options
+    person_role person
+
+
 -- Invited speakers.
 
 invited_speaker_picture :: String -> String
@@ -126,9 +167,7 @@ format_invited_speaker key invited = Blaze.div
           Blaze.! BlazeAttr.alt (fromString $ invited_speaker invited)
           Blaze.! blaze_classes ["img-fluid"]
     Blaze.div Blaze.! blaze_classes ["col", "m-2"] $ do
-      blaze_strict $ Blaze.h4 $ do
-        blaze_link_maybe (invited_homepage invited) $ Blaze.string $ invited_speaker invited
-        Blaze.string $ " " ++ parens (invited_affiliation invited)
+      blaze_strict $ Blaze.h4 $ format_person options_base $ invited_person invited
       maybeM_ (invited_title invited) $ Blaze.string >>> Blaze.h5
       maybeM_ (invited_slides invited) $ flip blaze_link (Blaze.string "Slides") >>> Blaze.p
       when (any (($ invited) >>> isJust) [invited_abstract_html, invited_abstract]) $ do
@@ -142,6 +181,14 @@ format_invited_speakers :: Inviteds -> String
 format_invited_speakers = Map.toAscList
   >>> map (uncurry format_invited_speaker)
   >>> mconcat
+  >>> BlazePretty.renderHtml
+
+-- Committees
+
+format_committee :: PersonOptions -> [Person] -> String
+format_committee options = sort
+  >>> map (format_person options)
+  >>> blaze_ul_strict
   >>> BlazePretty.renderHtml
 
 -- Schedule table

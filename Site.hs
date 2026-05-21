@@ -102,6 +102,15 @@ sessions_compiler = data_compiler parse_file_sessions $ fromString Paths.session
 schedule_compiler :: Compiler Schedule
 schedule_compiler = data_compiler parse_file_schedule $ fromString Paths.schedule
 
+organizing_committee_compiler :: Compiler [Person]
+organizing_committee_compiler = data_compiler parse_file_committee $ fromString Paths.organizing_committee
+
+program_committee_compiler :: Compiler [Person]
+program_committee_compiler = data_compiler parse_file_committee $ fromString Paths.program_committee
+
+steering_committee_compiler :: Compiler [Person]
+steering_committee_compiler = data_compiler parse_file_committee $ fromString Paths.steering_committee
+
 dir_include :: FilePath
 dir_include = "include"
 
@@ -132,7 +141,19 @@ data_context = mconcat
       format_schedule <$> papers_compiler <*> inviteds_compiler <*> sessions_compiler <*> schedule_compiler
   , field "programme_table" $ const $
       format_schedule_table <$> inviteds_compiler <*> sessions_compiler <*> schedule_compiler
+  , field "organizing_committee" $ const $
+      format_committee options_local <$> organizing_committee_compiler
+  , field "program_committee" $ const $
+      format_committee options_other <$> program_committee_compiler
+  , field "steering_committee" $ const $
+      format_committee options_other <$> steering_committee_compiler
   ]
+  where
+  options_local :: PersonOptions
+  options_local = options_base
+
+options_other :: PersonOptions
+options_other = options_base { person_options_homepage = False }
 
 page_compiler :: Compiler (Item String)
 page_compiler = do
@@ -170,7 +191,7 @@ main = hakyll $ do
     compile navigation_compiler
 
   -- Data.
-  match (fromList $ map fromString [Paths.papers, Paths.inviteds, Paths.sessions, Paths.schedule]) $
+  match (fromList $ map fromString [Paths.papers, Paths.inviteds, Paths.sessions, Paths.schedule, Paths.organizing_committee, Paths.program_committee, Paths.steering_committee]) $
     compile copyFileCompiler
 
   -- Includes.

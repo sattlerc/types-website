@@ -11,7 +11,7 @@ slides = "slides"
 slides_invited :: FilePath
 slides_invited = "slides-invited"
 
--- Files.
+-- Data files.
 
 papers :: FilePath
 papers = "data/papers.json"
@@ -24,3 +24,12 @@ sessions = "data/sessions.json"
 
 schedule :: FilePath
 schedule = "data/schedule.json"
+
+organizing_committee :: FilePath
+organizing_committee = "data/organizing-committee.json"
+
+program_committee :: FilePath
+program_committee = "data/program-committee.json"
+
+steering_committee :: FilePath
+steering_committee = "data/steering-committee.json"

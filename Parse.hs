@@ -1,17 +1,18 @@
 module Parse where
 
 import Control.Applicative ((<|>))
-import Control.Arrow ((>>>))
+import Control.Arrow ((>>>), (&&&))
 import Control.Monad ((>=>), foldM, forM_, guard, unless)
 import Control.Monad.Trans.Class (lift)
 import Control.Monad.Trans.Maybe (MaybeT, hoistMaybe, runMaybeT)
-import Data.Aeson (FromJSON, eitherDecode, parseJSON, withArray, withObject, (.:))
+import Data.Aeson (FromJSON, Value(Object), eitherDecode, parseJSON, withArray, withObject, (.:))
 import Data.Aeson.Types (Object, Parser, Value, (.:?))
 import Data.ByteString.Lazy (ByteString)
 import Data.ByteString.Lazy qualified as ByteString
 import Data.Char (isNumber, toLower)
 import Data.Foldable (toList)
 import Data.Function ((&), on)
+import Data.Functor.Classes (liftCompare, liftCompare2)
 import Data.Functor.Identity (runIdentity)
 import Data.List (intercalate)
 import Data.Map (Map)
@@ -57,6 +58,69 @@ slides_from_path path = do
 parse_slides :: (MonadFail m) => FilePath -> m String
 parse_slides path = fail_maybe ("invalid slides path: " ++ path) $ slides_from_path path
 
+-- Names.
+
+data Name = Name
+  { name_first :: String
+  , name_last :: String
+  } deriving (Eq, Show)
+
+name_sort_key :: Name -> (String, (Maybe String, String))
+name_sort_key name = (last_core, (tussenvoegsels, name_first name)) where
+  (tussenvoegsels, last_core) = split_tussenvoegsels $ name_last name
+
+name_sort_key_string :: Name -> String
+name_sort_key_string first_last = unicode_sort_key_ascii s where
+  s :: String
+  s = intercalate ", " [last, fromMaybe "_" tussenvoegsels, first]
+
+  last :: String
+  tussenvoegsels :: Maybe String
+  first :: String
+  (last, (tussenvoegsels, first)) = name_sort_key first_last
+
+instance Ord Name where
+  compare = liftCompare2 compare_unicode (liftCompare2 (liftCompare compare_unicode) compare_unicode) `on` name_sort_key
+
+instance FromJSON Name where
+  parseJSON = withObject "Name" $ \v -> Name
+    <$> v .: "first"
+    <*> v .: "last"
+
+format_name :: Name -> String
+format_name = sequence [name_first, name_last] >>> intercalate " "
+
+format_name_last_first :: Name -> String
+format_name_last_first = sequence [name_last, name_first] >>> intercalate ", "
+
+-- Persons.
+
+data Person = Person
+  { person_name :: Name
+  , person_affiliation :: Maybe String
+  , person_affiliation_short :: Maybe String
+  , person_email :: Maybe String
+  , person_homepage :: Maybe String
+  , person_role :: Maybe String
+  } deriving (Eq, Ord, Show)
+
+instance FromJSON Person where
+  parseJSON = withObject "Person" $ \v -> Person
+    <$> parseJSON (Object  v)
+    <*> v .:? "affiliation"
+    <*> v .:? "affiliation_short"
+    <*> v .:? "email"
+    <*> v .:? "homepage"
+    <*> v .:? "role"
+
+person_affiliation_short_fallback :: Person -> Maybe String
+person_affiliation_short_fallback person = person_affiliation_short person <|> person_affiliation person
+
+person_options_affiliation_shorten :: Bool -> Person -> Maybe String
+person_options_affiliation_shorten = \case
+  False -> person_affiliation
+  True -> person_affiliation_short_fallback
+
 -- JSON parsing.
 
 decode_json :: (FromJSON a, MonadFail m) => ByteString -> m a
@@ -70,13 +134,16 @@ to_map context key_name = foldM f Map.empty where
     (Nothing, t) -> return t
     _ -> fail $ context ++ ": duplicate " ++ key_name ++ " " ++ show k
 
+-- Reading JSON committee files
+
+
+parse_file_committee :: FilePath -> IO [Person]
+parse_file_committee = ByteString.readFile >=> decode_json
+
 -- Reading the JSON invited talks file.
 
 data Invited = Invited
-  { invited_first :: String
-  , invited_last :: String
-  , invited_affiliation :: String
-  , invited_homepage :: Maybe String
+  { invited_person :: Person
   , invited_title :: Maybe String
   , invited_title_latex :: Maybe String
   , invited_abstract :: Maybe String
@@ -87,11 +154,8 @@ data Invited = Invited
   } deriving (Eq, Show)
 
 instance FromJSON Invited where
-  parseJSON = withObject "invited" $ \v -> Invited
-    <$> v .: "first"
-    <*> v .: "last"
-    <*> v .: "affiliation"
-    <*> v .:? "homepage"
+  parseJSON = withObject "Invited" $ \v -> Invited
+    <$> parseJSON (Object v)
     <*> v .:? "title"
     <*> v .:? "title_latex"
     <*> v .:? "abstract"
@@ -115,15 +179,8 @@ inviteds_with_slides :: InvitedFiles -> Inviteds -> Inviteds
 inviteds_with_slides slides = Map.mapWithKey $
     \id_ invited -> invited { invited_slides = Map.lookup id_ slides }
 
-invited_author :: Invited -> Author
-invited_author invited = Author
-  { author_first = invited_first invited
-  , author_last = invited_last invited
-  , author_affiliation = invited_affiliation invited
-  }
-
 invited_speaker :: Invited -> String
-invited_speaker = invited_author >>> format_author
+invited_speaker = invited_person >>> person_name >>> format_name
 
 -- Reading the JSON sessions file.
 
@@ -242,62 +299,17 @@ invited_key_by_schedule (Schedule schedule) = do
 
 -- Reading the JSON papers file.
 
-data Author = Author
-  { author_first :: String
-  , author_last :: String
-  , author_affiliation :: String
-  } deriving (Eq, Show)
-
-instance FromJSON Author where
-  parseJSON = withObject "Author" $ \v -> Author
-    <$> v .: "first"
-    <*> v .: "last"
-    <*> v .: "affiliation"
-
-format_author :: Author -> String
-format_author = sequence [author_first, author_last] >>> intercalate " "
-
-format_authors :: Paper -> String
-format_authors = paper_authors >>> map format_author >>> intercalate ", "
-
-author_last_first :: Author -> String
-author_last_first author = author_last author ++ ", " ++ author_first author
-
-lowercase :: String -> String
-lowercase = map toLower
-
-author_sort_key :: Author -> (String, Maybe String, String)
-author_sort_key author =
-  ( map toLower last_core
-  , map toLower <$> tussenvoegsels
-  , map toLower $ author_first author
-  ) where
-  (tussenvoegsels, last_core) = split_tussenvoegsels (author_last author)
-
-author_sort_key_string :: Author -> String
-author_sort_key_string author = unicode_sort_key_ascii s where
-  s :: String
-  s = intercalate ", " [last, fromMaybe "_" tussenvoegsels, first]
-
-  last :: String
-  tussenvoegsels :: Maybe String
-  first :: String
-  (last, tussenvoegsels, first) = author_sort_key author
-
-instance Ord Author where
-  compare = compare `on` author_sort_key
-
 data Paper = Paper
   { paper_id :: Integer
   , paper_title :: String
   , paper_title_latex :: Maybe String
-  , paper_authors :: [Author]
+  , paper_authors :: [Person]
   , paper_path :: Maybe FilePath
   , paper_slides_path :: Maybe FilePath
   } deriving (Eq, Show)
 
 instance Ord Paper where
-  compare = compare `on` paper_authors
+  compare = liftCompare2 compare compare_unicode `on` (paper_authors &&& paper_title)
 
 instance FromJSON Paper where
   parseJSON = withObject "Paper" $ \v -> do
@@ -310,6 +322,9 @@ instance FromJSON Paper where
       <*> v .: "authors"
       <*> return Nothing
       <*> return Nothing
+
+format_authors :: Paper -> String
+format_authors = paper_authors >>> map (person_name >>> format_name) >>> intercalate ", "
 
 type Papers = Map Integer Paper
 

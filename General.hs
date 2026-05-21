@@ -97,6 +97,9 @@ sort_key_ascii = (\(Collate.SortKey ws) -> ws)
 unicode_sort_key_ascii :: String -> String
 unicode_sort_key_ascii = unicode_sort_key >>> sort_key_ascii
 
+compare_unicode :: String -> String -> Ordering
+compare_unicode = Collate.collate "en-US" `on` pack
+
 {- Using text-icu
 unicode_sort_key_ascii :: String -> IO String
 unicode_sort_key_ascii s = do

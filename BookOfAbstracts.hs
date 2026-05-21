@@ -112,7 +112,7 @@ gen_toc_chapter = gen_toc_entry "chapter"
 gen_toc_section :: (Monad m) => Reference -> LaTeXT_ m
 gen_toc_section = gen_toc_entry "section"
 
-gen_index_author :: (Monad m) => Author -> LaTeXT_ m
+gen_index_author :: (Monad m) => Person -> LaTeXT_ m
 gen_index_author author = LaTeX.fromLaTeX $ LaTeX.TeXComm "index"
   [LaTeX.FixArg $ fromString $ author_sort_key_string author ++ "@" ++ author_last_first author]
 
@@ -156,7 +156,7 @@ run_newpax paths = do
   LaTeX.execLaTeXT (gen_newpax paths) >>= LaTeX.renderFile (dir_book_of_abstracts </> file_newpax_generator)
   run_latex "lualatex" dir_book_of_abstracts file_newpax_generator
 
-gen_entry :: (MonadIO m) => [Author] -> (String, Maybe String) -> FilePath -> WriterT [FilePath] (LaTeXT m) ()
+gen_entry :: (MonadIO m) => [Person] -> (String, Maybe String) -> FilePath -> WriterT [FilePath] (LaTeXT m) ()
 gen_entry authors title_data path = do
   tell [rel_path]
   liftIO $ do
