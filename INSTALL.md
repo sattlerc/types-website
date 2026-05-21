@@ -186,6 +186,14 @@ cabal run book-of-abstracts
 
 This uses the data files in `data`.
 
+To compile the book of abstracts, go to `book-of-abstracts` and run:
+
+```shell
+pdflatex book-of-abstracts  # Until warnings disappear
+makeindex book-of-abstracts
+pdflatex book-of-abstracts  # Until warnings disappear
+```
+
 ## Calendar
 
 To generate a calendar file (in ICS format) from the schedule, run:
