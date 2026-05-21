@@ -177,7 +177,7 @@ main = hakyll $ do
 
   -- Files that should just be copied over.
   -- Files in `monitor` are for monitoring website availability.
-  match ("css/**" .||. "images/**" .||. pattern_abstracts .||. pattern_slides .||. pattern_slides_invited .||. "files/**" .||. "monitor/**") $ do
+  match ("css/**" .||. "images/**" .||. pattern_abstracts .||. pattern_slides .||. pattern_slides_invited .||. "files/**") $ do
     route $ customRoute $ toFilePath
     compile copyFileCompiler
 
@@ -204,7 +204,6 @@ main = hakyll $ do
   --   withItemBody (decode_json :: ByteString -> Compiler [Paper]) (bs :: Item ByteString)
 
   -- Pages of the conference website.
-  match (("*.md" .||. "*.html") .&&. complement ("README.md" .||. "INSTALL.md")) $ do
-    route $ customRoute $ toFilePath >>> (`replaceExtension` "html")
+  match ("pages/**/*.md" .||. "pages/**/*.html") $ do
+    route $ customRoute $ toFilePath >>> path_strip_prefix "pages" >>> fromJust >>> (`replaceExtension` "html")
     compile $ page_compiler >>= loadAndApplyTemplate "templates/default.html" navigation_context
-
