@@ -250,8 +250,6 @@ generate = do
   writeFile path_book_of_abstracts_committees $ LaTeX.prettyLaTeX $ LaTeX.execLaTeXM $ gen_committees organizing_committee program_committee steering_committee
 
   papers <- parse_papers Paths.papers (Just Paths.abstracts) Nothing
-  forM_ papers $ \paper -> do
-    putStrLn $ show $ paper_path paper
   sessions <- parse_file_sessions Paths.sessions
   inviteds <- parse_file_inviteds Paths.inviteds
   schedule <- parse_file_schedule Paths.schedule
