@@ -152,8 +152,8 @@ data_context = mconcat
   options_local :: PersonOptions
   options_local = options_base
 
-options_other :: PersonOptions
-options_other = options_base { person_options_homepage = False }
+  options_other :: PersonOptions
+  options_other = options_base { person_options_homepage = False }
 
 page_compiler :: Compiler (Item String)
 page_compiler = do
