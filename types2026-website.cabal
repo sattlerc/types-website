@@ -12,7 +12,7 @@ executable site
     LambdaCase
     OverloadedStrings
     ScopedTypeVariables
-  hs-source-dirs: .
+  hs-source-dirs: src
   build-depends:
     , aeson              >= 2.2.0    && < 3
     , base               >= 4.16.0.0 && < 5
@@ -39,7 +39,7 @@ executable book-of-abstracts
     LambdaCase
     OverloadedStrings
     ScopedTypeVariables
-  hs-source-dirs: .
+  hs-source-dirs: src
   build-depends:
     , aeson              >= 2.2.0    && < 3
     , base               >= 4.16.0.0 && < 5
