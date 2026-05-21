@@ -54,9 +54,12 @@ class CalendarGenerator:
             tzinfo=self.TIMEZONE,
         )
 
+    def name(self, person):
+        return " ".join([person["first"], person["last"]])
+
     def authors(self, paper):
         for author in paper["authors"]:
-            yield " ".join([author["first"], author["last"]])
+            yield self.name(author)
 
     def uid(self, identifier: str):
         return identifier + "@types2026.cse.chalmers.se"
@@ -119,7 +122,7 @@ class CalendarGenerator:
                 add(
                     identifier=speaker,
                     summary=invited["title"],
-                    description=invited["speaker"],
+                    description=self.name(invited),
                     location=LOCATION_TALK,
                 )
             case "session":
