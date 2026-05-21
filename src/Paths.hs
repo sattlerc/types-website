@@ -11,6 +11,9 @@ slides = "slides"
 slides_invited :: FilePath
 slides_invited = "slides-invited"
 
+include :: FilePath
+include = "include"
+
 -- Data files.
 
 papers :: FilePath

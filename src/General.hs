@@ -139,3 +139,6 @@ map_from_list_unique_m :: (MonadFail m, Ord k, Show k, Show a) => String -> [(k,
 map_from_list_unique_m msg xs = case map_from_list_unique xs of
   Left (k, (x, y)) -> fail $ msg ++ ": key " ++ show k ++ " has duplicate values " ++ show x ++ " and " ++ show y
   Right r -> return r
+
+pairA :: (Applicative f) => (f a, f b) -> f (a, b)
+pairA = uncurry $ liftA2 (,)
