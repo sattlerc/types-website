@@ -1,4 +1,20 @@
-# Source code for TYPES 20XX conference website
+# Source code for TYPES 20XX conference website and related automation
+
+Developed for TYPES 2026.
+All references to data from TYPES 2026 have been replaced by placeholders (XX).
+
+## Features
+
+* Generation of static website from HTML, Markdown, and data from HotCRP,
+* git hooks for compiling and deploying website on push,
+* generation of book of abstract,
+* generation of calendar file (ICS).
+
+## Deployment setup
+
+see [INSTALL.md](INSTALL.md).
+
+## Documentation for website editors (edit this)
 
 This is a static website generated using [Hakyll](https://jaspervdj.be/hakyll/).
 The source is hosted in the following Git repository:
@@ -64,7 +80,7 @@ For example:
 ```
 
 These are computed in `Papers.hs` from the following data files:
-* `papers.json` (downloaded from the HoTCRP instance),
+* `papers.json` (downloaded from the HotCRP instance),
 * `invited.json`,
 * `sessions.json`,
 * `schedule.json`.
