@@ -151,7 +151,7 @@ data Invited = Invited
   , invited_chair :: Maybe String
   , invited_picture :: Maybe String
   , invited_slides :: Maybe String
-  } deriving (Eq, Show)
+  } deriving (Eq, Ord, Show)
 
 instance FromJSON Invited where
   parseJSON = withObject "Invited" $ \v -> Invited

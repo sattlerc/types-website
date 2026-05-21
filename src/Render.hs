@@ -179,6 +179,7 @@ format_invited_speaker key invited = Blaze.div
 
 format_invited_speakers :: Inviteds -> String
 format_invited_speakers = Map.toAscList
+  >>> sort
   >>> map (uncurry format_invited_speaker)
   >>> mconcat
   >>> BlazePretty.renderHtml

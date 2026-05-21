@@ -191,8 +191,8 @@ gen_invited key invited = gen_entry
   (((invited_title >>> fromJust) &&& invited_title_latex) $ invited)
   (path_invited_abstracts </> addExtension key "pdf")
 
-gen_book_of_abstracts :: (MonadIO m) => Papers -> Inviteds -> Sessions -> Schedule -> WriterT [FilePath] (LaTeXT m) ()
-gen_book_of_abstracts papers inviteds sessions schedule = do
+gen_core :: (MonadIO m) => Papers -> Inviteds -> Sessions -> Schedule -> WriterT [FilePath] (LaTeXT m) ()
+gen_core papers inviteds sessions schedule = do
   lift $ do
     LaTeX.comment $ pack "Invited talks."
     gen_empty_line
