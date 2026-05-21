@@ -66,7 +66,7 @@
    ./collect_output.py '> ' \
      ./reference-transaction-hook.py \
        --branch main \
-       --cabal-executable site \\
+       --cabal-executable site \
        --docker-executable podman \
        --docker-image haskell:9.6 \
        --tracking-repo tracking-repo \
