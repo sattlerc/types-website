@@ -1,5 +1,5 @@
 import Control.Arrow ((>>>), (&&&))
-import Control.Monad (forM_, replicateM_, void)
+import Control.Monad (forM_, mplus, replicateM_, void)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Trans (lift)
 import Control.Monad.Writer (WriterT, runWriterT, tell)
@@ -64,7 +64,7 @@ abstract_invited invited = do
  maybeM_ (person_affiliation $ invited_person invited) $ fromString >>> LaTeX.institute Nothing
  LaTeX.document do
    LaTeX.maketitle
-   maybeM_ (invited_abstract invited) $ fromString
+   maybeM_ (uncurry mplus $ (invited_abstract_latex &&& invited_abstract) invited) $ fromString
 
 generate_abstracts_invited :: IO ()
 generate_abstracts_invited = do
@@ -81,7 +81,7 @@ build_abstracts_invited :: IO ()
 build_abstracts_invited = do
   inviteds <- parse_file_inviteds Paths.inviteds
   forM_ (Map.keys inviteds) $ \key ->
-    run_latex "xelatex" path_invited_abstracts key
+    run_latex "pdflatex" path_invited_abstracts key
 
 
 type Reference = (LaTeX, String)
@@ -254,7 +254,7 @@ generate = do
   inviteds <- parse_file_inviteds Paths.inviteds
   schedule <- parse_file_schedule Paths.schedule
   createDirectoryIfMissing True dir_book_of_abstracts
-  (((), abstracts), latex) <- LaTeX.runLaTeXT $ runWriterT $ gen_book_of_abstracts papers inviteds sessions schedule
+  (((), abstracts), latex) <- LaTeX.runLaTeXT $ runWriterT $ gen_core papers inviteds sessions schedule
   run_newpax abstracts
   writeFile path_book_of_abstracts_core $ LaTeX.prettyLaTeX $ latex
 

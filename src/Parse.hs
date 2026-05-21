@@ -147,6 +147,7 @@ data Invited = Invited
   , invited_title_latex :: Maybe String
   , invited_abstract :: Maybe String
   , invited_abstract_html :: Maybe String
+  , invited_abstract_latex :: Maybe String
   , invited_chair :: Maybe String
   , invited_picture :: Maybe String
   , invited_slides :: Maybe String
@@ -159,6 +160,7 @@ instance FromJSON Invited where
     <*> v .:? "title_latex"
     <*> v .:? "abstract"
     <*> v .:? "abstract_html"
+    <*> v .:? "abstract_latex"
     <*> v .:? "chair"
     <*> return Nothing
     <*> return Nothing
