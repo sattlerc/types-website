@@ -14,7 +14,7 @@ import Data.Foldable (toList)
 import Data.Function ((&), on)
 import Data.Functor.Classes (liftCompare, liftCompare2)
 import Data.Functor.Identity (runIdentity)
-import Data.List (intercalate)
+import Data.List (intercalate, sort)
 import Data.Map (Map)
 import Data.Map qualified as Map
 import Data.Maybe (catMaybes, fromJust, fromMaybe)
@@ -37,7 +37,7 @@ list_files_or_index_html dir = do
 
   h :: FilePath -> IO FilePath
   h path = do
-    is_dir <- doesDirectoryExist (dir </> path)
+    is_dir <- doesDirectoryExist path
     return $ if is_dir
       then path </> "index.html"
       else path
@@ -136,9 +136,8 @@ to_map context key_name = foldM f Map.empty where
 
 -- Reading JSON committee files
 
-
 parse_file_committee :: FilePath -> IO [Person]
-parse_file_committee = ByteString.readFile >=> decode_json
+parse_file_committee = ByteString.readFile >=> decode_json >>> fmap sort
 
 -- Reading the JSON invited talks file.
 
@@ -362,9 +361,9 @@ parse_abstracts kind dir = do
     h :: [FilePath] -> [(Integer, FilePath)]
     h paths = do
       path <- paths
-      case abstract_id_from_path path of
+      case abstract_id_from_path $ fromJust $ path_strip_prefix dir path of
         Nothing -> mempty
-        Just id -> return (id, dir </> path)
+        Just id -> return (id, path)
 
 papers_with_abstract :: PaperAbstracts -> Papers -> Papers
 papers_with_abstract abstracts = Map.mapWithKey $
@@ -377,12 +376,20 @@ papers_with_slides slides = Map.mapWithKey $
 papers_with_abstract_and_slides :: PaperAbstracts -> PaperAbstracts -> Papers -> Papers
 papers_with_abstract_and_slides abstracts slides = papers_with_abstract abstracts >>> papers_with_slides slides
 
-parse_papers :: FilePath -> FilePath -> FilePath -> IO Papers
+parse_papers :: FilePath -> Maybe FilePath -> Maybe FilePath -> IO Papers
 parse_papers path_json path_abstracts path_slides = do
   papers <- parse_file_papers path_json
-  abstracts <- parse_abstracts "abstracts" path_abstracts
-  slides <- parse_abstracts "slides" path_slides
-  return $ papers_with_slides slides $ papers_with_abstract abstracts papers
+  papers1 <- case path_abstracts of
+    Nothing -> return papers
+    Just path -> do
+      abstracts <- parse_abstracts "abstracts" path
+      return $ papers_with_abstract abstracts papers
+  papers2 <- case path_slides of
+    Nothing -> return papers1
+    Just path -> do
+      slides <- parse_abstracts "slides" path
+      return $ papers_with_slides slides papers1
+  return papers2
 
 -- Data.
 

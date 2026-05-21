@@ -14,7 +14,7 @@ import System.Environment (getArgs)
 import System.FilePath (FilePath, (</>), addExtension, dropExtension, replaceExtension, takeFileName)
 import System.IO (hPutStrLn, stderr)
 import System.Process (CreateProcess(close_fds, cwd, std_err, std_out), callCreateProcess, proc, readProcess)
-import Text.LaTeX (LaTeX, LaTeXT, LaTeXT_)
+import Text.LaTeX (LaTeX, LaTeXM, LaTeXT, LaTeXT_)
 import Text.LaTeX qualified as LaTeX
 import Text.LaTeX.Base.Class qualified as LaTeX
 import Text.LaTeX.Base.Pretty qualified as LaTeX
@@ -23,6 +23,9 @@ import Text.LaTeX.Base.Syntax qualified as LaTeX
 import General
 import Parse
 import qualified Paths
+
+latex_strict :: (Monad m) => LaTeXM () -> LaTeXT_ m
+latex_strict = LaTeX.execLaTeXM >>> LaTeX.render >>> LaTeX.raw
 
 options :: [(String, Maybe String)] -> String
 options = map h >>> intercalate "," where
@@ -40,6 +43,9 @@ dir_book_of_abstracts_inverse = ".."
 path_book_of_abstracts_core :: FilePath
 path_book_of_abstracts_core = dir_book_of_abstracts </> "core.tex"
 
+path_book_of_abstracts_committees :: FilePath
+path_book_of_abstracts_committees = dir_book_of_abstracts </> "committees.tex"
+
 file_newpax_generator :: FilePath
 file_newpax_generator = "newpax_generator.tex"
 
@@ -55,7 +61,7 @@ abstract_invited invited = do
  LaTeX.usepackage [] "microtype"
  LaTeX.author $ fromString $ invited_speaker invited
  maybeM_ (invited_title invited) $ fromString >>> LaTeX.title
- LaTeX.institute Nothing $ fromString $ invited_affiliation invited
+ maybeM_ (person_affiliation $ invited_person invited) $ fromString >>> LaTeX.institute Nothing
  LaTeX.document do
    LaTeX.maketitle
    maybeM_ (invited_abstract invited) $ fromString
@@ -114,7 +120,7 @@ gen_toc_section = gen_toc_entry "section"
 
 gen_index_author :: (Monad m) => Person -> LaTeXT_ m
 gen_index_author author = LaTeX.fromLaTeX $ LaTeX.TeXComm "index"
-  [LaTeX.FixArg $ fromString $ author_sort_key_string author ++ "@" ++ author_last_first author]
+  [LaTeX.FixArg $ fromString $ name_sort_key_string (person_name author) ++ "@" ++ format_name_last_first (person_name author)]
 
 gen_include_pdf :: (Monad m) => Reference -> FilePath -> LaTeXT_ m
 gen_include_pdf title rel_path = LaTeX.fromLaTeX $ LaTeX.TeXComm "includepdf"
@@ -147,7 +153,7 @@ gen_newpax paths = do
   LaTeX.document $ return () where
     lua_func_lit :: String -> String -> String
     lua_func_lit function literal = function ++ "(" ++ show literal ++ ")"
-    
+
     lua :: String
     lua = unlines $ ["require(" ++ show "newpax" ++ ")"] ++ map (dropExtension >>> lua_func_lit "newpax.writenewpax") paths
 
@@ -179,9 +185,9 @@ gen_paper paper = gen_entry
   ((paper_title &&& paper_title_latex) $ paper)
   (fromJust $ paper_path paper)
 
-gen_invited :: (MonadIO m) =>String -> Invited -> WriterT [FilePath] (LaTeXT m) ()
+gen_invited :: (MonadIO m) => String -> Invited -> WriterT [FilePath] (LaTeXT m) ()
 gen_invited key invited = gen_entry
-  [invited_author invited]
+  [invited_person invited]
   (((invited_title >>> fromJust) &&& invited_title_latex) $ invited)
   (path_invited_abstracts </> addExtension key "pdf")
 
@@ -204,9 +210,46 @@ gen_book_of_abstracts papers inviteds sessions schedule = do
       gen_paper $ papers Map.! paper_id
     lift gen_empty_line
 
+gen_committee :: forall m. (Monad m) => String -> [Person] -> LaTeXT_ m
+gen_committee title persons = do
+  LaTeX.section' $ fromString title
+  LaTeX.tabular Nothing [LaTeX.Separator mempty, LaTeX.LeftColumn, LaTeX.LeftColumn] $ forM_ persons h where
+    h :: Person -> LaTeXT_ m
+    h person = left LaTeX.& right where
+      left :: LaTeXT_ m
+      left = do
+        fromString (format_name $ person_name person)
+        maybeM_ (person_role person) $ \role -> latex_strict $ do
+          fromString " ("
+          LaTeX.emph (fromString role)
+          fromString ")"
+
+      right :: LaTeXT_ m
+      right = do
+        maybeM_ (person_affiliation person) $ fromString
+        LaTeX.lnbk
+
+gen_local_organizers :: (Monad m) => [Person] -> LaTeXT_ m
+gen_local_organizers persons = do
+  LaTeX.section' "Local organizers"
+  fromString $ intercalate ", " $ map (person_name >>> format_name) persons
+
+gen_committees :: (Monad m) => [Person] -> [Person] -> [Person] -> LaTeXT_ m
+gen_committees organizing_committee program_committee steering_committee = do
+  gen_committee "Programme Committee" program_committee
+  gen_committee "Steering Committee" steering_committee
+  gen_local_organizers organizing_committee
+
 generate :: IO ()
 generate = do
-  papers <- parse_papers Paths.papers Paths.abstracts
+  organizing_committee <- parse_file_committee Paths.organizing_committee
+  program_committee <- parse_file_committee Paths.program_committee
+  steering_committee <- parse_file_committee Paths.steering_committee
+  writeFile path_book_of_abstracts_committees $ LaTeX.prettyLaTeX $ LaTeX.execLaTeXM $ gen_committees organizing_committee program_committee steering_committee
+
+  papers <- parse_papers Paths.papers (Just Paths.abstracts) Nothing
+  forM_ papers $ \paper -> do
+    putStrLn $ show $ paper_path paper
   sessions <- parse_file_sessions Paths.sessions
   inviteds <- parse_file_inviteds Paths.inviteds
   schedule <- parse_file_schedule Paths.schedule

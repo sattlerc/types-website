@@ -123,8 +123,8 @@ format_person_homepage options person = do
 format_person :: PersonOptions -> Person -> Html
 format_person options person = do
   blaze_link_maybe homepage $ Blaze.string $ format_name $ person_name person
-  maybeM_ affiliation $ \a -> Blaze.string $ " " ++ parens a
-  maybeM_ role $ \a -> Blaze.string $ " " ++ parens a
+  maybeM_ affiliation $ parens >>> (" " ++) >>> Blaze.string
+  maybeM_ role $ parens >>> (" " ++) >>> Blaze.string
 
   where
   homepage :: Maybe String
@@ -186,8 +186,7 @@ format_invited_speakers = Map.toAscList
 -- Committees
 
 format_committee :: PersonOptions -> [Person] -> String
-format_committee options = sort
-  >>> map (format_person options)
+format_committee options = map (format_person options)
   >>> blaze_ul_strict
   >>> BlazePretty.renderHtml
 

@@ -196,7 +196,7 @@ main = hakyll $ do
 
   -- Includes.
   match "include/**" $
-    compile page_compiler  
+    compile page_compiler
 
   -- This approach doesn't work because [Paper] is not writable.
   -- match (fromList [accepted_papers_id]) $ compile $ do
