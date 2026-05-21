@@ -219,6 +219,8 @@ gen_committee title persons = do
       left :: LaTeXT_ m
       left = do
         fromString (format_name $ person_name person)
+        -- Workaround for bug in HaTeX 3.23.0.1:
+        -- Without latex_strict, this introduces whitespace before the closing parenthesis.
         maybeM_ (person_role person) $ \role -> latex_strict $ do
           fromString " ("
           LaTeX.emph (fromString role)
