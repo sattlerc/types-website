@@ -1,3 +1,4 @@
-Final versions of submitted abstracts go here:
-* base name: paper id,
-* extension: `pdf`.
+Final versions of submitted abstracts go here.
+
+Supported format:
+* `<paper id>.pdf`
