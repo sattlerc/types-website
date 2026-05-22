@@ -3,7 +3,6 @@ import Control.Arrow ((>>>), (&&&))
 import Control.Monad (forM, (>=>))
 import Data.Functor ((<&>))
 import Data.Map (Map)
-import Data.Map qualified as Map
 import Data.Maybe (fromJust)
 import Data.String (fromString)
 import System.Directory (doesDirectoryExist, listDirectory)
@@ -48,7 +47,7 @@ navigation_compiler :: Compiler (Item String)
 navigation_compiler = do
   metadata <- getUnderlying >>= getMetadata
   body <- getResourceBody
-  let Just navigation_ids = lookupStringList "navigation_ids" metadata
+  Just navigation_ids <- return $ lookupStringList "navigation_ids" metadata
   let context = listField "navigation_items" nav_item_context $ forM navigation_ids $ fromFilePath >>> makeItem
   applyAsTemplate context body
   where
@@ -57,7 +56,7 @@ navigation_compiler = do
     [ field "title" $ \item -> do
         let id_ = itemBody item
         metadata <- getMetadata id_
-        let Just title = lookupString "title" metadata
+        Just title <- return $ lookupString "title" metadata
         return title
     , field "url" $ \item -> do
         let id_ = itemBody item

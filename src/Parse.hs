@@ -3,27 +3,23 @@ module Parse where
 import Control.Applicative ((<|>))
 import Control.Arrow ((>>>), (&&&))
 import Control.Monad ((>=>), foldM, forM_, guard, unless)
-import Control.Monad.Trans.Class (lift)
-import Control.Monad.Trans.Maybe (MaybeT, hoistMaybe, runMaybeT)
 import Data.Aeson (FromJSON, Value(Object), eitherDecode, parseJSON, withArray, withObject, (.:))
-import Data.Aeson.Types (Object, Parser, Value, (.:?))
+import Data.Aeson.Types (Object, Parser, (.:?))
 import Data.ByteString.Lazy (ByteString)
 import Data.ByteString.Lazy qualified as ByteString
-import Data.Char (isNumber, toLower)
 import Data.Foldable (toList)
 import Data.Function ((&), on)
 import Data.Functor.Classes (liftCompare, liftCompare2)
-import Data.Functor.Identity (runIdentity)
 import Data.List (intercalate, sort)
 import Data.Map (Map)
 import Data.Map qualified as Map
-import Data.Maybe (catMaybes, fromJust, fromMaybe)
+import Data.Maybe (fromJust, fromMaybe)
 import Data.Text.Lazy (Text, unpack)
 import Data.Time (Day, NominalDiffTime, TimeOfDay(TimeOfDay))
 import Data.Time qualified as Time
 import Data.Time.Format.ISO8601 qualified as ISO8601
 import Data.Tuple (swap)
-import System.Directory (doesDirectoryExist, doesFileExist)
+import System.Directory (doesDirectoryExist)
 import System.FilePath ((</>), splitDirectories, takeBaseName, takeExtension)
 
 import General
@@ -72,12 +68,12 @@ name_sort_key name = (last_core, (tussenvoegsels, name_first name)) where
 name_sort_key_string :: Name -> String
 name_sort_key_string first_last = unicode_sort_key_ascii s where
   s :: String
-  s = intercalate ", " [last, fromMaybe "_" tussenvoegsels, first]
+  s = intercalate ", " [last_, fromMaybe "_" tussenvoegsels, first]
 
-  last :: String
+  last_ :: String
   tussenvoegsels :: Maybe String
   first :: String
-  (last, (tussenvoegsels, first)) = name_sort_key first_last
+  (last_, (tussenvoegsels, first)) = name_sort_key first_last
 
 instance Ord Name where
   compare = liftCompare2 compare_unicode (liftCompare2 (liftCompare compare_unicode) compare_unicode) `on` name_sort_key
@@ -365,7 +361,7 @@ parse_abstracts kind dir = do
       path <- paths
       case abstract_id_from_path $ fromJust $ path_strip_prefix dir path of
         Nothing -> mempty
-        Just id -> return (id, path)
+        Just id_ -> return (id_, path)
 
 papers_with_abstract :: PaperAbstracts -> Papers -> Papers
 papers_with_abstract abstracts = Map.mapWithKey $

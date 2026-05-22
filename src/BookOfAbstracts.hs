@@ -1,19 +1,19 @@
 import Control.Arrow ((>>>), (&&&))
-import Control.Monad (forM_, mplus, replicateM_, void)
+import Control.Monad (forM_, mplus, replicateM_)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.Trans (lift)
 import Control.Monad.Writer (WriterT, runWriterT, tell)
-import Data.Char (isSpace, toUpper)
-import Data.List (intercalate, dropWhileEnd)
+import Data.Char (toUpper)
+import Data.List (intercalate)
 import Data.Map qualified as Map
 import Data.Maybe (fromJust)
 import Data.String (fromString)
 import Data.Text (pack, unpack)
-import System.Directory (createDirectoryIfMissing, copyFile, renameFile)
+import System.Directory (createDirectoryIfMissing, copyFile)
 import System.Environment (getArgs)
-import System.FilePath (FilePath, (</>), addExtension, dropExtension, replaceExtension, takeFileName)
+import System.FilePath ((</>), addExtension, dropExtension, takeFileName)
 import System.IO (hPutStrLn, stderr)
-import System.Process (CreateProcess(close_fds, cwd, std_err, std_out), callCreateProcess, proc, readProcess)
+import System.Process (CreateProcess(close_fds, cwd), callCreateProcess, proc)
 import Text.LaTeX (LaTeX, LaTeXM, LaTeXT, LaTeXT_)
 import Text.LaTeX qualified as LaTeX
 import Text.LaTeX.Base.Class qualified as LaTeX
@@ -36,9 +36,6 @@ options = map h >>> intercalate "," where
 
 dir_book_of_abstracts :: FilePath
 dir_book_of_abstracts = "book-of-abstracts"
-
-dir_book_of_abstracts_inverse :: FilePath
-dir_book_of_abstracts_inverse = ".."
 
 path_book_of_abstracts_core :: FilePath
 path_book_of_abstracts_core = dir_book_of_abstracts </> "core.tex"
@@ -136,13 +133,13 @@ gen_include_pdf title rel_path = LaTeX.fromLaTeX $ LaTeX.TeXComm "includepdf"
     gen_toc_section title
     LaTeX.thispagestyle "empty"
 
-run_pax :: FilePath -> FilePath -> IO ()
-run_pax cwd path = do
-  texroot <- trim <$> readProcess "kpsewhich" ["-var-value", "TEXMFMAIN"] ""
-  callCreateProcess $
-    (proc "java" ["-jar", texroot ++ "/scripts/pax/pax.jar", path]) { cwd = Just cwd, close_fds = True }
-  where
-    trim = dropWhileEnd isSpace
+-- run_pax :: FilePath -> FilePath -> IO ()
+-- run_pax cwd path = do
+--   texroot <- trim <$> readProcess "kpsewhich" ["-var-value", "TEXMFMAIN"] ""
+--   callCreateProcess $
+--     (proc "java" ["-jar", texroot ++ "/scripts/pax/pax.jar", path]) { cwd = Just cwd, close_fds = True }
+--   where
+--     trim = dropWhileEnd isSpace
 
 -- newpax v0.57 fails on Paper 16.
 -- Reported and fixed in v0.58.
@@ -155,7 +152,7 @@ gen_newpax paths = do
     lua_func_lit function literal = function ++ "(" ++ show literal ++ ")"
 
     lua :: String
-    lua = unlines $ ["require(" ++ show "newpax" ++ ")"] ++ map (dropExtension >>> lua_func_lit "newpax.writenewpax") paths
+    lua = unlines $ ["require(" ++ show ("newpax" :: String) ++ ")"] ++ map (dropExtension >>> lua_func_lit "newpax.writenewpax") paths
 
 run_newpax :: [FilePath] -> IO ()
 run_newpax paths = do
@@ -201,13 +198,12 @@ gen_core papers inviteds sessions schedule = do
     gen_invited key (inviteds Map.! key)
   lift gen_empty_line
 
-  forM_ (Map.assocs sessions) $ \(session_id, session) -> do
+  forM_ (Map.assocs sessions) $ \(id_, session) -> do
     lift $ do
-      LaTeX.comment $ pack $ "Session " ++ show_id session_id ++ "."
+      LaTeX.comment $ pack $ "Session " ++ show_id id_ ++ "."
       gen_empty_line
       gen_toc_chapter $ ref_from_string $ update_head toUpper $ session_title session
-    forM_ (session_papers session) $ \paper_id -> do
-      gen_paper $ papers Map.! paper_id
+    forM_ (session_papers session) $ (papers Map.!) >>> gen_paper
     lift gen_empty_line
 
 gen_committee :: forall m. (Monad m) => String -> [Person] -> LaTeXT_ m

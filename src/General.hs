@@ -15,7 +15,6 @@ import Data.Time (Day, NominalDiffTime, TimeOfDay)
 import Data.Time qualified as Time
 import Data.Time.Format (defaultTimeLocale, formatTime)
 import Data.Time.Format.ISO8601 qualified as ISO8601
-import Data.Word (Word16)
 import System.Directory (listDirectory)
 import System.FilePath ((</>), joinPath, splitDirectories)
 import Text.Collate as Collate
@@ -131,6 +130,7 @@ map_from_multimap :: (Ord k) => Map k [a] -> Either (k, (a, a)) (Map k a)
 map_from_multimap = Map.traverseWithKey $ \k xs -> case xs of
   x : y : _ -> Left (k, (x, y))
   [x] -> Right x
+  _ -> undefined
 
 map_from_list_unique :: (Ord k) => [(k, a)] -> Either (k, (a, a)) (Map k a)
 map_from_list_unique = multimap >>> map_from_multimap
