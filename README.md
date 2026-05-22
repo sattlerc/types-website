@@ -53,7 +53,7 @@ If you do, you must regenerate the website using `rebuild` instead of `build`.
 
 ## Structure and editing
 
-The different pages of the website are defined in Markdown or HTML in the top-level directory (example: `call-for-constributions.md`).
+The different pages of the website are defined in Markdown or HTML in directory `pages` (example: `pages/call-for-constributions.md`).
 You can edit these and add new files.
 
 Pages are rendered using the template `templates/default.html`.
